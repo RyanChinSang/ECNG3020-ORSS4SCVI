@@ -4,10 +4,13 @@ MED : If accomplished would make the program more informative and user-friendly.
 LOW : If accomplished would add more meaning to either or both of documentation and presentation.
 
 HIGH:
-1. -
+1. Start actual dev0.1a; discuss features based on research and discussion with lecturer
+2.
 
 MED:
-1. -
+1. Add more/finish Tutorials
+2.
 
 LOW:
-1. -
+1. Make Better README.md; Progress, Description, Purpose etc.
+2.
