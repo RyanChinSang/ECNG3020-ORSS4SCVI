@@ -1,0 +1,13 @@
+Info:
+HIGH: If accomplished would add very meaningful functionality. These are usually challenging to accomplish.
+MED : If accomplished would make the program more informative and user-friendly.
+LOW : If accomplished would add more meaning to either or both of documentation and presentation.
+
+HIGH:
+1. -
+
+MED:
+1. -
+
+LOW:
+1. -
