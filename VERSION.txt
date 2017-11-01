@@ -1,0 +1,9 @@
+NOTE: All dates are in the format: dd.mm.yyyy
+
+dev0.1a (17.09.2017 - ??.??.2017)
+tldr; Able to read-in from Webcam and do some processing on the live video feed.
+1. Added initial test code which adapted closely to the Python tutorials done by Harrison Kinsley.
+   Ref: https://pythonprogramming.net/loading-images-python-opencv-tutorial/
+... (18.09.2017)
+2. Added more Test Code/Tutorial; able to do color filtering and edge detection on live video feed
+3. Added some documents relevant to the tutorial topic in-folder.
