@@ -5,10 +5,14 @@ LOW : If accomplished would add more meaning to either or both of documentation 
 
 HIGH:
 1. Start actual dev0.1a; discuss features based on research and discussion with lecturer
+   a. Make a multiprocessing python script that run openCV video stream and also looks out for keystrokes without delay
+   b. Turn keystrokes into a voice listening script
+   c. Alike to Base\VoiceRecg\APP-SpchRecg - add online connectivity check to select modes [Voice/Keystrokes] and
+      chooses which SR to use [Google/Sphinx]
 2.
 
 MED:
-1. Add more/finish Tutorials
+1. Add more/finish Tutorials; multiprocessing, SpeechRecognition, Tensorflow
 2.
 
 LOW:
