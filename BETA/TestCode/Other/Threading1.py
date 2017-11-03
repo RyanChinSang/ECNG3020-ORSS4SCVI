@@ -2,42 +2,49 @@ import threading
 from queue import Queue
 import time
 
-print_lock = threading.Lock()
+# print_lock = threading.Lock()
 
 
-def exampleJob(worker):
+# def exampleJob(worker):
+def exampleJob():
     time.sleep(0.5)  # pretend to do some work.
-    with print_lock:
-        print(threading.current_thread().name, worker)
+    # print("hi")
+    # print(threading.current_thread().name, worker)
+    # with print_lock:
+    #     print(threading.current_thread().name, worker)
 
 
 # The threader thread pulls a worker from the queue and processes it
 def threader():
     while True:
-        # gets an worker from the queue
-        worker = q.get()
-        # Run the example job with the avail worker in queue (thread)
-        exampleJob(worker)
+        # gets a worker from the queue
+        # worker = q.get()
+        q.get()
+        # Run the example job with the available worker in queue (thread)
+        # exampleJob(worker)
+        exampleJob()
         # completed with the job
         q.task_done()
 
 
 # Create the queue and threader
 q = Queue()
-
+start = time.time()
 # how many threads are we going to allow for
 for x in range(10):
-    t = threading.Thread(target=threader)
-    # classifying as a daemon, so they will die when the main dies
-    t.daemon = True
-    # begins, must come after daemon definition
-    t.start()
+    # t = threading.Thread(target=threader)
+    # # classifying as a daemon, so they will die when the main dies
+    # t.daemon = True
+    # # begins, must come after daemon definition
+    # t.start()
+    threading.Thread(target=threader, args=(), daemon=True).start()
 
-start = time.time()
 
 # 20 jobs assigned.
 for worker in range(20):
+    # print("a:" + str(q.__dict__))
     q.put(worker)
+    # print("b:" + str(q.__dict__))
 
 # wait until the thread terminates.
 q.join()

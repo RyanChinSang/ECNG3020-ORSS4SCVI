@@ -72,8 +72,23 @@ class VideoStream:
 
 if __name__ == '__main__':
     cap = VideoStream().start()
+    # cap = VideoStream(width=1280).start()  # Camera feed: 640*480 (default) -- WARNING (good)
+    # cap = VideoStream(width=1280, height=720).start()  # Camera feed: 1280*720
+    # cap = VideoStream(width=512, height=512).start()  # Camera feed: 640*480
+    # cap = VideoStream(width=480, ratio=(16/9)).start()  # Camera feed: 424*240
+    # cap = VideoStream(width=480, ratio=(4/3)).start()  # Camera feed: 640*360
+    # cap = VideoStream(width=640, ratio=(4/3)).start()  # Camera feed: 640*480
     while 1:
         frame = cap.read()
+        # frame = cap.read(width=512)  # Window size: 512*384
+        # frame = cap.read(height=512)  # Window size: 683*512
+        # frame = cap.read(width=512, ratio=1)  # Window size: 512*512
+        # frame = cap.read(height=480, ratio=(16/9))  # Window size: 854*480
+        # frame = cap.read(width=1280, height=720)  # Window size: 1280*720
+        # frame = cap.read(width=1280, height=720, ratio=(4/3))  # Window size: [Camera feed] -- WARNING (good)
+        # frame = cap.read(width=1280, height=720, ratio=(16/9))  # Window size: 1280*720
+        print(frame.shape[:2])
+        # print(str(float(4/3)))
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
