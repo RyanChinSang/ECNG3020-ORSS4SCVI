@@ -1,29 +1,39 @@
-import _thread
+from threading import Thread
 from six.moves import input
 
 import cv2
 
 cap = cv2.VideoCapture(0)
-
-
-# def get_feed():
-#     _, img = cap.read()
-#     cv2.imshow("img", img)
+a_list = []
 
 
 def input_thread(a_list):
-    input()
-    a_list.append(True)
+    val = input()
+    if val == 'a':
+        Thread(target=a, args=(), daemon=True).start()
+    elif val == 'b':
+        Thread(target=b, args=(), daemon=True).start()
+    else:
+        a_list.append(True)
 
 
 def do_stuff():
-    a_list = []
-    _thread.start_new_thread(input_thread, (a_list,))
+    Thread(target=input_thread, args=(a_list,), daemon=True).start()
     while not a_list:
         _, img = cap.read()
         cv2.imshow("img", img)
-        # get_feed()
-        # print("Waiting for keystroke. . .")
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+
+def a():
+    print("task a!")
+    Thread(target=input_thread, args=(a_list,), daemon=True).start()
+
+
+def b():
+    print('task b!')
+    Thread(target=input_thread, args=(a_list,), daemon=True).start()
 
 
 do_stuff()
