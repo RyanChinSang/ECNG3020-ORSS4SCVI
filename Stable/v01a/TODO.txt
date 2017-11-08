@@ -1,0 +1,15 @@
+1- Add tensorflow operation --WORKS: ORSSd01-c--
+2- Add colourID operation --WORKS: ORSSd01-a--
+   a. Port colourID operation into it's own python file
+3- Add better offline/online operation; check/initialize if internet() as True/False
+   a. Offline:
+      i. Use keyboard/manual input only
+     ii. Do not check for online (faster) - unless user uses specific input to do an online check
+         a. This check with call internet() again and re-set the global var
+    iii. Use sphinx offline speech2text on keypress (may remove / change to always offline listen / make configurable)
+   b. Online:
+      i. Use microphone to listen at all times using google, which updates a global var to call different functions
+4- Find accurate ways to generalize constants' values
+5- Make own expanded list of colours and values based on webcolors' dictionary
+6- Speedup everything
+7- Catch up on documentation
