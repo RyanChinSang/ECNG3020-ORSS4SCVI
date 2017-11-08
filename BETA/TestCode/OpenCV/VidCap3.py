@@ -77,17 +77,59 @@ class VideoStream(object):
 
 
 if __name__ == '__main__':
+    import numpy as np
+    avg = np.array([])
+    # cap = cv2.VideoCapture(0)
     cap = VideoStream().start()
+    # cap = VideoStream(height=360, ratio=(16 / 9)).start()
+    # cap = VideoStream(width=1280).start()  # Camera feed: 640*480 (default) -- WARNING (good)
+    # cap = VideoStream(width=1280, height=720).start()  # Camera feed: 1280*720
+    # cap = VideoStream(width=512, height=512).start()  # Camera feed: 640*480
+    # cap = VideoStream(width=480, ratio=(16/9)).start()  # Camera feed: 424*240
+    # cap = VideoStream(width=480, ratio=(4/3)).start()  # Camera feed: 640*360
+    # cap = VideoStream(width=640, ratio=(4/3)).start()  # Camera feed: 640*480
     while cap.isOpened():
+        # VideoStream.Fps().start()
+        # print(VideoStream.Fps().start().__dict__)
+        s = cv2.getTickCount()
         ret, frame = cap.read()
+        # frame = cap.read(width=512)  # Window size: 512*384
+        # frame = cap.read(height=512)  # Window size: 683*512
+        # frame = cap.read(width=512, ratio=1)  # Window size: 512*512
+        # ret, frame = cap.read(height=480, ratio=(16/9))  # Window size: 854*480
+        # ret, frame = cap.read(width=1280, height=720)  # Window size: 1280*720
+        # frame = cap.read(width=1280, height=720, ratio=(4/3))  # Window size: [Camera feed] -- WARNING (good)
+        # frame = cap.read(width=1280, height=720, ratio=(16/9))  # Window size: 1280*720
+        # print(frame.shape[:2])
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cap.release()
+        # VideoStream().fps()
+        f = cv2.getTickCount()
+        # VideoStream.Fps().stop()
+        # print(VideoStream.Fps().stop().__dict__)
+        # print(VideoStream.Fps().fps())
+        # VideoStream.Fps().fps()
+        # print(cv2.getTickFrequency())
+        print('{:.2f}'.format(cv2.getTickFrequency() / (f - s)))
+        avg = np.append(avg, (cv2.getTickFrequency() / (f - s)))
+    print('avg = {:.2f} fps'.format(np.average(avg)))
     cv2.destroyAllWindows()
 
+
 '''
-To add:
-1- Native fps support
-2- Using matplotlib as default?
+Changelog:
+
+07.11.17
+1- Renamed stop() to release() to conform with cv2.VideoCapture()'s release function
+2- Added a 'pass' when no conditions were set for read() and start() to prevent the coded 'WARNING-default' message
+3- Added the boolean self.grabbed to the return of read() - conform with cv2.VideoCapture()
+4- Change the value of read() independently of stream.read() upon release() (independent of stream.release())
+5- Allow the possibility of letting the whole loop run completely of whether the camera is active, or not
+6- Specify exactly what is being imported by default for use in the VideoStream class;
+    a. Added setUseOptimized for openCV (may be an improvement)
+7- Renamed self.release to self.released to avoid name collision
+8- Added isOpened() to conform with cv2.VideoCapture()
+
 
 '''

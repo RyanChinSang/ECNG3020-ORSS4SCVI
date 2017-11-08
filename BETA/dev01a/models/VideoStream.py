@@ -2,12 +2,13 @@ import cv2
 from threading import Thread
 
 
-class VideoStream:
+class VideoStream(object):
     def __init__(self, src=0, height=None, width=None, ratio=None):
+        cv2.setUseOptimized(True)
         self.stream = cv2.VideoCapture(src)
         self.config(dim=None, height=height, width=width, ratio=ratio)
         (self.grabbed, self.frame) = self.stream.read()
-        self.stopped = False
+        self.released = not self.grabbed
 
     def start(self):
         Thread(target=self.update, args=(), daemon=True).start()
@@ -15,16 +16,19 @@ class VideoStream:
 
     def update(self):
         while True:
-            if self.stopped:
+            if self.released:
                 return
             (self.grabbed, self.frame) = self.stream.read()
 
     def read(self, width=None, height=None, ratio=None):
-        return self.resize(frame=self.frame, width=width, height=height, ratio=ratio)
+        return (not self.released), self.resize(frame=self.frame, width=width, height=height, ratio=ratio)
 
-    def stop(self):
+    def release(self):
         self.stream.release()
-        self.stopped = True
+        self.released = True
+
+    def isOpened(self):
+        return not self.released
 
     def config(self, dim, height, width, ratio):
         if ratio is None:
@@ -73,11 +77,11 @@ class VideoStream:
 
 
 if __name__ == '__main__':
+    # cap = cv2.VideoCapture(0)
     cap = VideoStream().start()
-    while 1:
-        frame = cap.read()
+    while cap.isOpened():
+        ret, frame = cap.read()
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    cap.stop()
+            cap.release()
     cv2.destroyAllWindows()

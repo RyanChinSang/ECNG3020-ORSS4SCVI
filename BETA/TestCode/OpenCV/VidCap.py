@@ -34,3 +34,17 @@ class VideoStream:
         # indicate that the thread should be stopped
         self.stream.release()
         self.stopped = True
+
+
+if __name__ == '__main__':
+    cap = VideoStream().start()
+    while 1:
+        s = cv2.getTickCount()
+        frame = cap.read()
+        cv2.imshow('frame', frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+        f = cv2.getTickCount()
+        print('{:.2f}'.format(cv2.getTickFrequency() / (f - s)))
+    cap.stop()
+    cv2.destroyAllWindows()

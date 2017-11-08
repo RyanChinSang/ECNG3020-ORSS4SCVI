@@ -22,16 +22,22 @@ def internet(host="8.8.8.8", port=53, timeout=3):
 def google_sr(audio, key=GOOGLE_SPEECH_RECOGNITION_API_KEY):
     try:
         print(sr.Recognizer().recognize_google(audio, key))
+        text = str(sr.Recognizer().recognize_google(audio, key))
+        return text
     except sr.UnknownValueError:
+        # return "Google Speech Recognition could not understand audio"
         print("Google Speech Recognition could not understand audio")
     except sr.RequestError as e:
+        # return "Could not request results from Google Speech Recognition service; {0}".format(e)
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    # return word
 
 
 def sphinx_sr(audio):
     try:
         # print("Sphinx thinks you said: " + sr.Recognizer().recognize_sphinx(audio))
         print(sr.Recognizer().recognize_sphinx(audio))
+        return str(sr.Recognizer().recognize_sphinx(audio))
     except sr.UnknownValueError:
         print("Sphinx could not understand audio")
     except sr.RequestError as e:

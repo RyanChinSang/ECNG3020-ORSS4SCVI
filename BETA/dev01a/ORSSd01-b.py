@@ -18,6 +18,8 @@ def configure(frame, version):
     plt.switch_backend('Qt5Agg')
     plt.get_current_fig_manager().canvas.manager.window.findChild(QtWidgets.QToolBar).setVisible(False)
     plt.get_current_fig_manager().canvas.manager.window.statusBar().setVisible(False)
+    plt.get_current_fig_manager().canvas.set_window_title('ORSS4SCVI ' + version)
+    # print((os.path.dirname(__file__) + '/static/icons/icon.ico').replace((version.replace('.', '') + '/'), ''))
     plt.get_current_fig_manager().window.setWindowIcon(QtGui.QIcon(
         (os.path.dirname(__file__) + '/static/icons/icon.ico').replace((version.replace('.', '') + '/'), '')))
     plt.axis('off')
@@ -42,7 +44,7 @@ def close(event):
 
 
 cap = VideoStream().start()
-configure(frame=cap.read()[1], version='dev0.1a')
+configure(frame=cap.read()[1], version='dev0.1b')
 # ax1 = plt.subplot()
 im1 = plt.imshow(grab_frame(cap), aspect='auto')
 # im1 = ax1.imshow(grab_frame(cap), aspect='auto')

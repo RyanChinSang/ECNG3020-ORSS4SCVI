@@ -1,5 +1,6 @@
 import cv2
 import matplotlib
+# matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 from PyQt5 import QtWidgets
 

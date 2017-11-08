@@ -113,14 +113,21 @@ def configure(frame, version):
 
 
 def main():
+    import numpy as np
+    avg = np.array([])
+    freq = cv2.getTickFrequency()
     img = plt.imshow(cv2.cvtColor(cap.read(), cv2.COLOR_BGR2RGB), aspect='auto')
     while 1:
+        s = cv2.getTickCount()
         frame = cap.read()
         img.set_data(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
         if plt.get_fignums():
             plt.pause(0.01)
         else:
             break
+        f = cv2.getTickCount()
+        avg = np.append(avg, (freq / (f - s)))
+        print('{:.2f}'.format(avg[-1]))
 
 
 cap = VideoStream(height=720, width=1280).start()
