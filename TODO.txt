@@ -1,20 +1,78 @@
 Info:
-HIGH: If accomplished would add very meaningful functionality. These are usually challenging to accomplish.
-MED : If accomplished would make the program more informative and user-friendly.
-LOW : If accomplished would add more meaning to either or both of documentation and presentation.
+HIGH  : If accomplished would add very meaningful functionality. These are usually challenging to accomplish.
+MEDIUM: If accomplished would make the program more informative and user-friendly.
+LOW   : If accomplished would add more meaning to either or both of documentation and presentation.
 
-HIGH:
+Reference info:
+template: TODO[Priority_Info]#01.a.i.A.I.01.a.i.A.I.01... etc[NB[#-#]]
+for example: TODO[HIGH]#03.c.ii.D.IV[NB1]
+or, for a range of Notes (NB): TODO[HIGH]#03.c.ii.D.IV[NB[1-3]]
+
+Tag Info:
+(WIP): Work In Progress
+(UND): UNDecided feature/function
+(ALT): proposed ALTernative feature/function
+(RES): more RESearch required/needed to better solve the problem
+(BIG): a very large module/feature-set
+(MDN): More Documentation Needed to describe the situation properly
+(done): feature/function works as desired
+(DDL: [version]): Desired DeadLine for a feature/function to be (done) by [version] release.
+(REF: [reference path]): REFerence to some linked issue that can be found at [reference path]
+
+
+HIGH--------------------------------------------------------------------------------------------------------------------
+3. Catch-up and organize all documentation
+4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
+5. Port app to Android App (Mobile) with full functionality
+6. Add more/finish Tutorials/learning in Python;
+   a. multiprocessing/threading (WIP) (DDL: v0.2a)
+   c. Tensorflow (WIP) (RES) (DDL: v0.3a)
+      i. Learn how the TensorFlow performs recognition properly
+     ii. Learn how to train own custom model
+   f. ColorID (WIP) (DDL: v0.2a)
+      i. Port ColorID operation into it's own python file
+
+MEDIUM------------------------------------------------------------------------------------------------------------------
+1. Fix weird behaviour when screenshot is taken, the mpl window resizes to default size. (DDL: v0.2a)
+2- Add better offline/online operation; check/initialize if internet() as True/False
+   a. Offline:
+      i. Use keyboard/manual input only
+     ii. Do not check for online (faster) - unless user uses specific input to do an online check
+         a. This check with call internet() again and re-set the global var
+    iii. Use sphinx offline speech2text on keypress (may remove / change to always offline listen / make configurable)
+   b. Online:
+      i. Use microphone to listen at all times using google, which updates a global var to call different functions
+3- Find accurate ways to generalize constants' values (WIP)
+4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
+
+
+
+LOW---------------------------------------------------------------------------------------------------------------------
+1. Make Better README.md; Progress, Description, Purpose etc. (WIP)
+2. Use a better platform for documenting (RES) (DDL: v1.0a)
+3. Add description in this file.
+
+
+
+COMPLETED_______________________________________________________________________________________________________________
+HIGH
+[#1 - 08.11.17; dev01 and v0.1a Stable released with full functionality]
 1. Start actual dev0.1a; discuss features based on research and discussion with lecturer
    a. Make a multiprocessing python script that run openCV video stream and also looks out for keystrokes without delay
    b. Turn keystrokes into a voice listening script
    c. Alike to Base\VoiceRecg\APP-SpchRecg - add online connectivity check to select modes [Voice/Keystrokes] and
       chooses which SR to use [Google/Sphinx]
-2.
 
-MED:
-1. Add more/finish Tutorials; multiprocessing, SpeechRecognition, Tensorflow
-2.
+[#6(b,d,e) - 08.11.17]
+6. Add more/finish Tutorials/learning in Python;
+   b. SpeechRecognition (done)
+   d. OpenCV (done)
+   e. TextToSpeech (done)
 
-LOW:
-1. Make Better README.md; Progress, Description, Purpose etc.
-2.
+[#2 - 09.11.17]
+2. Merge all TODO.txt documents into this one, AND clean up old TODO.txt files.
+
+
+MEDIUM------------------------------------------------------------------------------------------------------------------
+
+LOW---------------------------------------------------------------------------------------------------------------------
