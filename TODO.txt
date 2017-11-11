@@ -1,7 +1,8 @@
 Info:
-HIGH  : If accomplished would add very meaningful functionality. These are usually challenging to accomplish.
+HIGH  : If accomplished would contribute very meaningfully to the project's core progress with regards to the required
+        deliverables of ECNG3020. These are usually challenging to accomplish.
 MEDIUM: If accomplished would make the program more informative and user-friendly.
-LOW   : If accomplished would add more meaning to either or both of documentation and presentation.
+LOW   : If accomplished would add more meaning to either, or, both of programming documentation and/or presentation.
 
 Reference info:
 template: TODO[Priority_Info]#01.a.i.A.I.01.a.i.A.I.01... etc[NB[#-#]]
@@ -21,20 +22,40 @@ Tag Info:
 
 
 HIGH--------------------------------------------------------------------------------------------------------------------
-3. Catch-up and organize all documentation
+3. Catch-up and organize all documentation:
+   a. Project Report
+   b. Reading:
+      i. Scholarly research Papers
+     ii. Articles
+    iii. Online documentation
+     vi. Online discussions; Journals, Forums, Blogs
+   c. VERSION.txt
+      i. Log all history
+     ii. See TODO[LOW]#2
 4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
 5. Port app to Android App (Mobile) with full functionality
-6. Add more/finish Tutorials/learning in Python;
+6. Add more/finish Tutorials/learning in Python; (BIG) (RES) (v1.0a)
    a. multiprocessing/threading (WIP) (DDL: v0.2a)
    c. Tensorflow (WIP) (RES) (DDL: v0.3a)
       i. Learn how the TensorFlow performs recognition properly
-     ii. Learn how to train own custom model
+     ii. Learn models
+         A. How, What, Why they work?
+         B. How to train a custom model?
+         C. How to create a custom model? Should a custom model be created? Why?
+         D. What is COCO dataset?
+    iii. Investigate Speech Recognition as accomplished through GTF's demo Android app.
    f. ColorID (WIP) (DDL: v0.2a)
       i. Port ColorID operation into it's own python file
+     ii. Implement towards a class? (RES)
+7. Research all modules more, and give/have/document solid reasons for choosing them
+   a. pyttsx3 vs. gTTS
+   b. Google TensorFLow (See TODO[High]#6.c.)
+   c. SpeechRecognition (Online vs. Offline)
+      i.
 
 MEDIUM------------------------------------------------------------------------------------------------------------------
 1. Fix weird behaviour when screenshot is taken, the mpl window resizes to default size. (DDL: v0.2a)
-2- Add better offline/online operation; check/initialize if internet() as True/False
+2- Add better offline/online operation; check/initialize if internet() as True/False (DDL: v0.2a)
    a. Offline:
       i. Use keyboard/manual input only
      ii. Do not check for online (faster) - unless user uses specific input to do an online check
@@ -44,6 +65,9 @@ MEDIUM--------------------------------------------------------------------------
       i. Use microphone to listen at all times using google, which updates a global var to call different functions
 3- Find accurate ways to generalize constants' values (WIP)
 4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
+5- Store mpl's default dpi into memory via a variable to use in setting figsize (small speedup) (DDL: v0.2a)
+6- Add fps native to VideoStream
+7- Add interrupt functionality for new t2s instances - prevents delay in tts
 
 
 
@@ -56,7 +80,7 @@ LOW-----------------------------------------------------------------------------
 
 COMPLETED_______________________________________________________________________________________________________________
 HIGH
-[#1 - 08.11.17; dev01 and v0.1a Stable released with full functionality]
+[#1 - 08.11.17; dev01 and v0.1a Stable released with full [Online] functionality]
 1. Start actual dev0.1a; discuss features based on research and discussion with lecturer
    a. Make a multiprocessing python script that run openCV video stream and also looks out for keystrokes without delay
    b. Turn keystrokes into a voice listening script

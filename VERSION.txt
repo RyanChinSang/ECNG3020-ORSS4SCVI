@@ -1,9 +1,108 @@
 NOTE: All dates are in the format: dd.mm.yyyy
+________________________________________________________________________________________________________________________
+dev0.1{a,b,c} (17.09.2017 - 08.11.2017)
+(17.19.2017)------------------------------------------------------------------------------------------------------------
+tldr; Able to read-in from Webcam and do some basic processing on the live video feed using OpenCV v3.3.0.10
+1. Setup coding environment using:
+   a. PyCharm 2017.2.3
+   b. Python 3.6.3 64-bit
+2. Added initial test code which adapted closely to the Python tutorials done by Harrison Kinsley.
+   REF: https://pythonprogramming.net/loading-images-python-opencv-tutorial/
+3. Structured basic project directories for coding; BETA, Base, Stable, History etc.
+4. Made GitHub repository as version control, history, and backup of all code
+   REF: https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI
+(18.09.2017)------------------------------------------------------------------------------------------------------------
+tldr; More OpenCV tutorials
+1. Added more Test Code/Tutorial; able to do color filtering and edge detection on live video feed
+2. Added some documents relevant to the tutorial topic in-folder.
+(04.10.2017)------------------------------------------------------------------------------------------------------------
+tldr; Investigation into the Google TensorFlow Object Detection Application Programming Interface (GTFODAPI)
+1. Download and Setup Google TensorFlow (GTF) in project (https://www.tensorflow.org/install/install_windows) and
+   (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md)
+   a. Installed TensorFlow python v1.3.0 using PyCharm
+   b. Looked at TensorFlow Model Zoo (https://github.com/tensorflow/models)
+      i. The "pre-trained detection models on the COCO dataset (http://cocodataset.org/#home)
+         A. The "TF detection model zoo":
+            https://github.com/tensorflow/models/blob/477ed41e7e4e8a8443bc633846eb01e2182dc68a/object_detection/g3doc/
+            detection_model_zoo.md
+   c. GTF Object detection API (https://github.com/tensorflow/models/tree/master/research/object_detection)
+   d. Followed the GFT ODAPI's example:
+      (https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb)
+   e. Followed a working, built example by Dat Tran for Python 3:
+      Article/blog: https://towardsdatascience.com/building-a-real-time-object-recognition-app-with-tensorflow-and-
+                    opencv-b7a2b4ebdc32
+      Git-repo: https://github.com/datitran/object_detector_app
+      i. Pulled Dat Tran's object_dector_app, examined how it worked in relation to Google's example for the Object
+         Detection API in 1.d.
+         A. Inspected the layout of "object_detection_app.py" in relation to the sample code given in 1.d.
+         B. Noted the differences and attempted to understand why what worked, works and was necessary.
+     ii. "object_detection_app.py" ran correctly without errors performing object detection and recognition/
+         classification as it should.
+    iii. Noted the involvement of a "protobuf" process  that was outlined by both Dat Tran and the GTFODAPI's documents
+         that was not used to make Dat Tran's example code work.
+(06.10.2017)------------------------------------------------------------------------------------------------------------
+ocv
+(12.10.2017)------------------------------------------------------------------------------------------------------------
+(16.10.2017)------------------------------------------------------------------------------------------------------------
+(23.10.2017)------------------------------------------------------------------------------------------------------------
+(25.10.2017)------------------------------------------------------------------------------------------------------------
+(26.10.2017)------------------------------------------------------------------------------------------------------------
+(27.10.2017)------------------------------------------------------------------------------------------------------------
+ocv
+(31.10.2017)------------------------------------------------------------------------------------------------------------
+tldr; explored Speech to Text, Text to Speech and more progress on ColorID
+1. Looked at how Speech Recognition (Speech to Text, or stt, or s2t) could be accomplished in Python
+   (specifically a Python 3-compatible method)
+   a. Immediate reference to a Python library "SpeechRecognition" (v3.7.1)
+      https://pypi.python.org/pypi/SpeechRecognition/
+      i. Uses a variety of Speech Recognition APIs (SRAPIs)
+     ii. Offers both Online and Offline SRAPIs
+   b. Looked into using Online Speech Recognition provided by this top-layer python library and the services it calls on
+      to relay data to Google Cloud Speech API.
+      NB1: More research is necessary here.
+      NB2: For future implementations, testing for which online service would be best used may be necessary.
+   c. Looked into using Offline Speech Recognition provided by this top-layer python library and the backend library
+      named CMU Sphinx (pocketsphinx)
+      i. Computationally intensive, fairly less accurate than Google's Speech Recognition
+     ii. Noticeably slower.
+      NB1: The existance of using this as the Offline SR would be questioned at a later stage.
+      NB2: GTF has it's own Speech Recognition implementation. More research is needed.
+2. Installed pocketshinx, and have Python's SpeechRecognition use that backend correctly.
+3. Some testing was carried out with sample code and examples to explore the functionality of the library
+4. Looked at how Text to Speech (or tts or t2s) could be accomplished in Python
+   (specifically a Python 3-compatible method)
+   a. Immediate reference to a Python libraries:
+      i. pyttsx3: https://github.com/nateshmbhat/pyttsx3
+     ii. gTTS: https://github.com/pndurette/gTTS
+   b. gTTS is online and returns results in an audio-file, which then needs to be played-back to be effective.
+   c. pttsx3 is offline and uses the computer's native OS speech engine to invoke the speech audio without having to be
+      played-back using heavy-overhead processes. (https://pythonprogramminglanguage.com/text-to-speech/)
+   d. Looked at some example code for pyttsx3 and gTTS.
+      i. Able to Change Rate of Speech
+     ii. Able to Change Voice of Speach
+    iii. Able to Change Volume
+     iv. Able to invoke an interrupt on new request for tts instances
+5. Attempt to make ColorID algorithm that works fairly accurately to take RGB value into a name
+   i. REF: https://stackoverflow.com/questions/34366981/python-pil-finding-nearest-color-rounding-colors
+           https://stackoverflow.com/questions/9694165/convert-rgb-color-to-english-color-name-like-green
+(01.11.2017)------------------------------------------------------------------------------------------------------------
+(02.11.2017)------------------------------------------------------------------------------------------------------------
+(03.11.2017)------------------------------------------------------------------------------------------------------------
+(05.11.2017)------------------------------------------------------------------------------------------------------------
+(07.11.2017)------------------------------------------------------------------------------------------------------------
+(08.11.2017)------------------------------------------------------------------------------------------------------------
 
-dev0.1a (17.09.2017 - ??.??.2017)
-tldr; Able to read-in from Webcam and do some processing on the live video feed.
-1. Added initial test code which adapted closely to the Python tutorials done by Harrison Kinsley.
-   Ref: https://pythonprogramming.net/loading-images-python-opencv-tutorial/
-... (18.09.2017)
-2. Added more Test Code/Tutorial; able to do color filtering and edge detection on live video feed
-3. Added some documents relevant to the tutorial topic in-folder.
+________________________________________________________________________________________________________________________
+Stable v0.1a release (08.11.17)
+
+________________________________________________________________________________________________________________________
+Stable v0.1b release (09.11.17)
+
+
+________________________________________________________________________________________________________________________
+dev0.2a (10.11.2017 - )
+(11.11.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Renamed "ORSSv02-a.py" to "ORSSd02-a.py" to reflect that the file is intended as a developmental version.
+2. Tidy up README.md and added more information in VERSION.txt and TODO.txt.
+()------------------------------------------------------------------------------------------------------------
