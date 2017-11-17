@@ -1,5 +1,16 @@
 import cv2
 
+'''
+Tutorial:
+https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
+
+Cascades:
+https://github.com/opencv/opencv/tree/master/data/haarcascades
+
+'''
+
+
+
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 

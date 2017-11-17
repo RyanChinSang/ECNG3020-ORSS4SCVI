@@ -1,0 +1,34 @@
+C:\Users\ryanc\Desktop\device_list>python2 setup.py build install
+running build
+running build_ext
+building 'device' extension
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\cl.exe /c /nologo /Ox /MD /W3 /GS- /DNDEBUG -IC:\Python27\include -IC:\Python27\PC /Tpdevice.cpp /Fobuild\temp.win32-2.7\Release\device.obj
+device.cpp
+creating build\lib.win32-2.7
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\link.exe /DLL /nologo /INCREMENTAL:NO "/LIBPATH:C:\Program Files (x86)\Windows Kit\Lib" /LIBPATH:C:\Python27\libs /LIBPATH:C:\Python27\PCbuild /LIBPATH:C:\Python27\PC\VS9.0 /EXPORT:initdevice build\temp.win32-2.7\Release\device.obj /OUT:build\lib.win32-2.7\device.pyd /IMPLIB:build\temp.win32-2.7\Release\device.lib /MANIFESTFILE:build\temp.win32-2.7\Release\device.pyd.manifest
+   Creating library build\temp.win32-2.7\Release\device.lib and object build\temp.win32-2.7\Release\device.exp
+running install
+running install_lib
+copying build\lib.win32-2.7\device.pyd -> C:\Python27\Lib\site-packages
+running install_egg_info
+Removing C:\Python27\Lib\site-packages\WindowsDevices-1.0-py2.7.egg-info
+Writing C:\Python27\Lib\site-packages\WindowsDevices-1.0-py2.7.egg-info
+
+
+C:\Users\ryanc\Desktop\device_list>python3-64 setup.py build install
+running build
+running build_ext
+building 'device' extension
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IC:\Python36-64\include -IC:\Python36-64\include "-IC:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" "-IC:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\shared" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\um" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\winrt" /EHsc /Tpdevice.cpp /Fobuild\temp.win-amd64-3.6\Release\device.obj
+device.cpp
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO "/LIBPATH:C:\Program Files (x86)\Windows Kit\Lib" /LIBPATH:C:\Python36-64\libs /LIBPATH:C:\Python36-64\PCbuild\amd64 "/LIBPATH:C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\LIB\amd64" "/LIBPATH:C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\LIB\amd64" "/LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.14393.0\ucrt\x64" "/LIBPATH:C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\lib\um\x64" "/LIBPATH:C:\Program Files (x86)\Windows Kits\10\lib\10.0.14393.0\um\x64" /EXPORT:PyInit_device build\temp.win-amd64-3.6\Release\device.obj /OUT:build\lib.win-amd64-3.6\device.cp36-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.6\Release\device.cp36-win_amd64.lib
+device.obj : warning LNK4197: export 'PyInit_device' specified multiple times; using first specification
+   Creating library build\temp.win-amd64-3.6\Release\device.cp36-win_amd64.lib and object build\temp.win-amd64-3.6\Release\device.cp36-win_amd64.exp
+Generating code
+Finished generating code
+running install
+running install_lib
+copying build\lib.win-amd64-3.6\device.cp36-win_amd64.pyd -> C:\Python36-64\Lib\site-packages
+running install_egg_info
+Removing C:\Python36-64\Lib\site-packages\WindowsDevices-1.0-py3.6.egg-info
+Writing C:\Python36-64\Lib\site-packages\WindowsDevices-1.0-py3.6.egg-info

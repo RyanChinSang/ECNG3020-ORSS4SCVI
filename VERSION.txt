@@ -41,12 +41,85 @@ tldr; Investigation into the Google TensorFlow Object Detection Application Prog
     iii. Noted the involvement of a "protobuf" process  that was outlined by both Dat Tran and the GTFODAPI's documents
          that was not used to make Dat Tran's example code work.
 (06.10.2017)------------------------------------------------------------------------------------------------------------
-ocv
+tldr;
+1. Worked on an OpenCV implementation of a color filter; working from BRG (OpenCV default) colorspace into a HSV colors
+   space.
+   a. Implemented using sliders to control the lower (0) and upper (255) bound of the H, S and V components
+   b. Tested around using the sliders to get best values for Green, Red and Blue color extraction
+2.
 (12.10.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Worked on OpenCV implementations of Gradients.
+   a. LaPlacian
+   b. Sobel
+   c. Scharr
+   d. Made notes and reference links to all of the above.
+2. Worked on OpenCV implementations of Morphological transformations
+   a. Looked at the effects of:
+      i. Dilation
+     ii. Erosion
+    iii. Opening
+     iv. Closing
+      v. Morphological Gradients
+     vi. Top-hat
+    vii. Black-hat
+   b. Compared, read and made notes on all the above methods
+3. Worked on OpenCV implementations of Blurs:
+   a. Averaging
+   b. Gaussian
+   c. Median
+   d. Bilateral
+   e. Made notes and references to all of the above.
+4. Worked on more ColourFilter implementations:
+   a. Tried having the sliders correspond to the R, G, B colourspace; min and max.
+   NB1: The HSV implementation works better, but is less intuitive.
 (16.10.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Worked on OpenCV implementation of GrabCutForegroundExtraction:
+   NB1: Although code was successfully made, and runs, this module was completed without further reading for deeper
+        understanding or appreciation for this type of image processing.
+2. Worked on OpenCV implementation of Template Matching:
+   a. Used "rpoPort.jpg" as the template to match against the occurrences of a cluster of pixels that have a similar
+      footprint to it in the image "rpiStack.jpg"
+   NB1: The method is fairly effective, however the accuracy of the detections is greatly dependent on the quality of
+        the template in the first place.
+3. Worked on an OpenCV implementation of Feature matching.
+   a. Takes two reference images "fmimg.jpg" and "fmtemp.jpg" and matches similar features using a straight line.
+   NB1: Although code was successfully made, and runs, this module was completed without further reading for deeper
+        understanding or appreciation for this type of image processing.
+   NB2: This made use of ORB, and orb.detectAndCompute
+4. Worked on an OpenCV implementation of MOG2 Background Extraction
+   a. Added references for further reading and deeper understanding
+   NB1: Although code was successfully made, and runs, this module was completed without further reading for deeper
+        understanding or appreciation for this type of image processing.
+5. Worked on an OpenCV implementation of MOG2
+   a. Added references for further reading and deeper understanding
+   NB1: Although code was successfully made, and runs, this module was completed without further reading for deeper
+        understanding or appreciation for this type of image processing.
+6. Downloaded freely available, and public haarcascades for eyes and head.
+   a. Looked at how Haar cascades work
+   b. Looked at how Haar cascades is implemented in Python
 (23.10.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Made a Haar cascade file "TUT-HaarCasObjDet.py".
+   a. Made an App file stemming from the original, working code to detect when an eye is close to being closed or closed
+      and to then sound an alarm/Beep.
+   b. Code does not run fluidly as the Beep natively calls a sleep routine. Could be alleviated by using Threading.
 (25.10.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Improved on the APP file created by implementing threading to handle the processing required for making the alarm/
+   beep.
+2. Made an app scanner using OpenCV for any object with 4 edges.
+   a. Detects from VideoCapture any object that had 4 distinguishable points.
+   b. Get the contour of the boundary defined by those 4 points
+   c. Uses a perspective transform (more reading necessary)
+   d. Then uses a warp Perspective (more reading necessary)
+   e. Passes warped image through a Gaussian adaptive threshold
+   f. returns a flat image of the contoured (outlined) object in the VideoCapture frame(s)
+3.
 (26.10.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Revised making
 (27.10.2017)------------------------------------------------------------------------------------------------------------
 ocv
 (31.10.2017)------------------------------------------------------------------------------------------------------------
@@ -93,16 +166,67 @@ tldr; explored Speech to Text, Text to Speech and more progress on ColorID
 (08.11.2017)------------------------------------------------------------------------------------------------------------
 
 ________________________________________________________________________________________________________________________
-Stable v0.1a release (08.11.17)
+Stable v0.1a release (08.11.2017)
 
 ________________________________________________________________________________________________________________________
-Stable v0.1b release (09.11.17)
+Stable v0.1b release (09.11.2017)
 
 
 ________________________________________________________________________________________________________________________
 dev0.2a (10.11.2017 - )
 (11.11.2017)------------------------------------------------------------------------------------------------------------
-tldr;
+tldr; Documentation and clean-up
 1. Renamed "ORSSv02-a.py" to "ORSSd02-a.py" to reflect that the file is intended as a developmental version.
 2. Tidy up README.md and added more information in VERSION.txt and TODO.txt.
-()------------------------------------------------------------------------------------------------------------
+(15.11.2017)------------------------------------------------------------------------------------------------------------
+tldr; FPS support in VideoStream, more documentation, progress for dev0.2a
+1. Added native fps support for VideoStream
+   1- Added new functions fps() and avg_fps() for displaying the current fps, and average fps respectively
+      a. Added import numpy library
+      b. Added initialization for class variables:
+         i. self.freq
+        ii. self.s
+            A. is initialized as 0 so as to ensure the first value is very small REF: FPS CASE A
+               I. This ensures that the average fps is not out-of-whack for the first few seconds of runtime due to a large
+                  number causing  inaccurate fps averages for that time.
+            B. is updated with every read() call
+       iii. self.avg
+      NB1: For FPS CASE B, the first and last values of fps() are significantly lower when the loop starts and ends
+           (pressing 'q') respectively.
+      NB2: #1.b.ii.A.I. is only the case when avg_fps() or fps() is called before the first read() in the local loop
+   2- Cleaned up some redundant language in config() (matches what was coded for resize())
+   NB1: This is a non-conformance to cv2.VideoCapture()
+2. Modified referencing convention slightly in TODO.txt
+   a. Notes (NB) are now part of the string chain
+   b. All NB's must be numbered, starting at 1
+3. Removed the (done) tag in TODO.txt
+   a. Replace the old tag by a specific [COMPLETED] section of the document
+4. Added [DESCRIPTION] section of the document, and an [INFORMATION] section also in TODO.txt
+5. Synchronized the dating format for VERSION.txt and TODO.txt
+6. dev0.2a prototype conformed to the updated VideoStream for conveniently showing the current fps
+7. Attempted to make a matplotlib imshow (does NOT work) in it's own file (class)
+8. Attempted to make custom list of colors for colorID functionality
+   a. Need to find a quicker way to traverse a dictionary
+   b. Need to find a quicker way to convert a string array into an integer array
+   NB1: Old default method is quicker.
+9. Attempted making Offline operation (partially works)
+   a. Needs further testing with an active internet connection
+   b. Global state of internet not implemented
+   c. Logic of online and offline operation needs to be thought out further
+10. Looked at some string optimizations:
+    REF: https://stackoverflow.com/questions/1316887/what-is-the-most-efficient-string-concatenation-method-in-python
+         https://www.python.org/dev/peps/pep-0498/
+11. Added a method of benchmarking various implementations of the avg_color() function for ColorID
+(16.11.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Added a benchmark folder, with a benchmarking template.
+2. Added full Python2 support for VideoStream
+3. Adopted a convention to using single quotations (apostrophes) to define strings
+(17.11.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Added the ability to get the number of available cameras, and correctly ID each camera
+   a. Is a windows-specific port method for invoking DirectShow C++ APIs for enumerating capture devices on OpenCV's
+      backend.
+   b.
+
+

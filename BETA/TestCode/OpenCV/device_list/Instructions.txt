@@ -1,0 +1,21 @@
+All Credit goes to Xiao Ling
+Reference: https://github.com/yushulx/python-capture-device-list
+
+1. Open a Command Prompt Window as Administrator
+
+2. Change directory to the this folder
+
+3. Configure Visual Studio environment, based on your installed version of Visual Studio
+   a. Visual Studio 2010 (VS10): SET VS90COMNTOOLS=%VS100COMNTOOLS%
+   b. Visual Studio 2012 (VS11): SET VS90COMNTOOLS=%VS110COMNTOOLS%
+   c. Visual Studio 2013 (VS12): SET VS90COMNTOOLS=%VS120COMNTOOLS%
+   d. Visual Studio 2015 (VS14): SET VS90COMNTOOLS=%VS140COMNTOOLS%
+
+4. Add your Microsoft Windows SDK "Lib"-path to "setup.py", for the "library_dirs" variable
+   a. REF: https://en.wikipedia.org/wiki/Microsoft_Windows_SDK
+
+5. Build the Python extension of "device.cpp"
+   a. Command: python setup.py build install
+
+6. Run the app using the "test.py" file
+   a. Command: python test.py

@@ -1,27 +1,34 @@
-Info:
+_________________________________________________[DESCRIPTION]__________________________________________________________
+This file is the primary reference of what tasks/objectives need to be done. It may highlight any change possible that 
+needs, or is desired to be changed. All changes should, if implemented, impact positively to the project.
+
+_________________________________________________[INFORMATION]__________________________________________________________
+Dates:
+All dates are in the format: dd.mm.yyyy
+
+Ranks:
 HIGH  : If accomplished would contribute very meaningfully to the project's core progress with regards to the required
         deliverables of ECNG3020. These are usually challenging to accomplish.
 MEDIUM: If accomplished would make the program more informative and user-friendly.
 LOW   : If accomplished would add more meaning to either, or, both of programming documentation and/or presentation.
 
-Reference info:
-template: TODO[Priority_Info]#01.a.i.A.I.01.a.i.A.I.01... etc[NB[#-#]]
-for example: TODO[HIGH]#03.c.ii.D.IV[NB1]
-or, for a range of Notes (NB): TODO[HIGH]#03.c.ii.D.IV[NB[1-3]]
+References:
+Template: TODO[Priority_Info]#01.a.i.A.I.01.a.i.A.I.01... etc.NB[#-#]
+For example: TODO[HIGH]#03.c.ii.D.IV.NB1
+or, for a range of Notes (NB): TODO[HIGH]#03.c.ii.D.IV.NB[1-3]
 
-Tag Info:
+Tags:
 (WIP): Work In Progress
 (UND): UNDecided feature/function
 (ALT): proposed ALTernative feature/function
 (RES): more RESearch required/needed to better solve the problem
 (BIG): a very large module/feature-set
 (MDN): More Documentation Needed to describe the situation properly
-(done): feature/function works as desired
 (DDL: [version]): Desired DeadLine for a feature/function to be (done) by [version] release.
 (REF: [reference path]): REFerence to some linked issue that can be found at [reference path]
 
 
-HIGH--------------------------------------------------------------------------------------------------------------------
+[HIGH]------------------------------------------------------------------------------------------------------------------
 3. Catch-up and organize all documentation:
    a. Project Report
    b. Reading:
@@ -33,8 +40,8 @@ HIGH----------------------------------------------------------------------------
       i. Log all history
      ii. See TODO[LOW]#2
 4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
-5. Port app to Android App (Mobile) with full functionality
-6. Add more/finish Tutorials/learning in Python; (BIG) (RES) (v1.0a)
+5. Port app to Android App (Mobile) with full functionality (BIG) (RES) (DDL: v1.0a)
+6. Add more/finish Tutorials/learning in Python; (BIG) (RES) (DDL: v1.0a)
    a. multiprocessing/threading (WIP) (DDL: v0.2a)
    c. Tensorflow (WIP) (RES) (DDL: v0.3a)
       i. Learn how the TensorFlow performs recognition properly
@@ -53,7 +60,7 @@ HIGH----------------------------------------------------------------------------
    c. SpeechRecognition (Online vs. Offline)
       i.
 
-MEDIUM------------------------------------------------------------------------------------------------------------------
+[MEDIUM]----------------------------------------------------------------------------------------------------------------
 1. Fix weird behaviour when screenshot is taken, the mpl window resizes to default size. (DDL: v0.2a)
 2- Add better offline/online operation; check/initialize if internet() as True/False (DDL: v0.2a)
    a. Offline:
@@ -65,38 +72,45 @@ MEDIUM--------------------------------------------------------------------------
       i. Use microphone to listen at all times using google, which updates a global var to call different functions
 3- Find accurate ways to generalize constants' values (WIP)
 4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
-5- Store mpl's default dpi into memory via a variable to use in setting figsize (small speedup) (DDL: v0.2a)
-6- Add fps native to VideoStream
 7- Add interrupt functionality for new t2s instances - prevents delay in tts
+8- Add numpy calculation to colorID calculations (small speedup) (DDL: v0.2a)
 
 
 
-LOW---------------------------------------------------------------------------------------------------------------------
+[LOW]-------------------------------------------------------------------------------------------------------------------
 1. Make Better README.md; Progress, Description, Purpose etc. (WIP)
 2. Use a better platform for documenting (RES) (DDL: v1.0a)
-3. Add description in this file.
 
 
 
-COMPLETED_______________________________________________________________________________________________________________
-HIGH
-[#1 - 08.11.17; dev01 and v0.1a Stable released with full [Online] functionality]
+__________________________________________________[COMPLETED]___________________________________________________________
+All completed tasks\objectives go in this section, according to Rank, then by date.
+All completed task\objectives must work as desired to qualify in this section.
+
+[HIGH]------------------------------------------------------------------------------------------------------------------
+[#1 - 08.11.2017; dev01 and v0.1a Stable released with full [Online] functionality]
 1. Start actual dev0.1a; discuss features based on research and discussion with lecturer
    a. Make a multiprocessing python script that run openCV video stream and also looks out for keystrokes without delay
    b. Turn keystrokes into a voice listening script
    c. Alike to Base\VoiceRecg\APP-SpchRecg - add online connectivity check to select modes [Voice/Keystrokes] and
       chooses which SR to use [Google/Sphinx]
 
-[#6(b,d,e) - 08.11.17]
+[#6(b,d,e) - 08.11.2017]
 6. Add more/finish Tutorials/learning in Python;
    b. SpeechRecognition (done)
    d. OpenCV (done)
    e. TextToSpeech (done)
 
-[#2 - 09.11.17]
+[#2 - 09.11.2017]
 2. Merge all TODO.txt documents into this one, AND clean up old TODO.txt files.
 
 
-MEDIUM------------------------------------------------------------------------------------------------------------------
+[MEDIUM]----------------------------------------------------------------------------------------------------------------
+[#(5, 6) - 15.11.2017]
+5- Store mpl's default dpi into memory via a variable to use in setting figsize (small speedup) (DDL: v0.2a)
+6- Add fps native to VideoStream
 
-LOW---------------------------------------------------------------------------------------------------------------------
+
+[LOW]-------------------------------------------------------------------------------------------------------------------
+[#3 - 15.11.2017]
+3. Add description in this file.
