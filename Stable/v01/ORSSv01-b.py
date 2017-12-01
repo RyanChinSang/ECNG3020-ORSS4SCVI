@@ -126,7 +126,7 @@ categories = label_map_util.convert_label_map_to_categories(label_map,
 category_index = label_map_util.create_category_index(categories)
 detection_graph = tf.Graph()
 
-cap = VideoStream(height=360, ratio=(16/9)).start()
+cap = VideoStream(src=1, height=360, ratio=(16/9)).start()
 init_frame = cap.read()[1]
 frame_height, frame_width = init_frame.shape[:2]
 freq = cv2.getTickFrequency()

@@ -227,6 +227,40 @@ tldr;
 1. Added the ability to get the number of available cameras, and correctly ID each camera
    a. Is a windows-specific port method for invoking DirectShow C++ APIs for enumerating capture devices on OpenCV's
       backend.
-   b.
-
-
+(30.11.2017)------------------------------------------------------------------------------------------------------------
+tldr; Offline/Online mode, improved ColourID, improved code structure, minor speed-ups, fixed minor bugs
+1. Updated VideoStream to iterate 10 indexes (0 to 9) and create a list of operational video sources (sources that
+   return .isOpened())
+   a. If more than one video feed is found operational, it uses the first detected index as the video source
+   NB1: This does NOT associate a device name to the detected index.
+2. Uses a quicker (than default) method to traverse the local dictionary of known colors in RGB format
+   (REF: 15.11.2017 #8.a.)
+   NB1: This new way is some 20% faster than original method
+3. New dictionary "controls_dict" that lists all the manual controls for the whole application.
+   a. This replaces the keymap. loop for mpl's rcParams
+   b. Is much more formatted output
+   c. Includes custom controls to be printed out, in the correct (manually) alphabetical order
+4. Made all event.key() values correspond to the first configured key as outlined by "controls_dict" for the
+   key_press_handler() function's logic
+   a. This avoids having to define keys twice and ensures compatibility
+5. Overhauled how offline/online operation is handled - "state"; True = online, False = offline
+   a. Uses a global boolean variable "state" that initializes on internet()'s output during configure()'s routine
+   b. Regardless of Online or Offline, pressing 'z', refreshes "state" on internet()
+   c. Regardless of Online or Offline, pressing 'x', will force Offline operation *(no s2t operation)
+   d. PocketSphinx is no longer used (may revert, or make configurable)
+6. Fixed RGB and BGR mix-up for the new avg_color() closest-match computation
+7. Implemented 'faster' string writing (REF: 15.11.2017 #10) for writing fps to frame
+8. Used Queues to share data between Threads
+   a. This allowed the functions to be put into it's own model file. This enhances the structure and organization of the
+      the overall code
+   b. Each model can be looked at specifically as those files scopes the associated function(s) and/or variables
+   NB1: This saved about 150 line in the main ORSS-file
+9. Added Gaussian blur and then averaging blur as pre-processing to the ColorID process
+   a. This reduces the impact of noise on the pixel in the region of interest and therefore gives a more accurate result
+   b. The size of kernels for both filters are adjustable with variable 's' in "ColorID.py"
+10. Added new feature that sets the default save directory for screenshots.
+   a. Screenshots will no longer save in the Windows user folder. It will instead now save in a dedicated folder named
+      'Screenshots' in the root directory of the script.
+   b. If the 'Screenshots' directory has been deleted or renamed for some reason, the code will create a new directory
+      properly named as 'Screenshots' - it therefore also detects if the folder did exist first
+   NB1: All directories should transition according to the root folder and is therefore flexible

@@ -2,7 +2,7 @@ import os
 import pocketsphinx as ps
 
 modeldir = "C:/Python36-64/Lib/site-packages/pocketsphinx/model/"
-datadir = "C:/Python36-64/Lib/site-packages/pocketsphinx/data/"
+# datadir = "C:/Python36-64/Lib/site-packages/pocketsphinx/data/"
 
 # Create a decoder with certain model
 config = ps.Decoder.default_config()
@@ -33,7 +33,9 @@ while True:
     else:
         break
     if decoder.hyp() is not None:
-        print([(seg.word, seg.prob, seg.start_frame, seg.end_frame) for seg in decoder.seg()])
-        print("Detected keyword, restarting search")
+        print(decoder.hyp().hypstr)
+        # print([(seg.word, seg.prob, seg.start_frame, seg.end_frame) for seg in decoder.seg()])
+        # print("Detected keyword, restarting search")
         decoder.end_utt()
         decoder.start_utt()
+        # print(decoder.hyp().hypstr)

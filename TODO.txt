@@ -42,7 +42,8 @@ Tags:
 4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
 5. Port app to Android App (Mobile) with full functionality (BIG) (RES) (DDL: v1.0a)
 6. Add more/finish Tutorials/learning in Python; (BIG) (RES) (DDL: v1.0a)
-   a. multiprocessing/threading (WIP) (DDL: v0.2a)
+   a. multiprocessing(WIP) (DDL: v0.3a)
+      NB1: REF: https://stackoverflow.com/questions/3044580/multiprocessing-vs-threading-python?rq=1
    c. Tensorflow (WIP) (RES) (DDL: v0.3a)
       i. Learn how the TensorFlow performs recognition properly
      ii. Learn models
@@ -51,36 +52,22 @@ Tags:
          C. How to create a custom model? Should a custom model be created? Why?
          D. What is COCO dataset?
     iii. Investigate Speech Recognition as accomplished through GTF's demo Android app.
-   f. ColorID (WIP) (DDL: v0.2a)
-      i. Port ColorID operation into it's own python file
-     ii. Implement towards a class? (RES)
-7. Research all modules more, and give/have/document solid reasons for choosing them
+7. Research all modules more, and give/have/document solid reasons for choosing them (DDL: v1.0a)
    a. pyttsx3 vs. gTTS
    b. Google TensorFLow (See TODO[High]#6.c.)
    c. SpeechRecognition (Online vs. Offline)
-      i.
+8. Implement OCR features (DDL: v1.5a)
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
-1. Fix weird behaviour when screenshot is taken, the mpl window resizes to default size. (DDL: v0.2a)
-2- Add better offline/online operation; check/initialize if internet() as True/False (DDL: v0.2a)
-   a. Offline:
-      i. Use keyboard/manual input only
-     ii. Do not check for online (faster) - unless user uses specific input to do an online check
-         a. This check with call internet() again and re-set the global var
-    iii. Use sphinx offline speech2text on keypress (may remove / change to always offline listen / make configurable)
-   b. Online:
-      i. Use microphone to listen at all times using google, which updates a global var to call different functions
-3- Find accurate ways to generalize constants' values (WIP)
-4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
-7- Add interrupt functionality for new t2s instances - prevents delay in tts
-8- Add numpy calculation to colorID calculations (small speedup) (DDL: v0.2a)
-
-
+3. Find accurate ways to generalize constants' values (WIP)
+7. Add interrupt functionality for new t2s instances - prevents delay in tts
+9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a)
+10. Fix the mysterious 132-pixel vertical elongation. (DDL: v0.4a)
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 1. Make Better README.md; Progress, Description, Purpose etc. (WIP)
 2. Use a better platform for documenting (RES) (DDL: v1.0a)
-
+4.
 
 
 __________________________________________________[COMPLETED]___________________________________________________________
@@ -97,12 +84,21 @@ All completed task\objectives must work as desired to qualify in this section.
 
 [#6(b,d,e) - 08.11.2017]
 6. Add more/finish Tutorials/learning in Python;
-   b. SpeechRecognition (done)
-   d. OpenCV (done)
-   e. TextToSpeech (done)
+   b. SpeechRecognition
+   d. OpenCV
+   e. TextToSpeech
 
 [#2 - 09.11.2017]
 2. Merge all TODO.txt documents into this one, AND clean up old TODO.txt files.
+
+[#6(a[/],f{i,ii[x'd]}) - 30.11.2017]
+6. Add more/finish Tutorials/learning in Python;
+   a. threading (DDL: v0.2a)
+   NB1: This got \ - the objective was half complete of a whole (multiprocessing was not looked at extensively)
+   f. ColorID (DDL: v0.2a)
+      i. Port ColorID operation into it's own python file
+     ii. Implement towards a class? (RES)
+         NB1: This got x'd - making this into a class proved to be unnecessary
 
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
@@ -110,6 +106,21 @@ All completed task\objectives must work as desired to qualify in this section.
 5- Store mpl's default dpi into memory via a variable to use in setting figsize (small speedup) (DDL: v0.2a)
 6- Add fps native to VideoStream
 
+[#(1, 2[~~], 4, 8[+1'd]) - 30.11.2017]
+1. Fix weird behaviour when screenshot is taken, the mpl window resizes to default size. (DDL: v0.2a)
+REF: https://github.com/matplotlib/matplotlib/issues/8736
+2- Add better offline/online operation; check/initialize if internet() as True/False (DDL: v0.2a)
+   a. Offline:
+      i. Use keyboard/manual input only
+     ii. Do not check for online (faster) - unless user uses specific input to do an online check
+         a. This check with call internet() again and re-set the global var
+    iii. Use sphinx offline speech2text on keypress (may remove / change to always offline listen / make configurable)
+   b. Online:
+      i. Use microphone to listen at all times using google, which updates a global var to call different functions
+   NB1: This got ~~ - it's functionality is approximately as initially planned (stable and sufficient)
+4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
+8- Add numpy calculation to colorID calculations (small speedup) (DDL: v0.2a)
+   NB1: This got +1'd - it's functionality in the end turned out better than initially planned.
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 [#3 - 15.11.2017]

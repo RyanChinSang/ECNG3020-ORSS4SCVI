@@ -5,12 +5,29 @@ import cv2
 import numpy as np
 
 
-class VideoStream(object):
-    def __init__(self, src=0, height=None, width=None, ratio=None):
+class VideoStream:
+    def __init__(self, src=None, height=None, width=None, ratio=None):
         cv2.setUseOptimized(True)
-        self.s = 0
+        if src is None:
+            camera_list = []
+            for i in range(10):
+                cap = cv2.VideoCapture(i)
+                if cap.isOpened():
+                    camera_list += [i]
+                    cap.release()
+            if len(camera_list) == 1:
+                src = camera_list[0]
+            elif len(camera_list) == 0:
+                src = -1
+                print('NOTICE: There were no detected working cameras for indexes 0 to 10!')
+            else:
+                src = camera_list[0]
+                msg = 'NOTICE: There are ' + str(len(camera_list) - 1) \
+                      + ' other operational camera source(s) available: ' + str(camera_list[1:])
+                print(msg.replace('are', 'is')) if len(camera_list) - 1 == 1 else print(msg)
         self.avg = np.array([])
         self.freq = cv2.getTickFrequency()
+        self.begin = 0
         self.stream = cv2.VideoCapture(src)
         self.config(dim=None, height=height, width=width, ratio=ratio)
         (self.grabbed, self.frame) = self.stream.read()
@@ -30,7 +47,7 @@ class VideoStream(object):
             (self.grabbed, self.frame) = self.stream.read()
 
     def read(self, width=None, height=None, ratio=None):
-        self.s = cv2.getTickCount()
+        self.begin = cv2.getTickCount()
         return (not self.released), self.resize(frame=self.frame, width=width, height=height, ratio=ratio)
 
     def release(self):
@@ -41,11 +58,11 @@ class VideoStream(object):
         return not self.released
 
     def fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.s)))
+        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
         return self.avg[-1]
 
     def avg_fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.s)))
+        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
         return self.avg.mean()
 
     def config(self, dim, height, width, ratio):
@@ -112,5 +129,5 @@ To add:
 To fix:
 1- See #1.NB[1-3] in BETA.TestCode.OpenCV.VideoCap3.py
 
-v1.5
+v1.6
 '''

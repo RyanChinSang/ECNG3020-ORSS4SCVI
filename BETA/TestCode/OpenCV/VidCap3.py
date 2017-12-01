@@ -5,12 +5,29 @@ import cv2
 import numpy as np
 
 
-class VideoStream(object):
-    def __init__(self, src=0, height=None, width=None, ratio=None):
+class VideoStream:
+    def __init__(self, src=None, height=None, width=None, ratio=None):
         cv2.setUseOptimized(True)
-        self.s = 0
+        if src is None:
+            camera_list = []
+            for i in range(10):
+                cap = cv2.VideoCapture(i)
+                if cap.isOpened():
+                    camera_list += [i]
+                    cap.release()
+            if len(camera_list) == 1:
+                src = camera_list[0]
+            elif len(camera_list) == 0:
+                src = -1
+                print('NOTICE: There were no detected working cameras for indexes 0 to 10!')
+            else:
+                src = camera_list[0]
+                msg = 'NOTICE: There are ' + str(len(camera_list) - 1) \
+                      + ' other operational camera source(s) available: ' + str(camera_list[1:])
+                print(msg.replace('are', 'is')) if len(camera_list) - 1 == 1 else print(msg)
         self.avg = np.array([])
         self.freq = cv2.getTickFrequency()
+        self.begin = 0
         self.stream = cv2.VideoCapture(src)
         self.config(dim=None, height=height, width=width, ratio=ratio)
         (self.grabbed, self.frame) = self.stream.read()
@@ -30,7 +47,7 @@ class VideoStream(object):
             (self.grabbed, self.frame) = self.stream.read()
 
     def read(self, width=None, height=None, ratio=None):
-        self.s = cv2.getTickCount()
+        self.begin = cv2.getTickCount()
         return (not self.released), self.resize(frame=self.frame, width=width, height=height, ratio=ratio)
 
     def release(self):
@@ -41,11 +58,11 @@ class VideoStream(object):
         return not self.released
 
     def fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.s)))
+        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
         return self.avg[-1]
 
     def avg_fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.s)))
+        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
         return self.avg.mean()
 
     def config(self, dim, height, width, ratio):
@@ -108,13 +125,13 @@ if __name__ == '__main__':
         # FPS CASE A
         # print('{:.2f}'.format(cap.fps()))
         # print('{:.2f}'.format(cap.avg_fps()))
-        # ret, frame = cap.read()
+        ret, frame = cap.read()
         # ret, frame = cap.read(width=512)  # Window size: 512*384
         # ret, frame = cap.read(height=512)  # Window size: 683*512
         # ret, frame = cap.read(width=512, ratio=1)  # Window size: 512*512
         # ret, frame = cap.read(height=480, ratio=(16/9))  # Window size: 854*480
         # ret, frame = cap.read(width=1280, height=720)  # Window size: 1280*720
-        ret, frame = cap.read(width=1280, height=720, ratio=(4/3))  # Window size: [Camera feed] -- WARNING (good)
+        # ret, frame = cap.read(width=1280, height=720, ratio=(4/3))  # Window size: [Camera feed] -- WARNING (good)
         # ret, frame = cap.read(width=1280, height=720, ratio=(16/9))  # Window size: 1280*720
         # print(frame.shape[:2])
         cv2.imshow('frame', frame)
@@ -145,7 +162,7 @@ Changelog:
    a. Added import numpy library
    b. Added initialization for class variables:
       i. self.freq
-     ii. self.s
+     ii. self.start
          A. is initialized as 0 so as to ensure the first value is very small REF: FPS CASE A
             I. This ensures that the average fps is not out-of-whack for the first few seconds of runtime due to a large
                number causing  inaccurate fps averages for that time.
@@ -162,4 +179,9 @@ Changelog:
 1- Added full support for Python 2
    NB1: The Python 3 implementation is slightly faster
 
+30.11.17 (v1.6)
+1- Added a searching method to find all working video source(s)
+   NB1: This is especially useful if the only working video source is not indexed as 0
+   NB2: It will always use the first working video source
+2- Renamed inconsistencies between documented self.start and coded self.s, to self.begin
 '''
