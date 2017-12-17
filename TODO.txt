@@ -57,12 +57,18 @@ Tags:
    b. Google TensorFLow (See TODO[High]#6.c.)
    c. SpeechRecognition (Online vs. Offline)
 8. Implement OCR features (DDL: v1.5a)
+9. Add interpretation of number of detected objects (DDL: 0.4a)
+   a. Say the name of the object
+   b. Say number of name of object
+      i. [t2s] "crowded" if there are more than 3* persons detected in frame
+         NB1: the actual number of this needs revision/calibration
+         NB2: the frequency at which the t2s action is taken needs revision/calibration
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 3. Find accurate ways to generalize constants' values (WIP)
 7. Add interrupt functionality for new t2s instances - prevents delay in tts
 9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a)
-10. Fix the mysterious 132-pixel vertical elongation. (DDL: v0.4a)
+
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 1. Make Better README.md; Progress, Description, Purpose etc. (WIP)
@@ -121,6 +127,10 @@ REF: https://github.com/matplotlib/matplotlib/issues/8736
 4- Make own expanded list of colours and values based on webcolors' dictionary (RES) (DDL: v0.2a)
 8- Add numpy calculation to colorID calculations (small speedup) (DDL: v0.2a)
    NB1: This got +1'd - it's functionality in the end turned out better than initially planned.
+
+[#10 - 16.12.2017]
+10. Fix the mysterious 132-pixel vertical elongation. (DDL: v0.4a)
+    NB1: This is actually "treating the symptoms" instead of "finding the cure"
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 [#3 - 15.11.2017]

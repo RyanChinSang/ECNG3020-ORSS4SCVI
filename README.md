@@ -11,7 +11,7 @@ For full reference, see [VERSION.txt](https://github.com/RyanChinSang/ECNG3020-O
 * Full Offline and Online operation.
 * Improved performance for identifying colours.
 * Improved the structure of the overall code.
-* Minor speed-ups
+* Minor speed-ups.
 * Fixed minor bugs.
 
 ![image2](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/blob/master/History/Screenshots/ORSS4SCVI_v0.2a.png?raw=True)
@@ -26,7 +26,7 @@ An application prototype built using [Python 3.6.3 64-bit](https://www.python.or
 * Image processing using [OpenCV-Python](https://pypi.python.org/pypi/opencv-python) and [matplotlib](https://github.com/matplotlib/matplotlib).
 
 ### Coming Soon:
-* Optical Character Recognition
+* Optical Character Recognition.
 * To an Android smart-phone near you!
 
 ## Introduction
@@ -36,6 +36,6 @@ The Project Report and other Documentation can be found [here](https://drive.goo
 
 ## Authors
 * Developed by **Ryan Chin Sang**.
-    * Email: `ryancs1995@gmail.com`
+    * Email: `ryancs1995@gmail.com` or `ryan.chinsang@my.uwi.edu`
 
 * Supervised by [Dr. Akash Pooransingh](https://sta.uwi.edu/eng/electrical/staff/akash_pooransingh.asp).

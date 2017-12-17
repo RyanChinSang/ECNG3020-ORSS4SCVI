@@ -173,7 +173,7 @@ Stable v0.1b release (09.11.2017)
 
 
 ________________________________________________________________________________________________________________________
-dev0.2a (10.11.2017 - )
+dev0.2a (10.11.2017 - 30.11.2017)
 (11.11.2017)------------------------------------------------------------------------------------------------------------
 tldr; Documentation and clean-up
 1. Renamed "ORSSv02-a.py" to "ORSSd02-a.py" to reflect that the file is intended as a developmental version.
@@ -264,3 +264,16 @@ tldr; Offline/Online mode, improved ColourID, improved code structure, minor spe
    b. If the 'Screenshots' directory has been deleted or renamed for some reason, the code will create a new directory
       properly named as 'Screenshots' - it therefore also detects if the folder did exist first
    NB1: All directories should transition according to the root folder and is therefore flexible
+
+________________________________________________________________________________________________________________________
+Stable v0.2a release (01.12.2017)
+
+________________________________________________________________________________________________________________________
+dev0.3a (01.12.2017 - ??.??.????)
+(16.12.2017)------------------------------------------------------------------------------------------------------------
+tldr; Screenshots now save at correct resolution, improved naming
+1. Fixed screenshots saving at incorrect resolution
+   a. This was accomplished by manually resizing the original screenshot using the PIL library
+      NB1: This is actually "treating the symptoms" instead of "finding the cure"
+2. Renamed "SpchRecg.py" model to "Spch2Txt.py" to keep consistent naming w.r.t. the already named "Txt2Spch.py" model.
+3. Investigated the possibility of a "Loading Screen"
