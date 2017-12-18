@@ -42,9 +42,9 @@ Tags:
 4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
 5. Port app to Android App (Mobile) with full functionality (BIG) (RES) (DDL: v1.0a)
 6. Add more/finish Tutorials/learning in Python; (BIG) (RES) (DDL: v1.0a)
-   a. multiprocessing(WIP) (DDL: v0.3a)
+   a. multiprocessing (WIP) (DDL: v0.4a)
       NB1: REF: https://stackoverflow.com/questions/3044580/multiprocessing-vs-threading-python?rq=1
-   c. Tensorflow (WIP) (RES) (DDL: v0.3a)
+   c. Tensorflow (WIP) (RES) (DDL: v0.4a)
       i. Learn how the TensorFlow performs recognition properly
      ii. Learn models
          A. How, What, Why they work?
@@ -57,23 +57,38 @@ Tags:
    b. Google TensorFLow (See TODO[High]#6.c.)
    c. SpeechRecognition (Online vs. Offline)
 8. Implement OCR features (DDL: v1.5a)
-9. Add interpretation of number of detected objects (DDL: 0.4a)
-   a. Say the name of the object
+9. Add interpretation of number of detected objects (DDL: 0.4a) (WIP)
    b. Say number of name of object
       i. [t2s] "crowded" if there are more than 3* persons detected in frame
          NB1: the actual number of this needs revision/calibration
          NB2: the frequency at which the t2s action is taken needs revision/calibration
+10.
+
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 3. Find accurate ways to generalize constants' values (WIP)
 7. Add interrupt functionality for new t2s instances - prevents delay in tts
-9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a)
+11. Add more structure to colors_dict (DDL: v0.3a)
+    a. Group colors by "likeness"
+       i. take note from the source's grouping (REF: https://web.njit.edu/~kevin/rgb.pdf)
+      ii. concatenate all the varying names (eg. gold 1, and, gold 2) into one color whose key (RGB) value is the
+          average of the concatenated values
+12. Create a Loading Screen (DDL: v1.0a) (RES) (WIP)
+13. Add more structure to controls print-out (DDL: v0.3a)
+    a. Group the custom controls separately from default controls
+14.
 
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 1. Make Better README.md; Progress, Description, Purpose etc. (WIP)
 2. Use a better platform for documenting (RES) (DDL: v1.0a)
-4.
+4. Add more details to OCR functionality (See TODO[High]#8)
+5. Add Affine model-type transformations native to VideoStream
+   a. Translate
+   b. Rotate
+   c. Flipping
+   d. Cropping
+6.
 
 
 __________________________________________________[COMPLETED]___________________________________________________________
@@ -106,6 +121,10 @@ All completed task\objectives must work as desired to qualify in this section.
      ii. Implement towards a class? (RES)
          NB1: This got x'd - making this into a class proved to be unnecessary
 
+[#9a - 17.12.2017]
+9. Add interpretation of number of detected objects (DDL: 0.4a)
+   a. Say the name of the object
+
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 [#(5, 6) - 15.11.2017]
@@ -131,6 +150,9 @@ REF: https://github.com/matplotlib/matplotlib/issues/8736
 [#10 - 16.12.2017]
 10. Fix the mysterious 132-pixel vertical elongation. (DDL: v0.4a)
     NB1: This is actually "treating the symptoms" instead of "finding the cure"
+
+[#9 - 17.12.2017]
+9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a) (WIP) (RES)
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 [#3 - 15.11.2017]

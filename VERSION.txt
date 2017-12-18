@@ -277,3 +277,27 @@ tldr; Screenshots now save at correct resolution, improved naming
       NB1: This is actually "treating the symptoms" instead of "finding the cure"
 2. Renamed "SpchRecg.py" model to "Spch2Txt.py" to keep consistent naming w.r.t. the already named "Txt2Spch.py" model.
 3. Investigated the possibility of a "Loading Screen"
+(17.12.2017)------------------------------------------------------------------------------------------------------------
+tldr; Added Object identification by command and more colors to ColorID!
+1. Added new feature to t2s the name of the object with the highest certainty
+   a. Uses new function "object_id" in the model file ObjectID.py
+   b. This function accepts a score as a degree of certainty (DoC), a category index to match tf's categories, the queue
+    for sharing data across threads, and the mode of operation
+   c. Has a specific message (DoC and object name), or a basic message (object name only)
+      NB1: Implementation attempts to take out any processing from the main thread, and divert the processing into a new
+           or separate thread
+   NB1: This functionality is available across both manual/keyed and voiced input.
+2. Renamed the "avg_color" function in the model ColorID.py to "color_id" to remain consistent with the name of the new
+   function as described in 1. above
+3. Added and refined some objectives in TODO.txt
+4. Made a very largge colour library based off all the colours by Copyright © 2010 Kevin J. Walsh
+   REF: https://web.njit.edu/~kevin/rgb.pdf
+   a. Coped all the text from the table on the .pdf file into a .txt file "colors.txt" then parsed all the text inside
+      of that one large text file into a very convenient format that ColorID can use.
+   b. Because I had full control on how to parse the data, I was able to simplify the format in which the RGB colors
+      were ultimately stored as, and also clean up the names of all the colors.
+   NB1: The old colours_dict which was based off webcolor's application had 138 colors. This new version has 636 colors.
+        That is a 461% improvement.
+   NB2: These can be classified/grouped into a larger quantization group (less intervals/specific - more wide/general)
+5. Pushed back a few objectives in TODO[High]
+   a. This is because it requires alot of research.
