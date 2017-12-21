@@ -13,10 +13,11 @@ from PIL import Image
 from PyQt5 import QtWidgets, QtGui
 from BETA.dev03.utils import label_map_util
 from BETA.dev03.utils import visualization_utils as vis_util
-from BETA.dev03.models.ObjectID import object_id
 from BETA.dev03.models.ColorID import color_id
+from BETA.dev03.models.ObjectID import object_id
 from BETA.dev03.models.Txt2Spch import t2s_say
 from BETA.dev03.models.Spch2Txt import internet, google_sr
+from BETA.dev03.models.Controls import fetch_ctrls, print_ctrls
 from BETA.dev03.models.VideoStream import VideoStream
 
 
@@ -30,13 +31,21 @@ def s2t_listen():
                 s2t_string = google_sr(audio)
 
 
-def state_upd():
+def state_upd(mode=None):
     global state
     state = internet()
     if state is True:
-        print('Online! Using online mode.')
+        print('[ONLINE] Using online mode.')
+        if mode:
+            threading.Thread(target=t2s_say, args=('Welcome. You are online.', q), daemon=True).start()
+        else:
+            threading.Thread(target=t2s_say, args=('You are now online.', q), daemon=True).start()
     else:
-        print('Offline! Using offline mode')
+        print('[OFFLINE] Using offline mode.')
+        if mode:
+            threading.Thread(target=t2s_say, args=('Welcome. You are offline.', q), daemon=True).start()
+        else:
+            threading.Thread(target=t2s_say, args=('You are now offline.', q), daemon=True).start()
 
 
 def close_handler(event):
@@ -47,8 +56,10 @@ def close_handler(event):
 def active_handler(event):
     global s2t_string
     if 'color' in str(s2t_string):
-        threading.Thread(target=color_id, args=(cap.read()[1], size, frame_height, frame_width, q),
-                         daemon=True).start()
+        # threading.Thread(target=color_id, args=(
+        # cap.read()[1][int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)], size, q),
+        #                  daemon=True).start()
+        threading.Thread(target=color_id, args=(cap.read()[1], size, q), daemon=True).start()
         threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
         s2t_string = None
     elif 'quit' in str(s2t_string):
@@ -66,16 +77,24 @@ def active_handler(event):
 
 def key_press_handler(event):
     global state, sslist
-    if event.key == controls_dict.get('online check')[0]:
+    # if event.key == controls_dict.get('check online')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('check online', q), daemon=True).start()):
         threading.Thread(target=state_upd, args=(), daemon=True).start()
-    if event.key == controls_dict.get('color check')[0]:
-        threading.Thread(target=color_id, args=(cap.read()[1], size, frame_height, frame_width, q),
-                         daemon=True).start()
+    # if event.key == controls_dict.get('color check')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('color check', q), daemon=True).start()):
+        # threading.Thread(target=color_id, args=(
+        # cap.read()[1][int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)], size, q),
+        #                  daemon=True).start()
+        threading.Thread(target=color_id, args=(cap.read()[1], size, q), daemon=True).start()
         threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
-    if event.key == controls_dict.get('offline force')[0]:
+    # if event.key == controls_dict.get('force offline')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('force offline', q), daemon=True).start()):
         state = False
-        print('Offline! Using offline mode')
-    if event.key == controls_dict.get('save')[0]:
+        # print('Offline! Using offline mode')
+        print('[OFFLINE] Using offline mode.')
+        threading.Thread(target=t2s_say, args=('You are now offline.', q), daemon=True).start()
+    # if event.key == controls_dict.get('save')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('save', q), daemon=True).start()):
         extra_width = plt.get_current_fig_manager().window.width() - plt.get_current_fig_manager().canvas.width()
         extra_height = plt.get_current_fig_manager().window.height() - plt.get_current_fig_manager().canvas.height()
         plt.get_current_fig_manager().window.resize(frame_width + extra_width, frame_height + extra_height)
@@ -88,17 +107,19 @@ def key_press_handler(event):
             sslist.append(newss)
         except IndexError:
             print('NOTICE: No file was saved.')
-    if event.key == controls_dict.get('object check')[0]:
+    # if event.key == controls_dict.get('object check')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('object check', q), daemon=True).start()):
         threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0]), daemon=True).start()
         threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
-    if event.key == controls_dict.get('object check2')[0]:
+    # if event.key == controls_dict.get('object check2')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('object check 2', q), daemon=True).start()):
         threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0], 1), daemon=True).start()
         threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
 
 
 def configure(frame, dir, version):
     global sslist
-    maxlen = len(max(controls_dict, key=len))
+    # maxlen = len(max(controls_dict, key=len))
     dpi = int(matplotlib.rcParams['figure.dpi'])
     savedir = os.path.join(os.path.dirname(__file__), dir).replace('\\', '/')
     if not os.path.isdir(savedir):
@@ -124,36 +145,65 @@ def configure(frame, dir, version):
     plt.get_current_fig_manager().canvas.manager.window.statusBar().setVisible(False)
     plt.get_current_fig_manager().window.setWindowIcon(QtGui.QIcon(PATH_TO_ICON))
     plt.axis('off')
-    for key in controls_dict:
-        print(key.ljust(maxlen, ' ') + ': ' + str(controls_dict.get(key)).strip('[]').replace('\'', ''))
-    state_upd()
+    # for key in controls_dict:
+    #     print(key.ljust(maxlen, ' ') + ': ' + str(controls_dict.get(key)).strip('[]').replace('\'', ''))
+    # state_upd(mode=1)
+    # print_ctrls()
 
 
-controls_dict = {
-    # a,c,v,f,g,G,g,h,r,p,q,W,Q,s,k,L,l,o,b,d
-    # e,t,y,u,i
-    # d,j
-    # [z],[x],b,[n],[m]
-    'all axes': ['a'],
-    'back': ['left', 'c', 'backspace'],
-    'color check': ['m'],  #
-    'forward': ['right', 'v'],
-    'fullscreen': ['f', 'ctrl+f'],
-    'grid': ['g'],
-    'grid minor': ['G'],
-    'home': ['h', 'r', 'home'],
-    'object check': ['n'],
-    'object check2': ['ctrl+n'],
-    'offline force': ['x'],  #
-    'online check': ['z'],  #
-    'pan': ['p'],
-    'quit': ['ctrl+w', 'cmd+w', 'q'],
-    'quit all': ['W', 'cmd+W', 'Q'],
-    'save': ['s', 'ctrl+s'],
-    'xscale': ['k', 'L'],
-    'yscale': ['l'],
-    'zoom': ['o']
-}
+# controls_dict = {
+#     'all axes': ['a'],
+#     'back': ['left', 'c', 'backspace'],
+#     'color check': ['m'],  #
+#     'forward': ['right', 'v'],
+#     'fullscreen': ['f', 'ctrl+f'],
+#     'grid': ['g'],
+#     'grid minor': ['G'],
+#     'home': ['h', 'r', 'home'],
+#     'object check': ['n'],
+#     'object check2': ['ctrl+n'],
+#     'force offline': ['x'],  #
+#     'check online': ['z'],  #
+#     'pan': ['p'],
+#     'quit': ['ctrl+w', 'cmd+w', 'q'],
+#     'quit all': ['W', 'cmd+W', 'Q'],
+#     'save': ['s', 'ctrl+s'],
+#     'xscale': ['k', 'L'],
+#     'yscale': ['l'],
+#     'zoom': ['o']
+# }
+# controls_dict = {
+#     # active keys: a,c,v,f,g,G,g,h,r,p,q,W,Q,s,k,L,l,o,b,d
+#     # e,t,y,u,i
+#     # d,j
+#     # [z],[x],b,[n],[m]
+#     "default": {
+#         'all axes': ['a'],
+#         'back': ['left', 'c', 'backspace'],
+#         'forward': ['right', 'v'],
+#         'fullscreen': ['f', 'ctrl+f'],
+#         'grid': ['g'],
+#         'grid minor': ['G'],
+#         'home': ['h', 'r', 'home'],
+#         'pan': ['p'],
+#         'quit': ['ctrl+w', 'cmd+w', 'q'],
+#         'quit all': ['W', 'cmd+W', 'Q'],
+#         'save': ['s', 'ctrl+s'],
+#         'xscale': ['k', 'L'],
+#         'yscale': ['l'],
+#         'zoom': ['o']
+#     },
+#     "custom": {
+#         'color check': ['m'],
+#         'force offline': ['x'],
+#         'object check': ['n'],
+#         'object check2': ['ctrl+n'],
+#         'check online': ['z']
+#     },
+#     "header": {
+#         "Command": ['Button']
+#     }
+# }
 avg_fps = np.array([])
 size = 20
 state = None
@@ -186,6 +236,9 @@ configure(frame=init_frame, dir='Screenshots', version='dev0.3a')
 fig = plt.gcf()
 ax = plt.gca()
 img = plt.imshow(cv2.cvtColor(init_frame, cv2.COLOR_BGR2RGB), aspect='auto')
+# roi = img[:]
+# roi_w = frame_width
+# roi_h = frame_height
 rect = patches.Rectangle(xy=(int((frame_width / 2) - size),
                              int((frame_height / 2) - size)),  # Top-left point
                          width=int(size * 2),
@@ -208,6 +261,9 @@ with detection_graph.as_default():
         detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
         detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
         num_detections = detection_graph.get_tensor_by_name('num_detections:0')
+        # print('Hi')
+        state_upd(mode=1)
+        print_ctrls()
         while cap.isOpened():
             _, image_np = cap.read()
             image_np_expanded = np.expand_dims(image_np, axis=0)
@@ -516,6 +572,16 @@ with detection_graph.as_default():
             # print([category_index.get(i) for i in classes[0]])
             # print(scores)
             img.set_data(cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB))
+            # roi = image_np[int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)]
+            # roi = image_np[int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)]
+            # rect = patches.Rectangle(xy=(int((vis_util.left / 2) - size),
+            #                              int((vis_util.top / 2) - size)),  # Top-left point
+            #                          width=int(size * 2),
+            #                          height=int(size * 2),
+            #                          linewidth=1,
+            #                          edgecolor='white',
+            #                          facecolor='none')
+            # fig.add_patch(rect)
             # print([n.name for n in tf.get_default_graph().as_graph_def().node])
             if plt.get_fignums():
                 fig.canvas.draw()

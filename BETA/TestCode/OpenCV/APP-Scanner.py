@@ -60,6 +60,7 @@ def order_points(pts):
 def four_point_transform(image, pts):
     # obtain a consistent order of the points and unpack them
     # individually
+    print(pts)
     rect = order_points(pts)
     (tl, tr, br, bl) = rect
     # compute the width of the new image, which will be the
@@ -92,7 +93,7 @@ def four_point_transform(image, pts):
 
 
 screenCnt = np.array([[[0, 0]], [[1, 1]], [[2, 2]], [[3, 3]]])
-cap = WebcamVideoStream(src=0).start()
+cap = WebcamVideoStream(src=1).start()
 
 while 1:
     image = cap.read()

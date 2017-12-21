@@ -9,7 +9,7 @@ def nothing(x):
     pass
 
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 cv2.namedWindow('res')
 cv2.createTrackbar('h1', 'res', 0, 180, nothing)

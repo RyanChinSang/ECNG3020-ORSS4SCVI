@@ -33,7 +33,7 @@ size = 20
 
 
 def loop_a():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     while 1:
         _, frame = cap.read()
         cv2.rectangle(img=frame,

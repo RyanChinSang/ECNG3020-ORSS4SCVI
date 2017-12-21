@@ -28,6 +28,10 @@ import PIL.ImageFont as ImageFont
 import six
 import tensorflow as tf
 
+left = 0
+right = 0
+top = 0
+bottom = 0
 _TITLE_LEFT_MARGIN = 10
 _TITLE_TOP_MARGIN = 10
 STANDARD_COLORS = [
@@ -146,6 +150,7 @@ def draw_bounding_box_on_image(image,
         ymin, xmin, ymax, xmax as relative to the image.  Otherwise treat
         coordinates as absolute.
     """
+    global left, right, top, bottom
     draw = ImageDraw.Draw(image)
     im_width, im_height = image.size
     if use_normalized_coordinates:
@@ -161,7 +166,6 @@ def draw_bounding_box_on_image(image,
         font = ImageFont.load_default()
 
     text_bottom = top
-    # Reverse list and print from bottom to top.
     for display_str in display_str_list[::-1]:
         text_width, text_height = font.getsize(display_str)
         margin = np.ceil(0.05 * text_height)
@@ -420,5 +424,5 @@ def visualize_boxes_and_labels_on_image_array(image,
                 image,
                 box_to_keypoints_map[box],
                 color=color,
-                radius=line_thickness / 2,
+                radius=int(line_thickness / 2),
                 use_normalized_coordinates=use_normalized_coordinates)

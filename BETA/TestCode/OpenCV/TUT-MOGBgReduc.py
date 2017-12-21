@@ -14,20 +14,24 @@ REF:
 https://docs.opencv.org/3.3.0/db/d5c/tutorial_py_bg_subtraction.html
 '''
 
-cap = cv2.VideoCapture(0)
-fgbg = cv2.createBackgroundSubtractorMOG2()
-
+cap = cv2.VideoCapture(1)
+fgbg = cv2.createBackgroundSubtractorMOG2(history=100, varThreshold=15, detectShadows=False)
+fgbg2 = cv2.createBackgroundSubtractorKNN()
 while 1:
     ret, frame = cap.read()
 
     fgmask = fgbg.apply(frame)
+    fgmask2 = fgbg2.apply(frame)
     # fgmask3 = np.repeat(fgmask[:, :, np.newaxis], 3, axis=2)
     # red = (frame - fgmask3)
     res = cv2.bitwise_and(frame, frame, mask=fgmask)
+    res2 = cv2.bitwise_and(frame, frame, mask=fgmask2)
 
     cv2.imshow('frame', frame)
-    cv2.imshow('fgmask', fgmask)
+    # cv2.imshow('fgmask', fgmask)
+    # cv2.imshow('fgmask2', fgmask2)
     cv2.imshow('res', res)
+    cv2.imshow('res2', res2)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

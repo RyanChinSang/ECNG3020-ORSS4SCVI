@@ -301,3 +301,28 @@ tldr; Added Object identification by command and more colors to ColorID!
    NB2: These can be classified/grouped into a larger quantization group (less intervals/specific - more wide/general)
 5. Pushed back a few objectives in TODO[High]
    a. This is because it requires alot of research.
+(20.12.2017)------------------------------------------------------------------------------------------------------------
+tldr; Controls handling revamped - better printout and structure
+1. Added structure to the controls_dict
+   a. Now has 'headers' which maps to a dictionary with keys as commands (actions), and values and controls (buttons)
+   b. The printout of the controls is now more formatted with proper separation between default and custom controls
+2. Ported new controls structure away from the main file into it's own model "Controls.py"
+(21.12.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Removed frame_width and frame_height from ColorID's color_id() function - as this can be obtained from the sent frame
+2. Added voice-outs (t2s) for stating the mode [Offline/Online] being used currently
+3. Investigated how to object track to recenter the Region Of Interest (ROI) for color identification
+   a. Changed the default visualization_utils.py to now output the coordinates of box for the highest confidence object
+      i. This makes the variables "left", "right", "top" and "bottom" accessible
+   b. Reformatted "visualization_utils.py" to conform with PEP8 formatting standards
+   c. Used the variables in 3.a.i. to crop the frame of the camera
+   d. Get the dimensions of the cropped frame and use it's center 20*20 square for color_id()
+   NB1: This was an investigation and is not yet implemented.
+   NB2: A visualization of the object [center] tracking can be found in "TrackObj.py"
+4. Investigated how background subtraction can be applied to the feature in 3. to get a more accurate representation of
+   the color of the object.
+(22.12.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Added voice-outs for stating the custom controls
+   a. This function is accessed by asking [saying] for "what"&&"controls"
+   b. This function is accessed by pressing 'b'

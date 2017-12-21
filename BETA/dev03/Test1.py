@@ -1,139 +1,56 @@
-from __future__ import print_function
-from threading import Thread
-import sys
-import cv2
-import numpy as np
-import queue
-from BETA.dev03.IDObj import id_obj
+import pyttsx3
+import collections
+import itertools
+
+controls_dict = collections.OrderedDict([
+    # active keys: a,c,v,f,g,G,g,h,r,p,q,W,Q,s,k,L,l,o,b,d
+    # e,t,y,u,i
+    # d,j
+    # [z],[x],b,[n],[m]
+    ('header', {
+        #     'command': ['control']
+    }),
+    ('[DEFAULT CONTROLS]', {
+        'all axes': ['a'],
+        'back': ['left', 'c', 'backspaces'],
+        'forward': ['right', 'v'],
+        'fullscreen': ['f', 'ctrl+f'],
+        'grid': ['g'],
+        'grid minor': ['G'],
+        'home': ['h', 'r', 'home'],
+        'pan': ['p'],
+        'quit': ['ctrl+w', 'cmd+w', 'q'],
+        'quit all': ['W', 'cmd+W', 'Q'],
+        'save': ['s', 'ctrl+s'],
+        'xscale': ['k', 'L'],
+        'yscale': ['l'],
+        'zoom': ['o']
+    }),
+    ('[CUSTOM CONTROLS]', {
+        'color check': ['m'],
+        'offline force': ['x'],
+        'object check': ['n'],
+        'object check 2': ['ctrl+n'],
+        'online check': ['z']
+    })
+])
 
 
-class VideoStream:
-    def __init__(self, src=None, height=None, width=None, ratio=None):
-        cv2.setUseOptimized(True)
-        if src is None:
-            camera_list = []
-            for i in range(10):
-                cap = cv2.VideoCapture(i)
-                if cap.isOpened():
-                    camera_list += [i]
-                    cap.release()
-            if len(camera_list) == 1:
-                src = camera_list[0]
-            elif len(camera_list) == 0:
-                src = -1
-                print('NOTICE: There were no detected working cameras for indexes 0 to 10!')
-            else:
-                src = camera_list[0]
-                msg = 'NOTICE: There are ' + str(len(camera_list) - 1) \
-                      + ' other operational camera source(s) available: ' + str(camera_list[1:])
-                print(msg.replace('are', 'is')) if len(camera_list) - 1 == 1 else print(msg)
-        self.avg = np.array([])
-        self.freq = cv2.getTickFrequency()
-        self.begin = 0
-        self.stream = cv2.VideoCapture(src)
-        self.config(dim=None, height=height, width=width, ratio=ratio)
-        (self.grabbed, self.frame) = self.stream.read()
-        self.released = not self.grabbed
+t2s_engine = pyttsx3.init()
+t2s_engine.setProperty('voice', t2s_engine.getProperty('voices')[1].__dict__.get('id'))
 
-    def start(self):
-        if sys.version[0] == '3':
-            Thread(target=self.update, args=(), daemon=True).start()
-        else:
-            Thread(target=self.update, args=()).start()
-        return self
 
-    def update(self):
-        while True:
-            if self.released:
-                return
-            (self.grabbed, self.frame) = self.stream.read()
-
-    def read(self, width=None, height=None, ratio=None):
-        self.begin = cv2.getTickCount()
-        return (not self.released), self.resize(frame=self.frame, width=width, height=height, ratio=ratio)
-
-    def release(self):
-        self.stream.release()
-        self.released = True
-
-    def isOpened(self):
-        return not self.released
-
-    def fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
-        return self.avg[-1]
-
-    def avg_fps(self):
-        self.avg = np.append(self.avg, (self.freq / (cv2.getTickCount() - self.begin)))
-        return self.avg.mean()
-
-    def config(self, dim, height, width, ratio):
-        if ratio is None:
-            if height and width:
-                dim = (height, (height * float(width / height)))
-            elif not height and not width:
-                pass
-            else:
-                print('WARNING: Insufficient configuration parameters. The default was used.')
-        else:
-            if height:
-                dim = (height, (height * float(ratio)))
-            elif width:
-                dim = ((width / float(ratio)), width)
-        if dim:
-            self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, self.round_up(dim[0]))
-            self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, self.round_up(dim[1]))
-
-    def resize(self, frame, width, height, ratio):
-        dim = (dheight, dwidth) = frame.shape[:2]
-        if ratio is None:
-            if width and height:
-                dim = (height, width)
-            elif width and height is None:
-                dim = ((dheight * (width / dwidth)), width)
-            elif width is None and height:
-                dim = (height, (dwidth * (height / dheight)))
-        else:
-            if width is None and height is None:
-                dim = (dheight, (dheight * ratio))
-            elif width is None and height:
-                dim = (height, (height * ratio))
-            elif width and height is None:
-                dim = ((width / ratio), width)
-            else:
-                if (width / height) == ratio:
-                    dim = (height, width)
-                else:
-                    print('WARNING: Window resolution (' + str(width) + '*' + str(height)
-                          + ') does not agree with ratio ' + str(ratio) + '. The default was used.')
-        return cv2.resize(frame, (self.round_up(dim[1]), self.round_up(dim[0])), interpolation=cv2.INTER_AREA)
-
-    @staticmethod
-    def round_up(num):
-        return int(-(-num // 1))
+def t2s_say(word, q):
+    t2s_engine.say(word)
+    try:
+        t2s_engine.runAndWait()
+    except RuntimeError:
+        pass
 
 
 if __name__ == '__main__':
+    import queue
     q = queue.Queue()
-    cap = VideoStream(src=1).start()
-    while cap.isOpened():
-        ret, frame = cap.read()
-        cv2.imshow('frame', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            cap.release()
-        if cv2.waitKey(1) & 0xFF == ord('a'):
-            Thread(target=id_obj, args=(frame, q), daemon=True).start()
-            print(q.get())
-        # print(cap.fps())
-    cv2.destroyAllWindows()
-
-
-'''
-To add:
-1- Fixes (see below)
-
-To fix:
-1- See #1.NB[1-3] in BETA.TestCode.OpenCV.VideoCap3.py
-
-v1.6
-'''
+    # s ='[DEFAULT CONTROLS]'
+    s = "To 'object check 2', press 'ctrl+n'."
+    t2s_say(s, q)

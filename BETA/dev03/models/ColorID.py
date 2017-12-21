@@ -1,5 +1,7 @@
+import cv2
 import numpy as np
 
+s = 5
 colors_dict = {'84;84;84': 'Grey', '192;192;192': 'Silver', '190;190;190': 'grey', '211;211;211': 'Light Gray',
                '119;136;153': 'Light Slate Grey', '112;128;144': 'Slate Gray', '198;226;255': 'Slate Gray 1',
                '185;211;238': 'Slate Gray 2', '159;182;205': 'Slate Gray 3', '108;123;139': 'Slate Gray 4',
@@ -193,7 +195,9 @@ colors_dict = {'84;84;84': 'Grey', '192;192;192': 'Silver', '190;190;190': 'grey
                '234;234;174': 'Medium Goldenrod', '153;204;50': 'Yellow Green'}
 
 
-def color_id(frame, size, frame_height, frame_width, q):
+def color_id(frame, size, q):
+    frame = cv2.blur(cv2.GaussianBlur(frame, (s, s), 0), (s, s))
+    frame_height, frame_width = frame.shape[:2]
     rgb = np.array([])
     for x in range(size * 2):
         for y in range(size * 2):
@@ -214,3 +218,4 @@ def color_id(frame, size, frame_height, frame_width, q):
             min_dif = dif_val
             closest_color = colors_dict[color]
     return q.put(closest_color)
+

@@ -62,7 +62,10 @@ Tags:
       i. [t2s] "crowded" if there are more than 3* persons detected in frame
          NB1: the actual number of this needs revision/calibration
          NB2: the frequency at which the t2s action is taken needs revision/calibration
-10.
+10. Add voice-outs (t2s) for controls explanation (DDL: 0.3a) (WIP)
+    a. For Online operation (what to say)
+    b. For Offline operation (what to press)
+    NB1: The sentences/voice-out-wording would need to be calibrated/refined based on user feedback
 
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
@@ -74,8 +77,6 @@ Tags:
       ii. concatenate all the varying names (eg. gold 1, and, gold 2) into one color whose key (RGB) value is the
           average of the concatenated values
 12. Create a Loading Screen (DDL: v1.0a) (RES) (WIP)
-13. Add more structure to controls print-out (DDL: v0.3a)
-    a. Group the custom controls separately from default controls
 14.
 
 
@@ -153,6 +154,10 @@ REF: https://github.com/matplotlib/matplotlib/issues/8736
 
 [#9 - 17.12.2017]
 9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a) (WIP) (RES)
+
+[#13 - 20.12.2017]
+13. Add more structure to controls print-out (DDL: v0.3a)
+    a. Group the custom controls separately from default controls
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 [#3 - 15.11.2017]
