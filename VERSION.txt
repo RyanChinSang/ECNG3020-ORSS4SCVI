@@ -71,7 +71,7 @@ tldr;
    d. Bilateral
    e. Made notes and references to all of the above.
 4. Worked on more ColourFilter implementations:
-   a. Tried having the sliders correspond to the R, G, B colourspace; min and max.
+   a. Tried having the sliders correspond to the R, G, B colorspace; min and max.
    NB1: The HSV implementation works better, but is less intuitive.
 (16.10.2017)------------------------------------------------------------------------------------------------------------
 tldr;
@@ -290,13 +290,13 @@ tldr; Added Object identification by command and more colors to ColorID!
 2. Renamed the "avg_color" function in the model ColorID.py to "color_id" to remain consistent with the name of the new
    function as described in 1. above
 3. Added and refined some objectives in TODO.txt
-4. Made a very largge colour library based off all the colours by Copyright © 2010 Kevin J. Walsh
+4. Made a very large color library based off all the colors by Copyright © 2010 Kevin J. Walsh
    REF: https://web.njit.edu/~kevin/rgb.pdf
    a. Coped all the text from the table on the .pdf file into a .txt file "colors.txt" then parsed all the text inside
       of that one large text file into a very convenient format that ColorID can use.
    b. Because I had full control on how to parse the data, I was able to simplify the format in which the RGB colors
       were ultimately stored as, and also clean up the names of all the colors.
-   NB1: The old colours_dict which was based off webcolor's application had 138 colors. This new version has 636 colors.
+   NB1: The old colors_dict which was based off webcolor's application had 138 colors. This new version has 636 colors.
         That is a 461% improvement.
    NB2: These can be classified/grouped into a larger quantization group (less intervals/specific - more wide/general)
 5. Pushed back a few objectives in TODO[High]
@@ -326,3 +326,40 @@ tldr;
 1. Added voice-outs for stating the custom controls
    a. This function is accessed by asking [saying] for "what"&&"controls"
    b. This function is accessed by pressing 'b'
+2. Renamed some commands in controls_dict to accommodate for "better-sounding" english
+   a. Changed "online check" to "check online"
+   b. Changed "offline force" to "force offline"
+3. Revamped the structure of "Txt2Spch.py"
+   a. More flexible - can specify what can happen for 3 events:
+      i. At start of saying the string
+     ii. During saying the string
+    iii. At the end of saying the string
+   b. Model is now independently testable
+4. Started a convention that keeps the queue.Queue() object ("q") as the first argument for all models where applicable
+5. Added welcome messages when first starting up application
+6. Added voice-outs for the controls (what buttons to press for the commands)
+   NB1: Only the custom controls are available to the user through pure speech recognition (s2t)
+7. Added good-bye message when exiting application
+   a. Fixed an otherwise unnoticeable error where plt.close('all') would make the lines above it loop once, by making it
+      run as the first line sequentially in the exit routine for "close_handler()"
+      NB1: This is actually "treating the symptoms" instead of "finding the cure"
+8. Revised colors_dict
+   a. It is noted that from the source link, colors with name that included [sic] were incorrect - hence those colors
+      have been removed to prevent erroneous results
+9. Added more structure to colors_dict by making it an Ordered Dict
+   a. Sorting/Categorization of colors accomplished through indexing the colors through the following algorithm:
+      i. The RBG of the ROI is averaged
+     ii. The averaged RGB is matched against a list of known colors that relates RGB value to an appropriate name by
+         finding the RGB value in the list with which there is a least squared difference between it and the avg.'d RGB
+    iii. The matched color is then passed through an additional filter which categorizes the colors based on the index
+         of their entry in colors_dict using a new function "color_catg()"
+     iv. The categorized color name is then returned
+         NB1: This functionality is accessed through setting the mode parameter of the color_id() function
+(23.12.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Polish-up and finished some hanging immediate documentation from previous days' work
+2. Added some new ideas and functions to TODO.txt
+3. Renamed controls_dict to ctrls_dict
+4. Created new ordered dictionary sctrls_dict to hold all the keywords for spoken commands
+5. Added ability to have different contols readout (t2s) when asking for the controls via voice [Online] or via key
+   press or button [Offline].

@@ -123,6 +123,7 @@ Dim Grey 84;84;84 545454
 Light Grey [sic] 219;219;112 DBDB70
 Very Light Grey 205;205;205 CDCDCD
 Free Speech Grey 99;86;136 635688
+Shades of Blue
 AliceBlue 240;248;255 F0F8FF
 BlueViolet 138;43;226 8A2BE2
 Cadet Blue 95;159;159 5F9F9F
@@ -255,6 +256,7 @@ Slate Blue 0;127;255 007FFF
 Summer Sky 56;176;222 38B0DE
 Iris Blue 3;180;200 03B4C8
 Free Speech Blue 65;86;197 4156C5
+Shades of Brown
 RosyBrown 188;143;143 BC8F8F
 RosyBrown1 255;193;193 FFC1C1
 RosyBrown2 238;180;180 EEB4B4
@@ -296,6 +298,7 @@ Semi-Sweet Chocolate 107;66;38 6B4226
 Sienna 142;107;35 8E6B23
 Tan 219;147;112 DB9370
 Very Dark Brown 92;64;51 5C4033
+Shades of Green
 Dark Green 47;79;47 2F4F2F
 DarkGreen 0;100;0 006400
 dark green copper 74;118;110 4A766E
@@ -371,6 +374,7 @@ Spring Green 0;255;127 00FF7F
 Free Speech Green 9;249;17 09F911
 Free Speech
 Aquamarine 2;157;116 029D74
+Shades of Orange
 DarkOrange 255;140;0 FF8C00
 DarkOrange1 255;127;0 FF7F00
 DarkOrange2 238;118;0 EE7600
@@ -422,6 +426,7 @@ sienna4 139;71;38 8B4726
 Mandarian Orange 142;35;35 8E2323
 Orange 255;127;0 FF7F00
 Orange Red 255;36;0 FF2400
+Shades of Red
 DeepPink 255;20;147 FF1493
 DeepPink1 255;20;147 FF1493
 DeepPink2 238;18;137 EE1289
@@ -495,6 +500,7 @@ Scarlet 140;23;23 8C1717
 Spicy Pink 255;28;174 FF1CAE
 Free Speech Magenta 227;91;216 E35BD8
 Free Speech Red 192;0;0 C00000
+Shades of Violet
 DarkOrchid 153;50;204 9932CC
 DarkOrchid1 191;62;255 BF3EFF
 DarkOrchid2 178;58;238 B23AEE
@@ -565,6 +571,7 @@ Thistle 216;191;216 D8BFD8
 Turquoise 173;234;234 ADEAEA
 Violet 79;47;79 4F2F4F
 Violet Red 204;50;153 CC3299
+Shades of White
 AntiqueWhite 250;235;215 FAEBD7
 AntiqueWhite1 255;239;219 FFEFDB
 AntiqueWhite2 238;223;204 EEDFCC
@@ -604,6 +611,7 @@ wheat4 139;126;102 8B7E66
 white 255;255;255 FFFFFF fff
 Quartz 217;217;243 D9D9F3
 Wheat 216;216;191 D8D8BF
+Shades of Yellow
 BlanchedAlmond 255;235;205 FFEBCD
 DarkGoldenrod 184;134;11 B8860B
 DarkGoldenrod1 255;185;15 FFB90F

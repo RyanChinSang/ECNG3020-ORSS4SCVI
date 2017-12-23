@@ -1,8 +1,5 @@
 import pyttsx3
-'''
-Documentation: http://pyttsx3.readthedocs.io/en/latest/engine.html
-Reference: 
-'''
+import multiprocessing
 
 
 def on_start(name):
@@ -11,20 +8,18 @@ def on_start(name):
     :param name: (string) Name associated with the utterance.
     :return:
     """
-    if name:
-        print('Starting:', name)
+    pass
 
 
 def on_word(name, location, length):
     """
     Fired when the engine begins speaking a word.
     :param name: (string) Name associated with the utterance.
-    :param location: (integer) The position of the first character of the word in the whole string.
-    :param length: (integer) The total number of characters in the word.
+    :param location: (integer) T
+    :param length: (integer) 
     :return:
     """
-    if name:
-        print('Saying:', gstrg[location:(location + length)])
+    pass
 
 
 def on_end(name, completed):
@@ -34,9 +29,8 @@ def on_end(name, completed):
     :param completed: (bool)  True if the utterance was output in its entirety or not.
     :return:
     """
-    if name:
-        print('Finishing:', name, completed)
     t2s_engine.endLoop()
+    return
 
 
 def on_error(name, exception):
@@ -46,7 +40,6 @@ def on_error(name, exception):
     :param exception: (Exception) Exception that was raised.
     :return:
     """
-    print('aa')
     if exception is RuntimeError:
         pass
     else:
@@ -59,19 +52,16 @@ t2s_engine.connect('started-utterance', on_start)
 t2s_engine.connect('started-word', on_word)
 t2s_engine.connect('finished-utterance', on_end)
 t2s_engine.connect('error', on_error)
-gstrg = ''
 
 
-def t2s_say(strg, name=None):
-    global gstrg
-    if name:
-        gstrg = strg
-    t2s_engine.say(text=strg, name=name)
-    try:
-        t2s_engine.startLoop()
-    except RuntimeError:
-        pass
+def t2s_start(word):
+    t2s_engine.say(word)
+    t2s_engine.startLoop()
+
+
+def t2s_say(word):
+    multiprocessing.Process(target=t2s_start, args=(word,)).start()
 
 
 if __name__ == '__main__':
-    t2s_say('Hello there, you!', 'hi')
+    t2s_say('hi')

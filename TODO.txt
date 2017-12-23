@@ -8,9 +8,11 @@ All dates are in the format: dd.mm.yyyy
 
 Ranks:
 HIGH  : If accomplished would contribute very meaningfully to the project's core progress with regards to the required
-        deliverables of ECNG3020. These are usually challenging to accomplish.
+        deliverables of ECNG3020. These are usually challenging to accomplish. These may denote tasks that are of most
+        importance to the project.
 MEDIUM: If accomplished would make the program more informative and user-friendly.
 LOW   : If accomplished would add more meaning to either, or, both of programming documentation and/or presentation.
+        These may also denote tasks that would accomplish functionality which are not of high importance to the project.
 
 References:
 Template: TODO[Priority_Info]#01.a.i.A.I.01.a.i.A.I.01... etc.NB[#-#]
@@ -27,17 +29,26 @@ Tags:
 (DDL: [version]): Desired DeadLine for a feature/function to be (done) by [version] release.
 (REF: [reference path]): REFerence to some linked issue that can be found at [reference path]
 
+Task Tags:
+[\]   : The task/objective was half complete of a whole - There are other part(s) to do to completion
+[~~]  : The functionality is approximately as initially planned (stable and sufficient)
+[x'd] : Developing this functionality proves to be unnecessary.
+[+1'd]: The functionality turned out better than initially planned.
+
+Notes:
+1. For some reason, calling plt.close('all') does one loop to the lines above it
+
 
 [HIGH]------------------------------------------------------------------------------------------------------------------
 3. Catch-up and organize all documentation:
    a. Project Report
-   b. Reading:
+   b. Reading: (WIP) (RES)
       i. Scholarly research Papers
      ii. Articles
     iii. Online documentation
      vi. Online discussions; Journals, Forums, Blogs
    c. VERSION.txt
-      i. Log all history
+      i. Log all history (WIP)
      ii. See TODO[LOW]#2
 4. Speed Up operation of ORSS4SCVI (DDL: v1.0a) - 30fps operation, minimum
 5. Port app to Android App (Mobile) with full functionality (BIG) (RES) (DDL: v1.0a)
@@ -56,26 +67,24 @@ Tags:
    a. pyttsx3 vs. gTTS
    b. Google TensorFLow (See TODO[High]#6.c.)
    c. SpeechRecognition (Online vs. Offline)
-8. Implement OCR features (DDL: v1.5a)
+8. Implement OCR features (DDL: v1.5a) (MDN)
 9. Add interpretation of number of detected objects (DDL: 0.4a) (WIP)
    b. Say number of name of object
       i. [t2s] "crowded" if there are more than 3* persons detected in frame
          NB1: the actual number of this needs revision/calibration
          NB2: the frequency at which the t2s action is taken needs revision/calibration
-10. Add voice-outs (t2s) for controls explanation (DDL: 0.3a) (WIP)
-    a. For Online operation (what to say)
-    b. For Offline operation (what to press)
-    NB1: The sentences/voice-out-wording would need to be calibrated/refined based on user feedback
-
+11. Improve object detection by name: (DDL: v0.4a)
+    a. Bias the output so that the highest confidence object that is closest to the centre of the camera is output
+12. Improve algorithm for color detection: (BIG) (DDL: v0.4a)
+    a. Make the ROI the centre of the bounding box of the object detected by the functionality described in
+       TODO[High]#11
+    b. Perform background subtraction (RES) (MDN)
+    c. Find contour of object
+    d. Get the average color of all pixels inside that contour in c.
+13. Add tones to the core functionality of the system as a method of feedback to the user (BIG) (RES) (DDL: v0.5) (MDN)
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 3. Find accurate ways to generalize constants' values (WIP)
-7. Add interrupt functionality for new t2s instances - prevents delay in tts
-11. Add more structure to colors_dict (DDL: v0.3a)
-    a. Group colors by "likeness"
-       i. take note from the source's grouping (REF: https://web.njit.edu/~kevin/rgb.pdf)
-      ii. concatenate all the varying names (eg. gold 1, and, gold 2) into one color whose key (RGB) value is the
-          average of the concatenated values
 12. Create a Loading Screen (DDL: v1.0a) (RES) (WIP)
 14.
 
@@ -89,7 +98,7 @@ Tags:
    b. Rotate
    c. Flipping
    d. Cropping
-6.
+6. Add more details to color detection (see TODO[High]#12)
 
 
 __________________________________________________[COMPLETED]___________________________________________________________
@@ -123,9 +132,17 @@ All completed task\objectives must work as desired to qualify in this section.
          NB1: This got x'd - making this into a class proved to be unnecessary
 
 [#9a - 17.12.2017]
-9. Add interpretation of number of detected objects (DDL: 0.4a)
+9. Add interpretation of number of detected objects (DDL: v0.4a)
    a. Say the name of the object
 
+[#10b - 22.12.2017]
+10. Add voice-outs (t2s) for controls explanation (DDL: v0.3a) (WIP)
+    b. For Offline operation (what to press)
+
+[#10a - 23.12.2017]
+10. Add voice-outs (t2s) for controls explanation (DDL: v0.3a) (WIP)
+    a. For Online operation (what to say)
+    NB1: The sentences/voice-out-wording would need to be calibrated/refined based on user feedback
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 [#(5, 6) - 15.11.2017]
@@ -153,11 +170,23 @@ REF: https://github.com/matplotlib/matplotlib/issues/8736
     NB1: This is actually "treating the symptoms" instead of "finding the cure"
 
 [#9 - 17.12.2017]
-9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a) (WIP) (RES)
+9. Add more colours to 'colours_dict' in ColourID (DDL: v0.3a)
 
 [#13 - 20.12.2017]
 13. Add more structure to controls print-out (DDL: v0.3a)
     a. Group the custom controls separately from default controls
+
+[#11[~~] - 22.12.2017]
+11. Add more structure to colors_dict (DDL: v0.3a)
+    a. Group colors by "likeness"
+       i. take note from the source's grouping (REF: https://web.njit.edu/~kevin/rgb.pdf)
+      ii. concatenate all the varying names (eg. gold 1, and, gold 2) into one color whose key (RGB) value is the
+          average of the concatenated values
+    NB1: This got ~~ - it's functionality is approximately as initially planned (stable and sufficient)
+    NB2: This categorizes the colors based on index, instead of changing the core structure of the colors_dict
+
+[#7 - 23.12.2017]
+7. Add interrupt functionality for new t2s instances - prevents delay in t2s
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
 [#3 - 15.11.2017]

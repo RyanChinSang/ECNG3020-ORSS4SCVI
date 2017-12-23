@@ -1,4 +1,5 @@
 import string
+import collections
 
 
 def getdupes(L):
@@ -38,10 +39,30 @@ def remove_dupes(l):
 
 lnames = []
 lrgb = []
-file = open('colors.txt').read().split('\n')
+# file = open('colors.txt').read().split('\n')
+file = open('cols2.txt').read().split('\n')
+# print(file[0])
+line_num = 0
+b = False
+b_names = []
+b_cols = []
 
 for line in file:
     sline = line.split()
+    if b is True:
+        b = False
+        if len(sline) > 3:
+            if sline[1][0] in list(string.ascii_letters):
+                sline = [sline[0]+sline[1], sline[2], sline[3]]
+        name = ''.join(' ' + x if x.isupper() else x for x in sline[0]).strip()
+        h = name.rstrip('0123456789')
+        name = name[0:len(h)] + ' ' + name[len(h):]
+        b_cols.append(name.rstrip())
+    if sline[0] == 'Shades':
+        b = True
+        # print(line.find('f'))
+        b_names.append(line[line.find('of') + 3:])
+    line_num += 1
     if len(sline) >= 3:
         if len(sline) == 5:
             if sline[0][0] in list(string.ascii_letters):
@@ -58,7 +79,8 @@ for line in file:
                     else:
                         sline = [sline[0]+sline[1], sline[2], sline[3]]
                 elif '[' in sline[1][0]:
-                    sline = [sline[0], sline[2], sline[3]]
+                    # sline = [sline[0], sline[2], sline[3]]
+                    sline = []
                 elif len(sline[3]) == 3:
                     sline = [sline[0], sline[1], sline[2]]
         if len(sline) == 3:
@@ -72,10 +94,13 @@ for line in file:
 
 
 remove_dupes(lrgb[::-1])
-col_dict = dict(zip(lrgb, lnames))
-
-print(lnames)
-print(lrgb)
-print(len(lnames))
-print(len(lrgb))
-print(col_dict)
+col_dict = collections.OrderedDict(zip(lrgb, lnames))
+# col_dict = dict(zip(lrgb, lnames))
+#
+# print(lnames)
+# print(lrgb)
+# print(len(lnames))
+# print(len(lrgb))
+# print(col_dict)
+print(b_names)
+print(b_cols)

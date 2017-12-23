@@ -17,7 +17,7 @@ from BETA.dev03.models.ColorID import color_id
 from BETA.dev03.models.ObjectID import object_id
 from BETA.dev03.models.Txt2Spch import t2s_say
 from BETA.dev03.models.Spch2Txt import internet, google_sr
-from BETA.dev03.models.Controls import fetch_ctrls, print_ctrls
+from BETA.dev03.models.Controls import fetch_ctrls, print_ctrls, get_t2s_ctrls, get_t2s_ctrls2
 from BETA.dev03.models.VideoStream import VideoStream
 
 
@@ -37,64 +37,82 @@ def state_upd(mode=None):
     if state is True:
         print('[ONLINE] Using online mode.')
         if mode:
-            threading.Thread(target=t2s_say, args=('Welcome. You are online.', q), daemon=True).start()
+            threading.Thread(target=t2s_say, args=('Welcome. You are online.',), daemon=True).start()
+            # multiprocessing.Process(target=t2s_say, args=('Welcome. You are online.',)).start()
         else:
-            threading.Thread(target=t2s_say, args=('You are now online.', q), daemon=True).start()
+            threading.Thread(target=t2s_say, args=('You are now online.',), daemon=True).start()
+            # multiprocessing.Process(target=t2s_say, args=('You are now online.',)).start()
     else:
         print('[OFFLINE] Using offline mode.')
         if mode:
-            threading.Thread(target=t2s_say, args=('Welcome. You are offline.', q), daemon=True).start()
+            threading.Thread(target=t2s_say, args=('Welcome. You are offline.',), daemon=True).start()
+            # multiprocessing.Process(target=t2s_say, args=('Welcome. You are offline.',)).start()
         else:
-            threading.Thread(target=t2s_say, args=('You are now offline.', q), daemon=True).start()
+            threading.Thread(target=t2s_say, args=('You are now offline.',), daemon=True).start()
+            # multiprocessing.Process(target=t2s_say, args=('You are now offline.',)).start()
 
 
 def close_handler(event):
-    cap.release()
     plt.close('all')
+    cap.release()
+    threading.Thread(target=t2s_say, args=('Good bye.',), daemon=True).start()
 
 
 def active_handler(event):
-    global s2t_string
+    global s2t_string, state
     if 'color' in str(s2t_string):
         # threading.Thread(target=color_id, args=(
         # cap.read()[1][int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)], size, q),
         #                  daemon=True).start()
-        threading.Thread(target=color_id, args=(cap.read()[1], size, q), daemon=True).start()
-        threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
+        threading.Thread(target=color_id, args=(q, cap.read()[1], size), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
         s2t_string = None
-    elif 'quit' in str(s2t_string):
+    elif 'quit' in str(s2t_string) or 'exit' in str(s2t_string):
         close_handler(event)
     elif 'object' in str(s2t_string):
         if 'specific' in str(s2t_string):
             threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0], 1), daemon=True).start()
         else:
             threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0]), daemon=True).start()
-        threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
         s2t_string = None
+    elif 'what' in str(s2t_string):
+        if 'controls' in str(s2t_string):
+            s2t_string = None
+            threading.Thread(target=get_t2s_ctrls2, args=(q,), daemon=True).start()
+            threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
+    elif 'offline' in str(s2t_string):
+        s2t_string = None
+        state = False
+        print('[OFFLINE] Using offline mode.')
+        threading.Thread(target=t2s_say, args=('You are now offline.',), daemon=True).start()
     else:
         threading.Thread(target=s2t_listen, args=(), daemon=True).start()
 
 
 def key_press_handler(event):
     global state, sslist
-    # if event.key == controls_dict.get('check online')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('check online', q), daemon=True).start()):
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'quit'), daemon=True).start()):
+        close_handler(event)
+    # if event.key == controls_dict.get('online check')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'check online'), daemon=True).start()):
         threading.Thread(target=state_upd, args=(), daemon=True).start()
     # if event.key == controls_dict.get('color check')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('color check', q), daemon=True).start()):
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'color check'), daemon=True).start()):
         # threading.Thread(target=color_id, args=(
         # cap.read()[1][int(vis_util.top):int(vis_util.bottom), int(vis_util.left):int(vis_util.right)], size, q),
         #                  daemon=True).start()
-        threading.Thread(target=color_id, args=(cap.read()[1], size, q), daemon=True).start()
-        threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
-    # if event.key == controls_dict.get('force offline')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('force offline', q), daemon=True).start()):
+        threading.Thread(target=color_id, args=(q, cap.read()[1], size, 1), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
+    # if event.key == controls_dict.get('offline force')[0]:
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'force offline'), daemon=True).start()):
         state = False
         # print('Offline! Using offline mode')
         print('[OFFLINE] Using offline mode.')
-        threading.Thread(target=t2s_say, args=('You are now offline.', q), daemon=True).start()
+        threading.Thread(target=t2s_say, args=('You are now offline.',), daemon=True).start()
+        # multiprocessing.Process(target=t2s_say, args=('You are now offline.',)).start()
     # if event.key == controls_dict.get('save')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('save', q), daemon=True).start()):
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'save'), daemon=True).start()):
         extra_width = plt.get_current_fig_manager().window.width() - plt.get_current_fig_manager().canvas.width()
         extra_height = plt.get_current_fig_manager().window.height() - plt.get_current_fig_manager().canvas.height()
         plt.get_current_fig_manager().window.resize(frame_width + extra_width, frame_height + extra_height)
@@ -108,13 +126,19 @@ def key_press_handler(event):
         except IndexError:
             print('NOTICE: No file was saved.')
     # if event.key == controls_dict.get('object check')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('object check', q), daemon=True).start()):
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'object check'), daemon=True).start()):
         threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0]), daemon=True).start()
-        threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
     # if event.key == controls_dict.get('object check2')[0]:
-    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=('object check 2', q), daemon=True).start()):
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'object check 2'), daemon=True).start()):
         threading.Thread(target=object_id, args=(q, scores[0][0], classes[0][0], 1), daemon=True).start()
-        threading.Thread(target=t2s_say, args=(q.get(), q), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'say controls'), daemon=True).start()):
+        threading.Thread(target=get_t2s_ctrls, args=(q, 'CUSTOM'), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
+    if event.key in q.get(threading.Thread(target=fetch_ctrls, args=(q, 'say controls 2'), daemon=True).start()):
+        threading.Thread(target=get_t2s_ctrls, args=(q, 'DEFAULT'), daemon=True).start()
+        threading.Thread(target=t2s_say, args=(q.get(),), daemon=True).start()
 
 
 def configure(frame, dir, version):
@@ -162,8 +186,8 @@ def configure(frame, dir, version):
 #     'home': ['h', 'r', 'home'],
 #     'object check': ['n'],
 #     'object check2': ['ctrl+n'],
-#     'force offline': ['x'],  #
-#     'check online': ['z'],  #
+#     'offline force': ['x'],  #
+#     'online check': ['z'],  #
 #     'pan': ['p'],
 #     'quit': ['ctrl+w', 'cmd+w', 'q'],
 #     'quit all': ['W', 'cmd+W', 'Q'],
@@ -195,10 +219,10 @@ def configure(frame, dir, version):
 #     },
 #     "custom": {
 #         'color check': ['m'],
-#         'force offline': ['x'],
+#         'offline force': ['x'],
 #         'object check': ['n'],
 #         'object check2': ['ctrl+n'],
-#         'check online': ['z']
+#         'online check': ['z']
 #     },
 #     "header": {
 #         "Command": ['Button']
