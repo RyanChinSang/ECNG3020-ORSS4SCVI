@@ -363,3 +363,27 @@ tldr;
 4. Created new ordered dictionary sctrls_dict to hold all the keywords for spoken commands
 5. Added ability to have different contols readout (t2s) when asking for the controls via voice [Online] or via key
    press or button [Offline].
+(25.12.2017)------------------------------------------------------------------------------------------------------------
+tldr;
+1. Merged 'get_t2s_ctrls2()' into 'get_t2s_ctrls()'
+   a. get_t2s_ctrls2()'s functionality is accessed if no header is specified - as the spoken/online controls only have
+      one category
+2. Added fetching the controls keywords in fetch_ctrls() for the online controls
+   a. This is accessed via setting the 'mode' parameter (that is not None)
+3. Added keyword 'help'
+4. Capitalizing on #3's change, added a message indicating to say 'help' on program start-up
+5. Implemented stronger interpretation of keywords for commands when in Online mode (spoken commands)
+   a. Checks the whole s2t string and matches it against keywords in sctrls_dict through the fetch_ctrls() function
+      modified in #2
+   b. If all keywords are in the string, the function is accessed - the "all()" operator
+      i. This is used for most functions/commands
+   c. If any keywords are in the string, the function is accessed - the "any()" operator
+      i. This is used specifically for the quit
+   d. Special keywords, such as 'specific' and 'help' are not listed as these are extra functionality
+   NB1: This module may undergo revision to be more efficient, effective, and simpler
+6. Added model "SimInput.py"1 to simulate a keypress to access the 'save' feature from matplotlib
+   REF: https://stackoverflow.com/questions/11906925/python-simulate-keydown
+7. Removed IndexError message from screenshot ('save') functionality as it was returning the message in wrong instances
+
+________________________________________________________________________________________________________________________
+Stable v0.3a release (25.12.2017)

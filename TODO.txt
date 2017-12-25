@@ -68,7 +68,7 @@ Notes:
    b. Google TensorFLow (See TODO[High]#6.c.)
    c. SpeechRecognition (Online vs. Offline)
 8. Implement OCR features (DDL: v1.5a) (MDN)
-9. Add interpretation of number of detected objects (DDL: 0.4a) (WIP)
+9. Add interpretation of number of detected objects (DDL: v0.4a) (WIP)
    b. Say number of name of object
       i. [t2s] "crowded" if there are more than 3* persons detected in frame
          NB1: the actual number of this needs revision/calibration
@@ -82,11 +82,18 @@ Notes:
     c. Find contour of object
     d. Get the average color of all pixels inside that contour in c.
 13. Add tones to the core functionality of the system as a method of feedback to the user (BIG) (RES) (DDL: v0.5) (MDN)
+    NB1: Tones are completely audial
+14. Revise how keywords are handled to access functionality in the Controls.py model (DDL: v1.0a)
+15. Automate saving (RES) (DDL: v0.4a)
+    a. Bypass the Save dialog
+16. Add automated online/offline checking
 
 [MEDIUM]----------------------------------------------------------------------------------------------------------------
 3. Find accurate ways to generalize constants' values (WIP)
 12. Create a Loading Screen (DDL: v1.0a) (RES) (WIP)
-14.
+14. Fix IndexError message from screenshot ('save') functionality
+    a. returns the message in wrong instances
+15.
 
 
 [LOW]-------------------------------------------------------------------------------------------------------------------
@@ -99,6 +106,7 @@ Notes:
    c. Flipping
    d. Cropping
 6. Add more details to color detection (see TODO[High]#12)
+7.
 
 
 __________________________________________________[COMPLETED]___________________________________________________________

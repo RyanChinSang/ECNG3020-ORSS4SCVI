@@ -12,7 +12,7 @@ ctrls_dict = collections.OrderedDict([
     }),
     ('[DEFAULT CONTROLS]', {
         'all axes': ['a'],
-        'back': ['left', 'c', 'backspaces'],
+        'back': ['left', 'c', 'backspace'],
         'forward': ['right', 'v'],
         'fullscreen': ['f', 'ctrl+f'],
         'grid': ['g'],
@@ -29,6 +29,7 @@ ctrls_dict = collections.OrderedDict([
     ('[CUSTOM CONTROLS]', {
         'check online': ['z'],
         'color check': ['m'],
+        'color check 2': ['ctrl+m'],
         'force offline': ['x'],
         'object check': ['n'],
         'object check 2': ['ctrl+n'],
@@ -39,7 +40,7 @@ ctrls_dict = collections.OrderedDict([
 
 sctrls_dict = collections.OrderedDict([
     # Spoken [Online] commands
-    # (cmd, {decription: [keywords]})
+    # (command, {decription: [keywords]})
     ('color check', {'check the color': ['what', 'color']}),
     ('force offline', {'activate offline mode': ['go', 'offline']}),
     ('object check', {'say the name of the object': ['what', 'object']}),
@@ -79,48 +80,48 @@ def print_ctrls(header=None):
                 print(cmd.ljust(maxkey, ' ') + ': ' + str(ctrls_dict.get(hdr).get(cmd)).strip('[]').replace('\'', ''))
 
 
-def fetch_ctrls(q, command):
-    for hdr in ctrls_dict:
-        if ctrls_dict.get(hdr).get(command):
-            return q.put(ctrls_dict.get(hdr).get(command))
+def fetch_ctrls(q, command, mode=None):
+    if mode is None:
+        for hdr in ctrls_dict:
+            if ctrls_dict.get(hdr).get(command):
+                return q.put(ctrls_dict.get(hdr).get(command))
+    else:
+        return q.put(list(sctrls_dict.get(command).values())[0])
 
 
 def get_t2s_ctrls(q, header=None):
     fstrg = ''
-    for hdr in ctrls_dict.keys():
-        if header in hdr:
-            commands = list(ctrls_dict.get(hdr).keys())
-            # print(commands)
-            for cmd in commands:
-                ctrls = ctrls_dict.get(hdr).get(cmd)
-                strg = 'To \'' + cmd + '\', press \''
-                for x in range(len(ctrls)):
-                    strg += ctrls[x]
-                    if x < len(ctrls) - 1:
-                        strg += '\', or \''
+    if header:
+        for hdr in ctrls_dict.keys():
+            if header in hdr:
+                commands = list(ctrls_dict.get(hdr).keys())
+                for cmd in commands:
+                    ctrls = ctrls_dict.get(hdr).get(cmd)
+                    strg = 'To \'' + cmd + '\', press \''
+                    for x in range(len(ctrls)):
+                        strg += ctrls[x]
+                        if x < len(ctrls) - 1:
+                            strg += '\', or \''
+                        else:
+                            strg += '\'. '
+                    fstrg += strg
+    else:
+        fstrg = ''
+        for cmd in sctrls_dict:
+            strg = 'To \''
+            description = list(sctrls_dict.get(cmd).keys())[0]
+            keywords = list(sctrls_dict.get(cmd).values())[0]
+            strg += description + '\', say \''
+            for x in range(len(keywords)):
+                strg += keywords[x]
+                if x < len(keywords) - 1:
+                    if keywords[x] in ['quit', 'controls']:
+                        strg += '\', or, \''
                     else:
-                        strg += '\'. '
-                fstrg += strg
-    return q.put(fstrg)
-
-
-def get_t2s_ctrls2(q):
-    fstrg = ''
-    for cmd in sctrls_dict:
-        strg = 'To \''
-        description = list(sctrls_dict.get(cmd).keys())[0]
-        keywords = list(sctrls_dict.get(cmd).values())[0]
-        strg += description + '\', say \''
-        for x in range(len(keywords)):
-            strg += keywords[x]
-            if x < len(keywords) - 1:
-                if keywords[x] == 'quit':
-                    strg += '\', or, \''
+                        strg += ' '
                 else:
-                    strg += '\' '
-            else:
-                strg += '\'. '
-        fstrg += strg
+                    strg += '\'. '
+            fstrg += strg
     return q.put(fstrg)
 
 
@@ -130,13 +131,14 @@ if __name__ == '__main__':
     q = queue.Queue()
     cmd = 'what color is this'
     # print_ctrls('[DEFAULT CONTROLS]')
-    # print(q.get(get_t2s_ctrls(q, header='CUSTOM')))
-    # print(q.get(threading.Thread(target=fetch_ctrls, args=('quit', q), daemon=True).start()))
-    # print(q.get(threading.Thread(target=get_t2s_ctrls, args=(q, 'DEFAULT'), daemon=True).start()))
+    # print(q.get(threading.Thread(target=fetch_ctrls, args=(q, 'quit'), daemon=True).start()))
+    # print(q.get(threading.Thread(target=fetch_ctrls, args=(q, 'quit', 1), daemon=True).start()))
+    # print(q.get(threading.Thread(target=get_t2s_ctrls, args=(q, 'CUSTOM'), daemon=True).start()))
+    # print(q.get(threading.Thread(target=get_t2s_ctrls, args=(q,), daemon=True).start()))
     # print(q.get(get_t2s_ctrls2(q)))
-    print(q.get(fetch_ctrls(q, 'color check')))
-
-    if all(word in cmd for word in q.get(fetch_ctrls(q, 'color check'))):
+    # print(list(sctrls_dict.get('color check').values())[0])
+    if all(word in cmd for word in
+           q.get(threading.Thread(target=fetch_ctrls, args=(q, 'color check', 1), daemon=True).start())):
         print('ye')
     else:
         print('no')
