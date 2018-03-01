@@ -1,0 +1,124 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\ryanc\\AndroidStudioProjects\\ORSS4SCVI\\gradleBuild\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "2,8,14,20,26,32,38,39,43,47,48,52,56,57,61,66,71,76,78,80,81,82,136,191",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,474,899,1327,1753,2180,2605,2694,2940,3189,3290,3542,3797,3900,4153,4561,4981,5403,5510,5639,5710,5793,9818,13986",
+                        "endLines": "7,13,19,25,31,37,38,42,46,47,51,55,56,60,65,70,75,77,79,80,81,135,190,191",
+                        "endColumns": "12,12,12,12,12,12,88,12,12,100,12,12,102,12,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "469,894,1322,1748,2175,2600,2689,2935,3184,3285,3537,3792,3895,4148,4556,4976,5398,5505,5634,5705,5788,9813,13981,14072"
+                    },
+                    "to": {
+                        "startLines": "5,11,17,23,29,35,41,42,46,50,51,55,59,60,64,69,74,79,81,93,94,95,149,204",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "190,609,1034,1462,1888,2315,2740,2829,3075,3324,3425,3677,3932,4035,4288,4696,5116,5538,5645,6367,6438,6521,10546,14714",
+                        "endLines": "10,16,22,28,34,40,41,45,49,50,54,58,59,63,68,73,78,80,82,93,94,148,203,204",
+                        "endColumns": "12,12,12,12,12,12,88,12,12,100,12,12,102,12,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "604,1029,1457,1883,2310,2735,2824,3070,3319,3420,3672,3927,4030,4283,4691,5111,5533,5640,5769,6433,6516,10541,14709,14800"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ryanc\\AndroidStudioProjects\\ORSS4SCVI\\res\\values-v11\\styles.xml",
+                    "from": {
+                        "startLines": "7,19,11",
+                        "startColumns": "2,2,2",
+                        "startOffsets": "210,767,344",
+                        "endLines": "9,21,17",
+                        "endColumns": "10,10,10",
+                        "endOffsets": "340,931,763"
+                    },
+                    "to": {
+                        "startLines": "2,83,86",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,5774,5943",
+                        "endLines": "4,85,92",
+                        "endColumns": "10,10,10",
+                        "endOffsets": "185,5938,6362"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ryanc\\AndroidStudioProjects\\ORSS4SCVI\\res\\values-v11\\template-styles.xml",
+                    "from": {
+                        "startLines": "19",
+                        "startColumns": "4",
+                        "startOffsets": "663",
+                        "endColumns": "65",
+                        "endOffsets": "724"
+                    },
+                    "to": {
+                        "startLines": "205",
+                        "startColumns": "4",
+                        "startOffsets": "14805",
+                        "endColumns": "64",
+                        "endOffsets": "14865"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\values-v11\\styles.xml",
+                    "from": {
+                        "startLines": "7,19,11",
+                        "startColumns": "2,2,2",
+                        "startOffsets": "210,767,344",
+                        "endLines": "9,21,17",
+                        "endColumns": "10,10,10",
+                        "endOffsets": "340,931,763"
+                    },
+                    "to": {
+                        "startLines": "2,83,86",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,5774,5943",
+                        "endLines": "4,85,92",
+                        "endColumns": "10,10,10",
+                        "endOffsets": "185,5938,6362"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "2,8,14,20,26,32,38,39,43,47,48,52,56,57,61,66,71,76,78,80,81,82,136,191",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,474,899,1327,1753,2180,2605,2694,2940,3189,3290,3542,3797,3900,4153,4561,4981,5403,5510,5639,5710,5793,9818,13986",
+                        "endLines": "7,13,19,25,31,37,38,42,46,47,51,55,56,60,65,70,75,77,79,80,81,135,190,191",
+                        "endColumns": "12,12,12,12,12,12,88,12,12,100,12,12,102,12,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "469,894,1322,1748,2175,2600,2689,2935,3184,3285,3537,3792,3895,4148,4556,4976,5398,5505,5634,5705,5788,9813,13981,14072"
+                    },
+                    "to": {
+                        "startLines": "5,11,17,23,29,35,41,42,46,50,51,55,59,60,64,69,74,79,81,93,94,95,149,204",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "190,609,1034,1462,1888,2315,2740,2829,3075,3324,3425,3677,3932,4035,4288,4696,5116,5538,5645,6367,6438,6521,10546,14714",
+                        "endLines": "10,16,22,28,34,40,41,45,49,50,54,58,59,63,68,73,78,80,82,93,94,148,203,204",
+                        "endColumns": "12,12,12,12,12,12,88,12,12,100,12,12,102,12,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "604,1029,1457,1883,2310,2735,2824,3070,3319,3420,3672,3927,4030,4283,4691,5111,5533,5640,5769,6433,6516,10541,14709,14800"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\values-v11\\template-styles.xml",
+                    "from": {
+                        "startLines": "19",
+                        "startColumns": "4",
+                        "startOffsets": "663",
+                        "endColumns": "65",
+                        "endOffsets": "724"
+                    },
+                    "to": {
+                        "startLines": "205",
+                        "startColumns": "4",
+                        "startOffsets": "14805",
+                        "endColumns": "64",
+                        "endOffsets": "14865"
+                    }
+                }
+            ]
+        }
+    ]
+}
