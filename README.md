@@ -5,11 +5,12 @@ Object Recognition Sub-System for the Smart Cane for the Visually Impaired.
 
 Real-time object detection and classification\identification, color recognition, operation using voiced input (or manual keyed-input) and audio output.
 
+## Notice
+### Now on Android!
+Most of the developmental effort has been transferred to this prototype's implementation on the Android platform. You can see it [here](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/Android/ORSS4SCVI).
+
 ## Latest release - v0.3a
 ### What's new?
-//[ADD LINK]
-Most of the developmental effort has been transferred to this prototype's implementation on the Android platform. You can see it [here]().
-
 For full reference, see [VERSION.txt](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/blob/master/VERSION.txt).
 * Much more interactive; automated (spoken) messages:
     * Welcome and Goodbye messages.
