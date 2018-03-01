@@ -1,0 +1,3 @@
+C:/Users/ryanc/PycharmProjects/ECNG3020-ORSS4SCVI/Android/ORSS4SCVI/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/tensorflow_demo.dir
+C:/Users/ryanc/PycharmProjects/ECNG3020-ORSS4SCVI/Android/ORSS4SCVI/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/ryanc/PycharmProjects/ECNG3020-ORSS4SCVI/Android/ORSS4SCVI/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
