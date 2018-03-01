@@ -7,6 +7,9 @@ Real-time object detection and classification\identification, color recognition,
 
 ## Latest release - v0.3a
 ### What's new?
+//[ADD LINK]
+Most of the developmental effort has been transferred to this prototype's implementation on the Android platform. You can see it [here]().
+
 For full reference, see [VERSION.txt](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/blob/master/VERSION.txt).
 * Much more interactive; automated (spoken) messages:
     * Welcome and Goodbye messages.
@@ -37,7 +40,6 @@ An application prototype built using [Python 3.6.3 64-bit](https://www.python.or
 
 ### Coming Soon:
 * Optical Character Recognition.
-* To an Android smart-phone near you! (Work In Progress)
 
 ## Introduction
 This is the official Git-repository for all code related to the [ECNG3020 Project](http://ecng.sta.uwi.edu/ecng/ecng3020/) titled above for completion to the [BSc. Electrical and Computer Engineering](https://sta.uwi.edu/eng/electrical/) at the [University of the West Indies, St. Augustine](http://sta.uwi.edu/).
