@@ -1,0 +1,48 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+
+        <SwitchPreference
+            android:id="@+id/set_tts"
+            android:defaultValue="true"
+            android:key="switch_set_tts"
+            android:title="@string/pref_title_set_tts"
+            android:visibility="visible" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Colour Detection">
+
+        <SwitchPreference
+            android:id="@+id/set_cols"
+            android:defaultValue="true"
+            android:key="switch_set_cols"
+            android:title="@string/pref_title_set_cols"
+            android:visibility="visible" />
+
+        <EditTextPreference
+            android:id="@+id/edittext"
+            android:defaultValue="@string/pref_default_ROIsize"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:key="text_ROIsize"
+            android:maxLines="1"
+            android:numeric="integer"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_define_ROIsize" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Object Detection">
+
+        <SwitchPreference
+            android:id="@+id/set_confstr"
+            android:defaultValue="true"
+            android:key="switch_set_confstr"
+            android:title="@string/pref_title_set_confstr"
+            android:visibility="visible" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
