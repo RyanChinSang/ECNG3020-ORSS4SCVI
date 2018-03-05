@@ -28,7 +28,7 @@ Real-time object detection and classification\identification, color recognition,
     * Minor code cleanup and reformatting.
 
 
-[image2](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-1.png?raw=true)[image3](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-2.png?raw=true)
+![image2](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-1.png?raw=true)![image3](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-2.png?raw=true)
 
 ### Features:
 * Real-time Object Identification using [Google's TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection).
