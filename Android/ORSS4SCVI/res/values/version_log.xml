@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+" = &quot;
+& = &amp;
+' = &apos;
+< = &lt;
+> = &gt;
+
+&quot;<strong>WORD</strong>&quot;
+
+<font color="#0FF000">[Added]</font>    : New features or additions
+<font color="#000FF0">[Changed]</font>  : Modification to a working component
+<font color="#FF0000">[Fixed]</font>    : Modification to a non-working component so that it works
+<font color="#F000FF">[Misc]</font>
+
+-->
+
+<resources><string name="version_log"><![CDATA[
+
+<h1><strong>v1.2a-050318</strong></h1>
+<p>════════════════════════════</p>
+<h4><strong>Speech to Text service:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Configurable Voice Recognition service in &quot;<strong>Settings</strong>&quot;.</li>
+<li><font color="#000FF0">[Changed]</font> Increased period to 6 seconds for inputting voiced commands.</li>
+<li><font color="#FF0000">[Fixed]</font><font color="#000FF0">[Changed]</font> The Continuous Voice Recognition keyphrase is now &quot;<strong><em>ok assistant</em></strong>&quot; since the old keyword incurred false positives too frequently.</li>
+<li><font color="#FF0000">[Fixed]</font> Voice Recognition timeout mechanism can now be properly interrupted.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Color Detection system:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Gaussian filtering to the Color Detection algorithm (via OpenCV).</li>
+<li><font color="#0FF000">[Added]</font> Configurable filtering in &quot;<strong>Settings</strong>&quot;.</li>
+<li><font color="#000FF0">[Changed]</font> Color Detection algorithm uses OpenCV&apos;s &quot;<strong>Mat</strong>&quot; class to process pixel color.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong><font color="#000FF0">[Changed]</font> Re-vamped About section:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> New Version Changelog pop-up dialog on pressing the &quot;<strong>Version</strong>&quot; text in the &quot;<strong>About</strong>&quot; section.</li>
+<li><font color="#0FF000">[Added]</font> New License pop-up dialog on pressing the &quot;<strong>License</strong>&quot; text in the &quot;<strong>About</strong>&quot; section.</li>
+<li><font color="#000FF0">[Changed]</font><font color="#F000FF">[Misc]</font> Layout overhaul - much more graphical; Image(s) and formatted text.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Other:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Full integration of the <a href="https://github.com/opencv/opencv/wiki/ChangeLog#version341">OpenCV-3.4.1 Android library</a>.</li>
+<li><font color="#FF0000">[Fixed]</font><font color="#0FF000">[Added]</font> Android&apos;s &quot;<strong>Back</strong>&quot; key/button will now always incur a prompt on the main screen to exit the App.</li>
+<li><font color="#F000FF">[Misc]</font> Official <a href="https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/Android/ORSS4SCVI">Git-Hub release for the Android App</a>.</li>
+<li><font color="#F000FF">[Misc]</font> Polished Git-READMEs for both branches of this project.</li>
+<li><font color="#F000FF">[Misc]</font> Minor code cleanup and reformatting.</li>
+</ul>
+<p>&nbsp;</p>
+<p>════════════════════════════</p>
+<h1><strong>v1.1a-280218</strong></h1>
+<p>════════════════════════════</p>
+<h4><strong><font color="#0FF000">[Added]</font> Speech to Text service:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Continuous Voice Recognition keyword &quot;<strong><em>assistant</em></strong>&quot; (via PocketSphinx) to access Voice Recognition commands.</li>
+<li><font color="#0FF000">[Added]</font> &quot;On-demand&quot; Voice Recognition service by pressing the new microphone icon.</li>
+<li><font color="#0FF000">[Added]</font> Basic Voice Recognition commands &quot;<strong>what..object</strong>&quot; and &quot;<strong>what..color</strong>&quot; (via DroidSpeech).</li>
+<li><font color="#0FF000">[Added]</font> Timeout of 5 seconds when Voice Recognition service is activated.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Object Detection system:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Configurable outputting confidence values in &quot;<strong>Settings</strong>&quot;.</li>
+<li><font color="#0FF000">[Added]</font> Basic sentence construction for Text to Speech output.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Other:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Full integration of the <a href="https://github.com/cmusphinx/pocketsphinx-android">PocketSphinx Android library</a>.</li>
+<li><font color="#0FF000">[Added]</font> Full integration of the <a href="https://github.com/vikramezhil/DroidSpeech">DroidSpeech library</a>.</li>
+<li><font color="#F000FF">[Misc]</font> Renamed project from &quot;<strong>android</strong>&quot; to &quot;<strong>ORSS4SCVI</strong>&quot;.</li>
+<li><font color="#F000FF">[Misc]</font> Removed more unnecessary files from the project.</li>
+<li><font color="#F000FF">[Misc]</font> Removed unnecessary downloads at compiletime.</li>
+<li><font color="#F000FF">[Misc]</font> Code cleanup; removed unnecessary variables.</li>
+</ul>
+<p>&nbsp;</p>
+<p>════════════════════════════</p>
+<h1><strong>v1.0a-250218 (initial release)</strong></h1>
+<p>════════════════════════════</p>
+<h4><strong>Object Detection system:</strong></h4>
+<ul>
+<li>.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Color Detection system:</strong></h4>
+<ul>
+<li>.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Text to Speech service:</strong></h4>
+<ul>
+<li>.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Other:</strong></h4>
+<ul>
+<li>.</li>
+</ul>
+<p>&nbsp;</p>
+
+]]></string></resources>

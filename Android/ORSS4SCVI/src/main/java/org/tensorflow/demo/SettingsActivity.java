@@ -2,6 +2,7 @@
  * TODO (cleanup [HIGH]): Cleanup assets folder
  * TODO ([HIGH]): Create a centralized versioning method
  * TODO ([MED]): Add another view that interacts with pref_about "version" block to get a (formatted) changelog
+ *
  */
 
 
@@ -34,8 +35,9 @@ import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
-    static String head;
     static int pos;
+    static String head;
+    public static Context contextOfApplication;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,6 +56,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             case R.id.home_menu_frag:
                 head = null;
                 Intent intent_home = new Intent(SettingsActivity.this, DetectorActivity.class);
+                intent_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent_home.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent_home);
                 return true;
             case android.R.id.home:
@@ -86,6 +90,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     shutDown();
                 }
             },500);
+        } else if (header.id == R.id.about) {
+            head = null;
         }
     }
 
@@ -186,6 +192,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        contextOfApplication = getApplicationContext();
         setupActionBar();
     }
 
@@ -210,6 +217,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 super.onBackPressed();
             } else {
                 Intent intent_home = new Intent(SettingsActivity.this, DetectorActivity.class);
+                intent_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent_home.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent_home);
             }
             return true;
@@ -240,8 +249,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || SettingsPreferenceFragment.class.getName().equals(fragmentName)
-                || AboutPreferenceFragment.class.getName().equals(fragmentName);
+                || SettingsPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
@@ -261,6 +269,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("text_ROIsize"));
+            bindPreferenceSummaryToValue(findPreference("list_set_stt"));
 
             Preference preference_sw_tts = findPreference("switch_set_tts");
             preference_sw_tts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -268,11 +277,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 public boolean onPreferenceClick(Preference preference) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_tts", false);
-                    System.out.println(isChecked);
                     if (isChecked) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech ON", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech enabled", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech OFF", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech disabled", Toast.LENGTH_LONG).show();
                     }
                     return false;
                 }
@@ -284,11 +292,25 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 public boolean onPreferenceClick(Preference preference) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_cols", false);
-                    System.out.println(isChecked);
                     if (isChecked) {
                         Toast.makeText(getActivity().getApplicationContext(), "Using advanced colors", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(), "Using simple colors", Toast.LENGTH_LONG).show();
+                    }
+                    return false;
+                }
+            });
+
+            Preference preference_sw_filt = findPreference("switch_set_filt");
+            preference_sw_filt.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    boolean isChecked = sharedPref.getBoolean("switch_set_filt", false);
+                    if (isChecked) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Filtering enabled", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(), "Filtering disabled", Toast.LENGTH_LONG).show();
                     }
                     return false;
                 }
@@ -315,7 +337,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 public boolean onPreferenceClick(Preference preference) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_confstr", false);
-                    System.out.println(isChecked);
                     if (isChecked) {
                         Toast.makeText(getActivity().getApplicationContext(), "Using confidence values", Toast.LENGTH_LONG).show();
                     } else {
@@ -335,32 +356,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
             android.preference.SwitchPreference preference_sw_confstr = (android.preference.SwitchPreference) findPreference("switch_set_confstr");
             preference_sw_confstr.setSummaryOff("Outputting object name only");
-            preference_sw_confstr.setSummaryOn("Outputting confidence value(s)");
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-    /**
-     * This fragment shows ABOUT (NOTIFICATION) preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class AboutPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_about);
-            setHasOptionsMenu(true);
-            setMenuVisibility(true);
+            preference_sw_confstr.setSummaryOn("Outputting name and confidence");
         }
 
         @Override

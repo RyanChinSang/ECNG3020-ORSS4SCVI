@@ -10,9 +10,13 @@
         android:title="@string/pref_header_settings" />
 
     <header
-        android:fragment="org.tensorflow.demo.SettingsActivity$AboutPreferenceFragment"
+        android:id="@+id/about"
         android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/pref_header_about" />
+        android:title="@string/pref_header_about">
+        <intent android:targetPackage="org.tensorflow.demo"
+                android:targetClass="org.tensorflow.demo.AboutActivity"/>
+    </header>
+
 
     <header
         android:id="@+id/exit_menu"

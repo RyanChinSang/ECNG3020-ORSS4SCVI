@@ -1,1 +1,2 @@
 include ':DroidSpeech', ':pocketsphinx-android-5prealpha-release'
+include ':openCVLibrary341'

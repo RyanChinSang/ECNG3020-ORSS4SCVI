@@ -1,10 +1,11 @@
-/*
+/* DA
  * TODO (fix [HIGH]): App does not return to camera view when the app is reopened from minimized after the settings menu is accessed
  */
 
 package org.tensorflow.demo;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
@@ -35,6 +37,10 @@ import com.vikramezhil.droidspeech.DroidSpeech;
 import com.vikramezhil.droidspeech.OnDSListener;
 import com.vikramezhil.droidspeech.OnDSPermissionsListener;
 
+import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.tensorflow.demo.OverlayView.DrawCallback;
 import org.tensorflow.demo.env.BorderedText;
 import org.tensorflow.demo.env.ImageUtils;
@@ -99,7 +105,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     /*[MY VARIABLES]*******************************************************************************/
     private static final String KWS_SEARCH = "wakeup";
-    private static final String KEYPHRASE = "assistant";
+    private static final String KEYPHRASE = "ok assistant";
     ArrayList<String> detectedObjects = new ArrayList<String>();
     private static final Map<String, String> cols_dict = new LinkedHashMap<String, String>() {{
         put("84;84;84", "Grey");
@@ -732,11 +738,22 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         put("234;234;174", "Medium Goldenrod");
         put("153;204;50", "Yellow Green");
     }};
-    private ImageView start, stop;
+    private ImageView start;
+    private ImageView stop;
     private DroidSpeech droidSpeech;
     SharedPreferences sharedPreferences;
     private SpeechRecognizer recognizer;
     public static Context contextOfApplication;
+    Handler handler;
+
+    /*[OPENCV]*************************************************************************************/
+    static {
+        if (!OpenCVLoader.initDebug()) {
+            Log.e("OpenCVLoader.CA", "OpenCV Initialization failed.");
+        } else {
+            Log.e("OpenCVLoader.CA", "OpenCV Initialization success.");
+        }
+    }
 
 
     /*[DEFAULT TF]*********************************************************************************/
@@ -946,25 +963,40 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        handler = new Handler();
+        stop = findViewById(R.id.stop);
+        start = findViewById(R.id.start);
         contextOfApplication = getApplicationContext();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         sayTTS("");
 
-        runRecognizerSetup();
-
-        droidSpeech = new DroidSpeech(this, getFragmentManager());
-        droidSpeech.setOnDroidSpeechListener(this);
-        droidSpeech.setContinuousSpeechRecognition(false);
-        droidSpeech.setOfflineSpeechRecognition(true);
-        start = findViewById(R.id.start);
-        start.setOnClickListener(this);
-        stop = findViewById(R.id.stop);
-        stop.setOnClickListener(this);
+        if (sharedPreferences.getString("list_set_stt","").equals("2")) {
+            runRecognizerSetup();
+            runDSpeechSetup();
+        } else if (sharedPreferences.getString("list_set_stt","").equals("1")) {
+            runDSpeechSetup();
+        } else {
+            start.setEnabled(false);
+            start.setVisibility(View.INVISIBLE);
+            stop.setEnabled(false);
+            stop.setVisibility(View.INVISIBLE);
+        }
     }
 
 
     /*[DROID SPEECH]*******************************************************************************/
+    public void runDSpeechSetup() {
+        droidSpeech = new DroidSpeech(this, getFragmentManager());
+        droidSpeech.setOnDroidSpeechListener(this);
+        droidSpeech.setContinuousSpeechRecognition(false);
+        droidSpeech.setOfflineSpeechRecognition(true);
+        start.setEnabled(true);
+        stop.setEnabled(true);
+        start.setOnClickListener(this);
+        stop.setOnClickListener(this);
+    }
+
     @Override
     public void onDroidSpeechSupportedLanguages(String currentSpeechLanguage, List<String> supportedSpeechLanguages) {
         if (supportedSpeechLanguages.contains("en-US")) {
@@ -1072,42 +1104,51 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.start:
-                recognizer.cancel();
-                // Starting droid speech
-                droidSpeech.startDroidSpeechRecognition();
-                // Setting the view visibilities when droid speech is running
-                start.setVisibility(View.GONE);
-                stop.setVisibility(View.VISIBLE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        droidSpeech.closeDroidSpeechOperations();
-                        stop.setVisibility(View.GONE);
-                        start.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+
+        if (!sharedPreferences.getString("list_set_stt","").equals("0")) {
+            switch (view.getId()) {
+                case R.id.start:
+                    if (sharedPreferences.getString("list_set_stt","").equals("2")) {
+                        recognizer.cancel();
+                    }
+                    // Starting droid speech
+                    droidSpeech.startDroidSpeechRecognition();
+                    // Setting the view visibilities when droid speech is running
+                    start.setVisibility(View.GONE);
+                    stop.setVisibility(View.VISIBLE);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            droidSpeech.closeDroidSpeechOperations();
+                            stop.setVisibility(View.GONE);
+                            start.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (sharedPreferences.getString("list_set_stt","").equals("2")) {
+                                        recognizer.startListening(KWS_SEARCH);
+                                    }
+                                }
+                            },250);
+                        }
+                    }, 6000);
+                    break;
+                case R.id.stop:
+                    // Closing droid speech
+                    handler.removeCallbacksAndMessages(null);
+                    droidSpeech.closeDroidSpeechOperations();
+                    stop.setVisibility(View.GONE);
+                    start.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (sharedPreferences.getString("list_set_stt","").equals("2")) {
                                 recognizer.startListening(KWS_SEARCH);
                             }
-                        },250);
-                    }
-                }, 5000);
-                break;
-            case R.id.stop:
-                // Closing droid speech
-                droidSpeech.closeDroidSpeechOperations();
-                stop.setVisibility(View.GONE);
-                start.setVisibility(View.VISIBLE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        recognizer.startListening(KWS_SEARCH);
-                    }
-                },250);
-
-                break;
+                        }
+                    },250);
+                    break;
+            }
         }
     }
 
@@ -1150,13 +1191,15 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         @Override
         public void onPartialResult(Hypothesis hypothesis) {
-            if (hypothesis == null){
+//            Log.e("onPartialResult.DA", "HERE");
+            if (hypothesis == null) {
                 return;
-            }
-            String text = hypothesis.getHypstr();
-            if (text.equals(KEYPHRASE)) {
-                recognizer.cancel();
-                start.performClick();
+            } else {
+                String text = hypothesis.getHypstr();
+                if (text.equals(KEYPHRASE)) {
+                    recognizer.cancel();
+                    start.performClick();
+                }
             }
         }
 
@@ -1166,6 +1209,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         @Override
         public void onBeginningOfSpeech() {
+//            Log.e("onBeginningOfSpeech", "HERE");
         }
 
         @Override
@@ -1218,16 +1262,40 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if(isTaskRoot()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            DetectorActivity.super.onBackPressed();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
+
     public void shutDown() {
         stopService(new Intent(DetectorActivity.this, ttsService.class));
         droidSpeech.closeDroidSpeechOperations();
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(1);
-    }
-
-    public static Context getContextOfApplication() {
-        return contextOfApplication;
     }
 
     public void sayTTS(String string) {
@@ -1244,6 +1312,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
         boolean advanced_mode = sharedPreferences.getBoolean("switch_set_cols", false);
+        boolean filtering_mode = sharedPreferences.getBoolean("switch_set_filt", false);
         int size = Integer.parseInt(sharedPreferences.getString("text_ROIsize", "50"));
         int color_index = 0;
         int frame_w = rgbFrameBitmap.getWidth();
@@ -1263,24 +1332,28 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         double b_avg;
         double g_avg;
         double dif_val;
+        String closest_color;
         double r_sum = 0;
         double g_sum = 0;
         double b_sum = 0;
         double min_dif = 16581375;
-        String closest_color;
+        Mat frame_clone = new Mat();
 
+        Utils.bitmapToMat(rgbFrameBitmap, frame_clone);
+        if (filtering_mode) {
+            Imgproc.GaussianBlur(frame_clone, frame_clone, new org.opencv.core.Size(5, 5), 1, 1);
+        }
         for (int x = width_p1; x <= width_p2; x++) {
             for (int y = height_p1; y <= height_p2; y++) {
-                int rgbPixel = rgbFrameBitmap.getPixel(x, y);
-                r_sum += Color.red(rgbPixel);
-                g_sum += Color.green(rgbPixel);
-                b_sum += Color.blue(rgbPixel);
+                double[] rgb = frame_clone.get(y, x);
+                r_sum += rgb[0];
+                g_sum += rgb[1];
+                b_sum += rgb[2];
             }
         }
         r_avg = r_sum / ((size * 2) * (size * 2));
         g_avg = g_sum / ((size * 2) * (size * 2));
         b_avg = b_sum / ((size * 2) * (size * 2));
-
         for (int i = 0; i < cols_dict.size(); i++) {
             String[] par_col = cols_dict.keySet().toArray()[i].toString().split(";");
             dif_val = ((Integer.parseInt(par_col[0]) - r_avg) * (Integer.parseInt(par_col[0]) - r_avg) +
@@ -1322,9 +1395,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 closest_color = "error";
             }
         }
-
         Toast.makeText(getApplicationContext(), closest_color, Toast.LENGTH_LONG).show();
-
         sayTTS(closest_color);
     }
 
@@ -1340,7 +1411,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         String objectList = Arrays.toString(detectedObjects.toArray());
 
         if (!objectList.equals("[]")) {
-
             objectList = objectList.replace("[", "").replace("]", "");
             String[] objects = objectList.split(",");
 
@@ -1363,7 +1433,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             } else {
                 sentence += "a " + objectName;
             }
-
             Toast.makeText(getApplicationContext(), sentence, Toast.LENGTH_LONG).show();
         }
         sayTTS(sentence);

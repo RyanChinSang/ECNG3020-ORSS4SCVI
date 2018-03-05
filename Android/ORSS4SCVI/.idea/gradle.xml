@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/DroidSpeech" />
+            <option value="$PROJECT_DIR$/openCVLibrary341" />
             <option value="$PROJECT_DIR$/pocketsphinx-android-5prealpha-release" />
           </set>
         </option>

@@ -8,10 +8,25 @@
             android:key="switch_set_tts"
             android:title="@string/pref_title_set_tts"
             android:visibility="visible" />
+        <ListPreference
+            android:entries="@array/pref_settings_stt_list_titles"
+            android:entryValues="@array/pref_settings_stt_list_values"
+            android:key="list_set_stt"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_settings_stt_list_title" />
 
     </PreferenceCategory>
 
+
     <PreferenceCategory android:title="Colour Detection">
+
+        <SwitchPreference
+            android:id="@+id/set_filt"
+            android:defaultValue="true"
+            android:key="switch_set_filt"
+            android:title="@string/pref_title_set_filt"
+            android:visibility="visible" />
 
         <SwitchPreference
             android:id="@+id/set_cols"

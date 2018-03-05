@@ -84,8 +84,9 @@ android {
             applicationId = 'org.tensorflow.demo'
             minSdkVersion 21
             targetSdkVersion 26
-            versionCode 2
-            versionName "v1.1a-280218"
+            // [VERSION]
+            versionCode 3
+            versionName "v1.2a-050318"
             ndk {
                 abiFilters "${cpuType}"
             }
@@ -131,7 +132,7 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = [project.ext.ASSET_DIR]
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['libs', 'src/main/jniLibs']
             jni.srcDirs = ['src/main/jni', 'src/main/jni/']
         }
 
@@ -183,7 +184,7 @@ apply from: "download-models.gradle"
 
 dependencies {
     if (nativeBuildSystem == 'cmake' || nativeBuildSystem == 'none') {
-        compile 'org.tensorflow:tensorflow-android:+'
+        implementation 'org.tensorflow:tensorflow-android:+'
     }
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -196,6 +197,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':DroidSpeech')
     implementation project(':pocketsphinx-android-5prealpha-release')
+    implementation project(':openCVLibrary341')
 }
 
 ant.importBuild 'assets.xml'

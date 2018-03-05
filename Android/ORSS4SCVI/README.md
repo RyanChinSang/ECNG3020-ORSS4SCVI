@@ -7,18 +7,35 @@ Real-time object detection and classification\identification, color recognition,
 
 ## Latest release - v1.2a
 ### What's new?
-//[ADD CHANGES]
+* Speech to Text service:
+    * Configurable Voice Recognition service in "Settings".
+    * Increased period to 6 seconds for inputting voiced commands.
+    * The Continuous Voice Recognition keyphrase is now "ok assistant" since the old keyword incurred false positives too frequently.
+    * Voice Recognition timeout mechanism can now be properly interrupted.
+* Color Detection system:
+    * Gaussian filtering to the Color Detection algorithm (via OpenCV).
+    * Configurable filtering in "Settings".
+    * Color Detection algorithm uses OpenCV's "Mat" class to process pixel color.
+* Re-vamped About section:
+    * New Version Changelog pop-up dialog on pressing the "Version" text in the "About" section.
+    * New License pop-up dialog on pressing the "License" text in the "About" section.
+    * Layout overhaul - much more graphical; Image(s) and formatted text.
+* Other:
+    * Full integration of the OpenCV-3.4.1 Android library.
+    * Android's "Back" key/button will now always incur a prompt on the main screen to exit the App.
+    * Official Git-Hub release for the Android App.
+    * Polished Git-READMEs for both branches of this project.
+    * Minor code cleanup and reformatting.
 
 
-//[ADD IMAGE HERE]
+[image2](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-1.png?raw=true)[image3](https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/History/AndroidScreenshots/v1.2a/ORSS4SCVI_v1.2a-2.png?raw=true)
 
 ### Features:
-//[ADD DETAILED FEATURES AND LINKS]
 * Real-time Object Identification using [Google's TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection).
 * Colour Identification based on [RGB to Color Name Reference by Kevin J. Walsh](https://web.njit.edu/~kevin/rgb.pdf).
-* Speech Recognition using .
-* Text-to-Speech using .
-* Image processing using .
+* Speech Recognition using [DroidSpeech](https://github.com/vikramezhil/DroidSpeech) and [PocketSphinx](https://github.com/cmusphinx/pocketsphinx-android).
+* Text-to-Speech using [Android's Text to Speech Synthesizer](https://developer.android.com/reference/android/speech/tts/TextToSpeech.html).
+* Image processing using [OpenCV-Android](https://github.com/opencv/opencv/wiki/ChangeLog#version341).
 
 ### Coming Soon:
 * Optical Character Recognition.

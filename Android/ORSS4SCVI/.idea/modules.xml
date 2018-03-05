@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DroidSpeech/DroidSpeech.iml" filepath="$PROJECT_DIR$/DroidSpeech/DroidSpeech.iml" />
       <module fileurl="file://$PROJECT_DIR$/ORSS4SCVI.iml" filepath="$PROJECT_DIR$/ORSS4SCVI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openCVLibrary341/openCVLibrary341.iml" filepath="$PROJECT_DIR$/openCVLibrary341/openCVLibrary341.iml" />
       <module fileurl="file://$PROJECT_DIR$/pocketsphinx-android-5prealpha-release/pocketsphinx-android-5prealpha-release.iml" filepath="$PROJECT_DIR$/pocketsphinx-android-5prealpha-release/pocketsphinx-android-5prealpha-release.iml" />
     </modules>
   </component>
