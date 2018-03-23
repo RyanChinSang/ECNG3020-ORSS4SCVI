@@ -12,101 +12,92 @@
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
-
- TODO (fix [MED]): Cleanup unused
 -->
 <resources>
-    <string name="description_info">Info</string>
-    <string name="request_permission">This sample needs camera permission.</string>
+    <!-- TF -->
     <string name="camera_error">This device doesn\'t support Camera2 API.</string>
 
+    <!---->
     <string name="button1">Color</string>
     <string name="button2">Object</string>
-    <string name="settings_menu">Settings</string>
-    <string name="exit_menu">Exit</string>
-    <string name="home_menu">Home</string>
-    <string name="help_menu">Help</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_exit">Exit</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_about">About</string>
 
 
-    <!-- [BEGIN] Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_settings">Settings</string>
-    <string name="pref_title_set_tts">Use text to speech</string>
-    <string name="pref_title_set_cols">Use advanced colours</string>
-    <string name="pref_title_set_filt">Use filtering</string>
-    <string name="pref_title_set_confstr">Output confidence</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-    <string name="pref_title_define_ROIsize">Set ROI size</string>
+    <!-- Settings -->
+    <string name="pref_default_username"></string>
+    <string name="pref_default_bsceen">true</string>
+    <string name="pref_default_set_filt">true</string>
+    <string name="pref_default_set_cols">false</string>
     <string name="pref_default_ROIsize">50</string>
-    <string name="pref_settings_stt_list_title">Use speech to text</string>
-    <string-array name="pref_settings_stt_list_titles">
-        <item>Disable</item>
-        <item>On-demand only</item>
-        <item>Continuous and on-demand</item>
+    <string name="pref_default_set_confstr">false</string>
+    <string name="pref_default_set_stt">@string/pref_title_set_stt_list_values_1</string>
+    <string name="pref_default_set_tts">true</string>
+    <string name="pref_default_reset">0</string>
+    <string name="pref_title_username">Username</string>
+    <string name="pref_title_username_hint">Enter username here</string>
+    <string name="pref_title_bscreen">Black-screen operation</string>
+    <string name="pref_title_set_filt">Use filtering</string>
+    <string name="pref_title_set_cols">Use advanced colors</string>
+    <string name="pref_title_ROIsize">Set ROI size</string>
+    <string name="pref_title_set_confstr">Output confidence</string>
+    <string name="pref_title_set_stt">Speech to text mode</string>
+    <string name="pref_title_set_tts">Use text to speech</string>
+    <string name="pref_title_set_stt_list_titles_0">Disable</string>
+    <string name="pref_title_set_stt_list_titles_1">On-demand only</string>
+    <string name="pref_title_set_stt_list_titles_2">Continuous and on-demand</string>
+    <string name="pref_title_set_stt_list_values_0">0</string>
+    <string name="pref_title_set_stt_list_values_1">1</string>
+    <string name="pref_title_set_stt_list_values_2">2</string>
+    <string-array name="pref_title_set_stt_list_titles">
+        <item>@string/pref_title_set_stt_list_titles_0</item>
+        <item>@string/pref_title_set_stt_list_titles_1</item>
+        <item>@string/pref_title_set_stt_list_titles_2</item>
     </string-array>
-    <string-array name="pref_settings_stt_list_values">
+    <string-array name="pref_title_set_stt_list_values">
+        <item>@string/pref_title_set_stt_list_values_0</item>
+        <item>@string/pref_title_set_stt_list_values_1</item>
+        <item>@string/pref_title_set_stt_list_values_2</item>
+    </string-array>
+    <string name="pref_title_reset">Reset ORSS4SCVI</string>
+    <string-array name="pref_title_reset_list_titles">
+        <item>Restart App and reset all configurations</item>
+    </string-array>
+    <string-array name="pref_title_reset_list_values">
         <item>0</item>
-        <item>1</item>
-        <item>2</item>
     </string-array>
 
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_exit">Exit</string>
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-    <string-array name="multi_select_list_preference_default_value" />
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-    <string name="pref_title_exit">Exit</string>
+    <!-- Setup -->
+    <string name="setup_skip_title">Skip Setup?</string>
+    <string name="setup_skip_message">Are you sure that you want to skip the initial setup? Not all changes will be saved.</string>
+    <string name="setup_intro_title">Welcome to ORSS4SCVI</string>
+    <string name="setup_pg1_title">General Settings</string>
+    <string name="setup_pg1_description">Help us understand your general preferences.</string>
+    <string name="setup_pg2_title">Color Detection</string>
+    <string name="setup_pg2_description">Help us understand your color detection preferences.</string>
+    <string name="setup_pg3_title">Object Detection</string>
+    <string name="setup_pg3_description">Help us understand your object detection preferences.</string>
+    <string name="setup_pg4_title">Speech to Text</string>
+    <string name="setup_pg4_description">Help us understand your speech to text preferences.</string>
+    <string name="setup_pg5_title">Text to Speech</string>
+    <string name="setup_pg5_description">Help us understand your text to speech preferences.</string>
+    <string name="setup_outro_title">Congratulations! All done!</string>
 
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_about">About</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-    <string name="pref_title_vibrate">Vibrate</string>
-    <!--[VERSION]-->
-    <string name="pref_about_version">v1.2a-050318</string>
-    <string name="pref_about_author">Ryan Kevin Chin Sang</string>
-
+    <!-- About -->
     <string name="pref_about_title">Object Recognition Subsytem for the Smart Cane for the Visually Impaired</string>
     <string name="pref_about_createdby_title">Created by</string>
     <string name="pref_about_version_title">Version</string>
     <string name="pref_about_license_title">License</string>
     <string name="pref_about_license_title2">GNU General Public License v3 (GPL-3)</string>
-
-
-    <!-- [END] Strings related to Settings -->
     <string name="license">You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) GPL-licensed code must also be made available under the GPL along with build &amp; install instructions.</string>
 
+    <!--[VERSION]-->
+    <string name="pref_about_version">v1.3a-230318</string>
+    <string name="pref_about_author">Ryan Kevin Chin Sang</string>
 
+    <!-- Exit -->
+    <string name="pref_header_exit">Exit</string>
 
 </resources>

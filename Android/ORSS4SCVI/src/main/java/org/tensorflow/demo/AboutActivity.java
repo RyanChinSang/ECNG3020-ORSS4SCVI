@@ -2,8 +2,11 @@ package org.tensorflow.demo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +20,15 @@ import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         setupActionBar();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sharedPreferences.edit().putBoolean("uniqueInstance", false).apply();
     }
 
     @Override
@@ -72,9 +79,11 @@ public class AboutActivity extends AppCompatActivity {
     public void getLicense(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         String formattedText = getString(R.string.gnu_license);
-        alertDialog.setTitle("GNU General Public License v3");
-        alertDialog.setMessage(formattedText);
+        Spanned GNULicence = Html.fromHtml(formattedText);
+        alertDialog.setTitle("GNU General Public License");
+        alertDialog.setMessage(GNULicence);
         alertDialog.show();
+        ((TextView)alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
         alertDialog.getWindow().setLayout((int)(getScreenWidth(this)*1.), (int)(getScreenHeight(this)*.8));
     }
 
@@ -88,5 +97,13 @@ public class AboutActivity extends AppCompatActivity {
         Point size = new Point();
         activity.getWindowManager().getDefaultDisplay().getSize(size);
         return size.y;
+    }
+
+    public void openHome(View view) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse("https://github.com/RyanChinSang/ECNG3020-ORSS4SCVI/tree/master/Android/ORSS4SCVI"));
+        startActivity(intent);
     }
 }

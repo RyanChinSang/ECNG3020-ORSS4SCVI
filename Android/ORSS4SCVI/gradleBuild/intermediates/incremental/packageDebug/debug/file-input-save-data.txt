@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Mar 05 07:14:38 BOT 2018
+#Fri Mar 23 08:36:01 BOT 2018
 5.base=C\:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\assets\\debug
 42.base=C\:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\assets\\debug
 22.path=sync/assets.lst

@@ -19,6 +19,7 @@ package org.tensorflow.demo;
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -34,6 +35,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Size;
 import android.view.KeyEvent;
@@ -49,14 +51,10 @@ import java.nio.ByteBuffer;
 
 public abstract class CameraActivity extends AppCompatActivity implements OnImageAvailableListener, Camera.PreviewCallback, View.OnClickListener {
     private static final Logger LOGGER = new Logger();
-
     private static final int PERMISSIONS_REQUEST = 1;
-
     private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
     private static final String PERMISSION_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
     private boolean debug = false;
-
     private Handler handler;
     private HandlerThread handlerThread;
     private boolean useCamera2API;
@@ -64,10 +62,8 @@ public abstract class CameraActivity extends AppCompatActivity implements OnImag
     private byte[][] yuvBytes = new byte[3][];
     private int[] rgbBytes = null;
     private int yRowStride;
-
     protected int previewWidth = 0;
     protected int previewHeight = 0;
-
     private Runnable postInferenceCallback;
     private Runnable imageConverter;
 
@@ -264,6 +260,8 @@ public abstract class CameraActivity extends AppCompatActivity implements OnImag
     public synchronized void onDestroy() {
         LOGGER.d("onDestroy " + this);
         super.onDestroy();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sharedPreferences.edit().putBoolean("uniqueInstance", true).apply();
     }
 
     @Override
@@ -425,12 +423,12 @@ public abstract class CameraActivity extends AppCompatActivity implements OnImag
 
     @Override
     public boolean onKeyDown(final int keyCode, final KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            debug = !debug;
-            requestRender();
-            onSetDebug(debug);
-            return true;
-        }
+//        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+//            debug = !debug;
+//            requestRender();
+//            onSetDebug(debug);
+//            return true;
+//        }
         return super.onKeyDown(keyCode, event);
     }
 

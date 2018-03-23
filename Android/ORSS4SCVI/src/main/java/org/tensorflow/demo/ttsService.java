@@ -1,12 +1,12 @@
-/*
-*
-* */
-
 package org.tensorflow.demo;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.TextUtils;
@@ -19,6 +19,7 @@ public class ttsService extends Service implements OnInitListener {
 
     public static TextToSpeech tts;
     private String string;
+    SharedPreferences sharedPreferences;
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -27,8 +28,9 @@ public class ttsService extends Service implements OnInitListener {
 
     @Override
     public void onCreate() {
-        tts = new TextToSpeech(this, this);
         super.onCreate();
+        tts = new TextToSpeech(this, this);
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     }
 
     @Override
@@ -47,7 +49,9 @@ public class ttsService extends Service implements OnInitListener {
         if (!TextUtils.isEmpty(string)) {
             speak(string);
         } else {
-            // TODO (feature [MED]): Play an error tone here?
+            // Plays a tone for an empty string
+            ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+            toneG.startTone(ToneGenerator.TONE_CDMA_DIAL_TONE_LITE, 100);
             Log.e("onStart.tts", "String is empty: " + string);
         }
     }
@@ -65,6 +69,10 @@ public class ttsService extends Service implements OnInitListener {
     }
 
     private void speak(String line) {
-        tts.speak(line, TextToSpeech.QUEUE_FLUSH, null);
+        if (line.equals("Text to Speech disabled")) {
+            tts.speak(line, TextToSpeech.QUEUE_FLUSH, null);
+        } else if (sharedPreferences.getBoolean("switch_set_tts", true)) {
+            tts.speak(line, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 }

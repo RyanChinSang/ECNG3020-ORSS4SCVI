@@ -18,6 +18,6 @@
 <resources>
     <string name="app_name">ORSS4SCVI</string>
     <!--[VERSION]-->
-    <string name="title_activity_main">ORSS4SCVI [v1.2a]</string>
+    <string name="title_activity_main">ORSS4SCVI [v1.3a]</string>
     <string name="title_activity_menu">Main Menu</string>
 </resources>

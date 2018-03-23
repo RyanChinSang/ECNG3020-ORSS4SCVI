@@ -1,21 +1,11 @@
-/*
- * TODO (cleanup [HIGH]): Cleanup assets folder
- * TODO ([HIGH]): Create a centralized versioning method
- * TODO ([MED]): Add another view that interacts with pref_about "version" block to get a (formatted) changelog
- *
- */
-
-
 package org.tensorflow.demo;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,9 +14,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
 import android.support.v7.app.ActionBar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -35,10 +23,15 @@ import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
+    /*[MY VARIABLES]*******************************************************************************/
+    public static Activity activity = null;
     static int pos;
     static String head;
+    SharedPreferences sharedPreferences;
     public static Context contextOfApplication;
 
+
+    /*[DEFAULT FUNCTIONS]**************************************************************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (head != null) {
@@ -68,13 +61,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
-    public void shutDown() {
-        stopService(new Intent(SettingsActivity.this, ttsService.class));
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }
-
     @Override
     public void onHeaderClick(Header header, int position) {
         head = header.toString();
@@ -83,26 +69,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         super.onHeaderClick(header, position);
         if (header.id == R.id.exit_menu) {
             head = null;
-            sayTTS("good bye");
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    shutDown();
-                }
-            },500);
+            communicate("Good bye", getApplicationContext());
+            shutDown();
         } else if (header.id == R.id.about) {
             head = null;
-        }
-    }
-
-    public void sayTTS(String string) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        boolean tts_mode = sharedPreferences.getBoolean("switch_set_tts", false);
-        if (tts_mode) {
-            Intent i = new Intent(getApplicationContext(), ttsService.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  // TODO (cleanup): is this necessary?
-            i.putExtra("key", string);
-            startService(i);
         }
     }
 
@@ -114,47 +84,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
-
             if (preference instanceof ListPreference) {
                 // For list preferences, look up the correct display value in
                 // the preference's 'entries' list.
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-
                 // Set the summary to reflect the new value.
                 preference.setSummary(
                         index >= 0
                                 ? listPreference.getEntries()[index]
                                 : null);
-
-            } else if (preference instanceof RingtonePreference) {
-                // For ringtone preferences, look up the correct display value
-                // using RingtoneManager.
-                if (TextUtils.isEmpty(stringValue)) {
-                    // Empty values correspond to 'silent' (no ringtone).
-                    preference.setSummary(R.string.pref_ringtone_silent);
-
-                } else {
-                    Ringtone ringtone = RingtoneManager.getRingtone(
-                            preference.getContext(), Uri.parse(stringValue));
-
-                    if (ringtone == null) {
-                        // Clear the summary if there was a lookup error.
-                        preference.setSummary(null);
-                    } else {
-                        // Set the summary to reflect the new ringtone display
-                        // name.
-                        String name = ringtone.getTitle(preference.getContext());
-                        preference.setSummary(name);
-                    }
-                }
-
             } else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.
                 preference.setSummary(stringValue);
             }
-
             return true;
         }
     };
@@ -192,6 +136,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = this;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sharedPreferences.edit().putBoolean("uniqueInstance", false).apply();
         contextOfApplication = getApplicationContext();
         setupActionBar();
     }
@@ -219,6 +166,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 Intent intent_home = new Intent(SettingsActivity.this, DetectorActivity.class);
                 intent_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent_home.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                sharedPreferences.edit().putBoolean("uniqueInstance", false).apply();
                 startActivity(intent_home);
             }
             return true;
@@ -252,10 +200,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 || SettingsPreferenceFragment.class.getName().equals(fragmentName);
     }
 
-    /**
-     * This fragment shows SETTINGS (GENERAL) preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
+
+    /*[SETTINGS (GENERAL)]*************************************************************************/
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class SettingsPreferenceFragment extends PreferenceFragment {
         @Override
@@ -264,10 +210,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_settings);
             setHasOptionsMenu(true);
             setMenuVisibility(true);
+            final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
+            bindPreferenceSummaryToValue(findPreference("text_username"));
             bindPreferenceSummaryToValue(findPreference("text_ROIsize"));
             bindPreferenceSummaryToValue(findPreference("list_set_stt"));
 
@@ -275,12 +223,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             preference_sw_tts.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_tts", false);
                     if (isChecked) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech enabled", Toast.LENGTH_LONG).show();
+                        communicate("Text to Speech enabled", getActivity().getApplicationContext());
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Text to Speech disabled", Toast.LENGTH_LONG).show();
+                        communicate("Text to Speech disabled", getActivity().getApplicationContext());
                     }
                     return false;
                 }
@@ -290,12 +237,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             preference_sw_cols.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_cols", false);
                     if (isChecked) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Using advanced colors", Toast.LENGTH_LONG).show();
+                        communicate("Using advanced colors", getActivity().getApplicationContext());
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Using simple colors", Toast.LENGTH_LONG).show();
+                        communicate("Using simple colors", getActivity().getApplicationContext());
                     }
                     return false;
                 }
@@ -305,27 +251,28 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             preference_sw_filt.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_filt", false);
                     if (isChecked) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Filtering enabled", Toast.LENGTH_LONG).show();
+                        communicate("Filtering enabled", getActivity().getApplicationContext());
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Filtering disabled", Toast.LENGTH_LONG).show();
+                        communicate("Filtering disabled", getActivity().getApplicationContext());
                     }
                     return false;
                 }
             });
 
-            EditTextPreference editTextPreference = (EditTextPreference) findPreference("text_ROIsize");
-            editTextPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            EditTextPreference preference_tx_ROIsize = (EditTextPreference) findPreference("text_ROIsize");
+            preference_tx_ROIsize.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int val = Integer.parseInt(newValue.toString());
+                    // TODO (medium): get upperbound to this value: ((1/2 * horizontal resolution) + 1) how to get horiz. res?
                     if ((val > 0) && (val < 241)) {
                         preference.setSummary(""+val);
+                        communicate("R.O.I. size changed to "+val+" pixels", getActivity().getApplicationContext());
                         return true;
                     } else {
-                        Toast.makeText(getActivity(), "ERROR: Valid range is 1 to 240 only", Toast.LENGTH_LONG).show();
+                        communicate("ERROR. Valid range is 1 to 240 only", getActivity().getApplicationContext());
                         return false;
                     }
                 }
@@ -335,14 +282,73 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             preference_sw_confstr.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     boolean isChecked = sharedPref.getBoolean("switch_set_confstr", false);
                     if (isChecked) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Using confidence values", Toast.LENGTH_LONG).show();
+                        communicate("Using confidence values", getActivity().getApplicationContext());
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Using object name only", Toast.LENGTH_LONG).show();
+                        communicate("Using object name only", getActivity().getApplicationContext());
                     }
                     return false;
+                }
+            });
+
+            Preference preference_sw_bscreen= findPreference("switch_bscreen");
+            preference_sw_bscreen.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    boolean isChecked = sharedPref.getBoolean("switch_bscreen", false);
+                    if (isChecked) {
+                        communicate("Black-screen operation allowed", getActivity().getApplicationContext());
+                    } else {
+                        communicate("Black-screen operation dis-allowed", getActivity().getApplicationContext());
+                    }
+                    return false;
+                }
+            });
+
+            EditTextPreference preference_tx_username = (EditTextPreference) findPreference("text_username");
+            if (preference_tx_username.getText().equals(null) || preference_tx_username.getText().equals("")) {
+                preference_tx_username.setSummary(getString(R.string.pref_title_username_hint));
+            }
+            preference_tx_username.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    String username = newValue.toString();
+                    if (username.equals(null) || username.equals("")) {
+                        preference.setSummary(getString(R.string.pref_title_username_hint));
+                        communicate("Username is set to default", getActivity().getApplicationContext());
+                    } else {
+                        preference.setSummary(username);
+                        communicate("Username is set to "+username, getActivity().getApplicationContext());
+                    }
+                    return true;
+                }
+            });
+
+            ListPreference preference_li_reset = (ListPreference) findPreference("list_reset");
+            preference_li_reset.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    communicate("Reset successful", getActivity().getApplicationContext());
+                    sharedPref.edit().putBoolean("initRun", true).apply();
+                    sharedPref.edit().putString("text_username", getString(R.string.pref_default_username)).apply();
+                    sharedPref.edit().putBoolean("switch_bscreen", Boolean.valueOf(getString(R.string.pref_default_bsceen))).apply();
+                    sharedPref.edit().putBoolean("switch_set_filt", Boolean.valueOf(getString(R.string.pref_default_set_filt))).apply();
+                    sharedPref.edit().putBoolean("switch_set_cols", Boolean.valueOf(getString(R.string.pref_default_set_cols))).apply();
+                    sharedPref.edit().putString("text_ROIsize", getString(R.string.pref_default_ROIsize)).apply();
+                    sharedPref.edit().putBoolean("switch_set_confstr", Boolean.valueOf(getString(R.string.pref_default_set_confstr))).apply();
+                    sharedPref.edit().putBoolean("switch_set_tts", Boolean.valueOf(getString(R.string.pref_default_set_tts))).apply();
+                    sharedPref.edit().putString("list_set_stt", getString(R.string.pref_default_set_stt)).apply();
+                    sharedPref.edit().remove("list_set_stt_setup").apply();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(contextOfApplication, DetectorActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                        }
+                    },1125);
+                    return true;
                 }
             });
         }
@@ -367,6 +373,34 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
             }
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    /*[OTHER]**************************************************************************************/
+    public void shutDown() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sharedPreferences.edit().putBoolean("uniqueInstance", true).apply();
+                finishAffinity();
+            }
+        },600);
+    }
+
+    static public void sayTTS(String string, Context context) {
+        if (context != null) {
+            Intent i = new Intent(context, ttsService.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.putExtra("key", string);
+            context.startService(i);
+        }
+    }
+
+    static public void communicate(String message, Context context) {
+        if (context != null) {
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            sayTTS(message, context);
         }
     }
 }

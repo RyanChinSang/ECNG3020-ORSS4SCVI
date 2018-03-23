@@ -2,19 +2,20 @@
 
     <PreferenceCategory android:title="General">
 
+        <EditTextPreference
+            android:id="@+id/username"
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="text_username"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_username" />
         <SwitchPreference
-            android:id="@+id/set_tts"
-            android:defaultValue="true"
-            android:key="switch_set_tts"
-            android:title="@string/pref_title_set_tts"
+            android:id="@+id/bscreen"
+            android:key="switch_bscreen"
+            android:title="@string/pref_title_bscreen"
             android:visibility="visible" />
-        <ListPreference
-            android:entries="@array/pref_settings_stt_list_titles"
-            android:entryValues="@array/pref_settings_stt_list_values"
-            android:key="list_set_stt"
-            android:negativeButtonText="@null"
-            android:positiveButtonText="@null"
-            android:title="@string/pref_settings_stt_list_title" />
 
     </PreferenceCategory>
 
@@ -23,21 +24,18 @@
 
         <SwitchPreference
             android:id="@+id/set_filt"
-            android:defaultValue="true"
             android:key="switch_set_filt"
             android:title="@string/pref_title_set_filt"
             android:visibility="visible" />
 
         <SwitchPreference
             android:id="@+id/set_cols"
-            android:defaultValue="true"
             android:key="switch_set_cols"
             android:title="@string/pref_title_set_cols"
             android:visibility="visible" />
 
         <EditTextPreference
-            android:id="@+id/edittext"
-            android:defaultValue="@string/pref_default_ROIsize"
+            android:id="@+id/ROIsize"
             android:digits="0123456789"
             android:inputType="number"
             android:key="text_ROIsize"
@@ -45,7 +43,7 @@
             android:numeric="integer"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="@string/pref_title_define_ROIsize" />
+            android:title="@string/pref_title_ROIsize" />
 
     </PreferenceCategory>
 
@@ -53,11 +51,47 @@
 
         <SwitchPreference
             android:id="@+id/set_confstr"
-            android:defaultValue="true"
             android:key="switch_set_confstr"
             android:title="@string/pref_title_set_confstr"
             android:visibility="visible" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="Speech to Text">
+
+        <ListPreference
+            android:id="@+id/set_stt"
+            android:entries="@array/pref_title_set_stt_list_titles"
+            android:entryValues="@array/pref_title_set_stt_list_values"
+            android:key="list_set_stt"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_set_stt" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Text to Speech">
+
+        <SwitchPreference
+            android:id="@+id/set_tts"
+            android:key="switch_set_tts"
+            android:title="@string/pref_title_set_tts"
+            android:visibility="visible" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Reset">
+
+        <ListPreference
+            android:id="@+id/reset"
+            android:entries="@array/pref_title_reset_list_titles"
+            android:entryValues="@array/pref_title_reset_list_values"
+            android:key="list_reset"
+            android:negativeButtonText="CANCEL"
+            android:positiveButtonText="OK"
+            android:title="@string/pref_title_reset" />
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

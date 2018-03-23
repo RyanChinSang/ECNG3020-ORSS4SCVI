@@ -19,6 +19,58 @@
 
 <resources><string name="version_log"><![CDATA[
 
+<h1><strong>v1.3a-230318</strong></h1>
+<p>════════════════════════════</p>
+<h4><strong><font color="#000FF0">[Changed]</font> Settings:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> <strong>Username</strong> to accommodate a more personalized experience when using the App. This is used most notably for the new TTS welcome message feature (see below).</li>
+<li><font color="#0FF000">[Added]</font> <strong>Black-screen operation</strong> which attempts to put the app into a lower power consumption state by minimizing the use of the screen of the device. This is activated through touching the screen for 3 seconds, and deactivated by touching the screen once after.</li>
+<li><font color="#0FF000">[Added]</font> <strong>Reset</strong> To reset all settings to their pre-configured default values and initiate the new <strong>Initial Setup Wizard</strong> (see below).</li>
+<li><font color="#000FF0">[Changed]</font> Settings&apos; backend is now completely revised to facilitate expansion and conformation with the new <strong>Initial Setup Wizard</strong> (see below).</li>
+<li><font color="#000FF0">[Changed]</font> Settings&apos; structure now has dedicated categorization for the different modules of the App.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong><font color="#0FF000">[Added]</font> Initial Setup Wizard:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> On every new startup, or on App reset (through settings), the Initial Setup Wizard will automatically invoke to assist in configuring the App and facilitate a means for the user to better understand the App&apos;s features.</li>
+<li><font color="#0FF000">[Added]</font> Settings displayed on the Setup Wizard are coherent with the settings available in the App&apos;s Settings menu with their default values set.</li>
+<li><font color="#0FF000">[Added]</font> Option to <strong>Skip</strong> the Setup at any phase, except on the last. If skipped, not all changes to the Settings would be saved.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Object Detection system:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Object detection will always monitor (every ~5 seconds) for a &quot;crowded&quot; condition (where there are 5 or more people detected in the Field of Vision) and will play a double beep-tone if the condition is true.</li>
+<li><font color="#0FF000">[Added]</font><font color="#000FF0">[Changed]</font> New algorithm! Object Detection function will now report (to the user) the object that is closest to the centre of the Field of Vision, instead of just the highest confidence detected object.</li>
+<li><font color="#FF0000">[Fixed]</font><font color="#000FF0">[Changed]</font> Delay period between drawing the object&apos;s bounding box and having the data ready to process is now smaller (simpler interface).</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Speech to Text service:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> The App is now capable of outputting specific information when the user says the keyword &quot;<strong>specific</strong>&quot; in the command, independent of the Settings.</li>
+<li><font color="#0FF000">[Added]</font> Assistant will now invoke an &quot;I do not understand&quot; message when the user&apos;s command does not match the known commands.</li>
+<li><font color="#000FF0">[Changed]</font> STT commands now use their own functions independent from the on-screen buttons.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Text to Speech service:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> A beep-tone will now play when the user calls the TTS service with an empty string.</li>
+<li><font color="#0FF000">[Added]</font> Welcome message will always play at the main activity when the App starts as a unique instance (on Restart or Reset).</li>
+<li><font color="#0FF000">[Added]</font> Upon changing any Settings, the TTS service will invoke and describe the change(s) made, along with a pop-up notification (Toast).</li>
+<li><font color="#000FF0">[Changed]</font> TTS now implements a check for the App&apos;s TTS settings on-demand; centralizes away from requiring other activities to perform the check.</li>
+</ul>
+<p>____________________________________________</p>
+<h4><strong>Other:</strong></h4>
+<ul>
+<li><font color="#0FF000">[Added]</font> Clicking the App&apos;s Icon in the &quot;<strong>About</strong>&quot; section will now take the user to the GitHub webpage for the Android project.</li>
+<li><font color="#000FF0">[Changed]</font> Intentional delay time for exiting the App increased to 600ms to ensure all that services can properly close.</li>
+<li><font color="#000FF0">[Changed]</font> Formatted the GNU Licence text for the pop-up dialog - it is now much more readable.</li>
+<li><font color="#000FF0">[Changed]</font> Volume can now be toggled using the Volume Up/Down physical buttons on the device, instead of going into GTFODAPI&apos;s debug mode.</li>
+<li><font color="#FF0000">[Fixed]</font> Exiting and TTS services now operates without error.</li>
+<li><font color="#FF0000">[Fixed]</font> Bug with App returning to Settings instead of the main activity. It will now always return to the correct activity.</li>
+<li><font color="#F000FF">[Misc]</font> More code cleanup, reformatting and renaming. Variable names are now consistent.</li>
+</ul>
+<p>&nbsp;</p>
+<p>════════════════════════════</p>
 <h1><strong>v1.2a-050318</strong></h1>
 <p>════════════════════════════</p>
 <h4><strong>Speech to Text service:</strong></h4>

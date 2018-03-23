@@ -14,23 +14,23 @@ public final class R {
         public static final int progressMsgMargin = 0x7f070099;
     }
     public static final class id {
-        public static final int confirm = 0x7f090034;
-        public static final int confirmLayout = 0x7f090035;
-        public static final int recognitionProgressMsg = 0x7f09007d;
-        public static final int recognitionProgressView = 0x7f09007e;
-        public static final int retry = 0x7f09007f;
+        public static final int confirm = 0x7f090036;
+        public static final int confirmLayout = 0x7f090037;
+        public static final int recognitionProgressMsg = 0x7f09008a;
+        public static final int recognitionProgressView = 0x7f09008b;
+        public static final int retry = 0x7f09008d;
     }
     public static final class layout {
-        public static final int speech_progress_layout = 0x7f0b003e;
+        public static final int speech_progress_layout = 0x7f0b0045;
     }
     public static final class string {
         public static final int app_name = 0x7f0d001f;
-        public static final int ds_confirm = 0x7f0d0027;
-        public static final int ds_internet_not_enabled = 0x7f0d0028;
-        public static final int ds_listening = 0x7f0d0029;
-        public static final int ds_mic_permissions_required = 0x7f0d002a;
-        public static final int ds_progress_layout_error = 0x7f0d002b;
-        public static final int ds_retry = 0x7f0d002c;
-        public static final int ds_unknown_error = 0x7f0d002d;
+        public static final int ds_confirm = 0x7f0d0026;
+        public static final int ds_internet_not_enabled = 0x7f0d0027;
+        public static final int ds_listening = 0x7f0d0028;
+        public static final int ds_mic_permissions_required = 0x7f0d0029;
+        public static final int ds_progress_layout_error = 0x7f0d002a;
+        public static final int ds_retry = 0x7f0d002b;
+        public static final int ds_unknown_error = 0x7f0d002c;
     }
 }

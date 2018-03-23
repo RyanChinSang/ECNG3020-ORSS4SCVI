@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-MERGED from [org.tensorflow:tensorflow-android:1.6.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.6.0.aar\06764e68f48af0a66cf5f7ce45767015\AndroidManifest.xml:2:1-8:12
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+MERGED from [org.tensorflow:tensorflow-android:1.7.0-rc1] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.7.0-rc1.aar\9963e0a45a5d848689c20e8d39994b2f\AndroidManifest.xml:2:1-8:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\76e1f35f16a5e30f1a8dd98e5753e068\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\6a0957ae4312e79c26cf1c53af0fac22\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\c2271925110fe1356c921909be3621f7\AndroidManifest.xml:2:1-11:12
@@ -22,20 +22,20 @@ MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\ryanc\.grad
 MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\91ba89e6939c4d5b69533f9b84edb0a2\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653ff912938d2fedaf0ee1bf9a8d1845\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c70df79809338ca94eb4c8e5fb4196b7\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
-INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
+INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
 	package
 		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:17:5-34
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
-		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
-		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-59:12
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:1-82:12
 		INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:16:11-69
@@ -74,9 +74,9 @@ ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\A
 	android:name
 		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:27:19-67
 application
-ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:29:5-57:19
-MERGED from [org.tensorflow:tensorflow-android:1.6.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.6.0.aar\06764e68f48af0a66cf5f7ce45767015\AndroidManifest.xml:5:5-6:19
-MERGED from [org.tensorflow:tensorflow-android:1.6.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.6.0.aar\06764e68f48af0a66cf5f7ce45767015\AndroidManifest.xml:5:5-6:19
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:29:5-80:19
+MERGED from [org.tensorflow:tensorflow-android:1.7.0-rc1] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.7.0-rc1.aar\9963e0a45a5d848689c20e8d39994b2f\AndroidManifest.xml:5:5-6:19
+MERGED from [org.tensorflow:tensorflow-android:1.7.0-rc1] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.7.0-rc1.aar\9963e0a45a5d848689c20e8d39994b2f\AndroidManifest.xml:5:5-6:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\76e1f35f16a5e30f1a8dd98e5753e068\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\76e1f35f16a5e30f1a8dd98e5753e068\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\ryanc\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\6a0957ae4312e79c26cf1c53af0fac22\AndroidManifest.xml:25:5-29:19
@@ -154,9 +154,51 @@ ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\A
 	android:name
 		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:54:18-44
 activity#org.tensorflow.demo.AboutActivity
-ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:56:9-60
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:56:9-57:45
 	android:name
-		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:56:19-48
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:57:13-42
+activity#org.tensorflow.demo.SetupIntroActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:58:9-60:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:60:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:59:13-47
+activity#org.tensorflow.demo.SetupPgOneActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:61:9-63:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:63:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:62:13-47
+activity#org.tensorflow.demo.SetupPgTwoActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:64:9-66:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:66:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:65:13-47
+activity#org.tensorflow.demo.SetupPgThreeActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:67:9-69:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:69:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:68:13-49
+activity#org.tensorflow.demo.SetupPgFourActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:70:9-72:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:72:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:71:13-48
+activity#org.tensorflow.demo.SetupPgFiveActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:73:9-75:50
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:75:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:74:13-48
+activity#org.tensorflow.demo.SetupOutroActivity
+ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:76:9-79:20
+	android:theme
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:78:13-47
+	android:name
+		ADDED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml:77:13-47
 uses-sdk
 INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ryanc\PycharmProjects\ECNG3020-ORSS4SCVI\Android\ORSS4SCVI\AndroidManifest.xml

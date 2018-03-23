@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import org.tensorflow.demo.Classifier.Recognition;
 import org.tensorflow.demo.DetectorActivity;
+import org.tensorflow.demo.R;
 import org.tensorflow.demo.env.BorderedText;
 import org.tensorflow.demo.env.ImageUtils;
 import org.tensorflow.demo.env.Logger;
@@ -48,7 +49,7 @@ import java.util.Queue;
 public class MultiBoxTracker {
 
     private SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(DetectorActivity.getContextOfApplication());
-    private int size = Integer.parseInt(sharedPreferences.getString("text_ROIsize","50"));
+    private int size = Integer.parseInt(sharedPreferences.getString("text_ROIsize", DetectorActivity.getContextOfApplication().getString(R.string.pref_default_ROIsize)));
 
     private final Logger logger = new Logger();
 
@@ -218,6 +219,7 @@ public class MultiBoxTracker {
             borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.bottom, labelString);
         }
         canvas.drawRect(loc, paint);
+        canvas.drawCircle(centredWidth, centredHeight, 2, paint);
     }
 
     private boolean initialized = false;

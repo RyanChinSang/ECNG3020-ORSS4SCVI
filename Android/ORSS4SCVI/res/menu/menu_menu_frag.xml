@@ -10,7 +10,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_home_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/home_menu"
+        android:title="@string/menu_home"
         android:visible="true"
         app:showAsAction="always" />
 </menu>

@@ -12,44 +12,52 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-hdpi\\ic_home_white_24dp.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_sc_pg2.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\sc_pg2.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_design_ic_visibility.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-xhdpi-v4\\design_ic_visibility.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_about.xml.flat",
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_about.xml"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_speech_to_text.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_speech_to_text.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -68,12 +76,12 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-xhdpi\\ic_settings_white_24dp.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_menu_white_24dp.png.flat",
-        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-hdpi\\ic_menu_white_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_abc_dialog_title_material.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_menu_white_24dp.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-hdpi\\ic_menu_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_abc_select_dialog_material.xml.flat",
@@ -108,24 +116,24 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-xhdpi\\ic_mic_white_48dp.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_ic_clear_material.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\color_abc_tint_spinner.xml.flat",
@@ -140,12 +148,12 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_holo_dark.xml.flat",
@@ -196,6 +204,14 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_sc_pg4.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\sc_pg4.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_pg_one.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_pg_one.xml"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_switch_thumb_material.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_switch_thumb_material.xml"
     },
@@ -224,12 +240,12 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_info_black_24dp.png.flat",
@@ -268,16 +284,16 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\653ff912938d2fedaf0ee1bf9a8d1845\\res\\drawable\\notification_bg.xml"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_36dp.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_36dp.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\653ff912938d2fedaf0ee1bf9a8d1845\\res\\drawable\\notification_bg.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_mic_black_48dp.png.flat",
@@ -322,6 +338,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_design_ic_visibility.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-mdpi-v4\\design_ic_visibility.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_skip.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_skip.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
@@ -376,24 +396,24 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility_off.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_ic_menu_overflow_material.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
-    },
-    {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility_off.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-v21_design_bottom_navigation_item_background.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -406,6 +426,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_pg_five.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_pg_five.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -460,12 +484,12 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-mdpi\\ic_info_white_24dp.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-xxhdpi-v4\\design_ic_visibility_off.png"
-    },
-    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_switch_track.xml.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\76e1f35f16a5e30f1a8dd98e5753e068\\res\\drawable-xxhdpi-v4\\design_ic_visibility_off.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view_list_item.xml.flat",
@@ -484,16 +508,16 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home_black_24dp.png.flat",
-        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-mdpi\\ic_home_black_24dp.png"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_text_cursor_material.xml.flat",
+        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_text_cursor_material.xml.flat",
-        "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable\\abc_text_cursor_material.xml"
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-mdpi\\ic_home_black_24dp.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\color-v11_abc_background_cache_hint_selector_material_dark.xml.flat",
@@ -686,6 +710,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_prev.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_prev.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -1056,6 +1084,10 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_sc_pg5.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\sc_pg5.png"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_home_black_24dp.png.flat",
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-xxhdpi\\ic_home_black_24dp.png"
     },
@@ -1094,6 +1126,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_complete.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_complete.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-v21_abc_btn_colored_material.xml.flat",
@@ -1148,6 +1184,10 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_intro.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_intro.xml"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
     },
@@ -1198,6 +1238,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_sc_pg3.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\sc_pg3.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
@@ -1340,6 +1384,22 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_pg_four.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_pg_four.xml"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_next.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_next.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_object_detect.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_object_detect.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_sc_pg1.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\sc_pg1.png"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
@@ -1466,6 +1526,14 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-mdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_text_to_speech.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_text_to_speech.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_outro.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_outro.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
@@ -1632,6 +1700,10 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-mdpi\\ic_power_settings_new_black_24dp.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_general_settings.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_general_settings.png"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -1684,12 +1756,20 @@
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-xxxhdpi\\ic_mic_none_black_48dp.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_pg_three.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_pg_three.xml"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\menu_menu_menu_main.xml.flat",
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\menu\\menu_menu_main.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_info_black_24dp.png.flat",
         "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable-xhdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_color_detect.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_color_detect.png"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -1792,6 +1872,10 @@
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
     },
     {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable_ic_done.png.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\drawable\\ic_done.png"
+    },
+    {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\6a0957ae4312e79c26cf1c53af0fac22\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
@@ -1858,6 +1942,10 @@
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "C:\\Users\\ryanc\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\653ff912938d2fedaf0ee1bf9a8d1845\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_activity_setup_pg_two.xml.flat",
+        "source": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\res\\layout\\activity_setup_pg_two.xml"
     },
     {
         "merged": "C:\\Users\\ryanc\\PycharmProjects\\ECNG3020-ORSS4SCVI\\Android\\ORSS4SCVI\\gradleBuild\\intermediates\\res\\merged\\debug\\layout_speech_progress_layout.xml.flat",

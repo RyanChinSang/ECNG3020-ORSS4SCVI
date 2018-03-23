@@ -53,7 +53,30 @@
 
         <service android:name=".ttsService" />
 
-        <activity android:name=".AboutActivity"></activity>
+        <activity
+            android:name=".AboutActivity" />
+        <activity
+            android:name=".SetupIntroActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupPgOneActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupPgTwoActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupPgThreeActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupPgFourActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupPgFiveActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".SetupOutroActivity"
+            android:theme="@style/NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

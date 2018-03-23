@@ -1,5 +1,6 @@
-/* DA
- * TODO (fix [HIGH]): App does not return to camera view when the app is reopened from minimized after the settings menu is accessed
+/*
+ * TODO (cleanup [HIGH]): Cleanup assets folder
+ * TODO ([HIGH]): Create a centralized versioning method
  */
 
 package org.tensorflow.demo;
@@ -17,7 +18,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.media.AudioManager;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.media.ToneGenerator;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +32,10 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -50,7 +56,6 @@ import org.tensorflow.demo.tracking.MultiBoxTracker;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -104,9 +109,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
     /*[MY VARIABLES]*******************************************************************************/
+    int ttsError = 0;
+    long beepTime = 0;
+    int countPersons = 0;
+    int queryCrowdedTime = 5000;
+    boolean queryCrowded = true;
     private static final String KWS_SEARCH = "wakeup";
     private static final String KEYPHRASE = "ok assistant";
-    ArrayList<String> detectedObjects = new ArrayList<String>();
+    ArrayList<Classifier.Recognition> detectedObjects = new ArrayList<Classifier.Recognition>();
     private static final Map<String, String> cols_dict = new LinkedHashMap<String, String>() {{
         put("84;84;84", "Grey");
         put("192;192;192", "Silver");
@@ -738,13 +748,16 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         put("234;234;174", "Medium Goldenrod");
         put("153;204;50", "Yellow Green");
     }};
+    Window myWindow;
+    Handler handler;
+    long startTouch;
     private ImageView start;
     private ImageView stop;
     private DroidSpeech droidSpeech;
     SharedPreferences sharedPreferences;
     private SpeechRecognizer recognizer;
     public static Context contextOfApplication;
-    Handler handler;
+
 
     /*[OPENCV]*************************************************************************************/
     static {
@@ -918,27 +931,43 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                         }
 
                         final List<Classifier.Recognition> mappedRecognitions = new LinkedList<Classifier.Recognition>();
-                        ArrayList<String> tempList = new ArrayList<String>();
+                        ArrayList<Classifier.Recognition> tempList = new ArrayList<Classifier.Recognition>();
+                        countPersons = 0;
 
                         for (final Classifier.Recognition result : results) {
                             final RectF location = result.getLocation();
                             if (location != null && result.getConfidence() >= minimumConfidence) {
                                 canvas.drawRect(location, paint);
-
                                 cropToFrameTransform.mapRect(location);
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
 
-                                tempList.add(result.getTitle() + ";" + result.getConfidence().toString());
+                                tempList.add(result);
+                                if (result.getTitle().equals("person")) {
+                                    countPersons++;
+                                }
+
                             }
                         }
-                        detectedObjects = tempList;
+                        if (queryCrowded) {
+                            // TODO: Add a setting for this under Object Detection: a switch for queryCrowded and a text-input field for queryCrowdedTime
+                            if (countPersons >= 5) {
+                                queryCrowded =  !queryCrowded;
+                                beepTime = System.currentTimeMillis();
+                                ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                                toneG.startTone(ToneGenerator.TONE_PROP_BEEP2, 1000);
+                            }
+                        } else {
+                            if (System.currentTimeMillis() - beepTime >= queryCrowdedTime) {
+                                queryCrowded = !queryCrowded;
+                            }
+                        }
+//                        Log.e("processImage.DA", detectedObjects+"");
+                        detectedObjects = tempList;  // [[0] tv (74.3%) RectF(223.1918, 83.90689, 467.77695, 383.50452), [1] laptop (65.3%) RectF(225.34712, 93.78201, 458.03198, 379.6026)]
                         tracker.trackResults(mappedRecognitions, luminanceCopy, currTimestamp);
                         trackingOverlay.postInvalidate();
                         requestRender();
                         computingDetection = false;
-//                        LOGGER.e("/////////////////////////: %s", Arrays.toString(detectedObjects.toArray()));
-//                        LOGGER.e("Detect: %s", results);
                     }
                 });
     }
@@ -963,13 +992,17 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
         handler = new Handler();
+        myWindow = getWindow();
         stop = findViewById(R.id.stop);
         start = findViewById(R.id.start);
         contextOfApplication = getApplicationContext();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        sayTTS("");
+
+        sayTTS(" ");
 
         if (sharedPreferences.getString("list_set_stt","").equals("2")) {
             runRecognizerSetup();
@@ -981,6 +1014,25 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             start.setVisibility(View.INVISIBLE);
             stop.setEnabled(false);
             stop.setVisibility(View.INVISIBLE);
+        }
+
+        if (sharedPreferences.getBoolean("initRun", true)){
+            Intent intent_setup_into = new Intent(DetectorActivity.this, SetupIntroActivity.class);
+            startActivity(intent_setup_into);
+            sharedPreferences.edit().putBoolean("initRun", false).apply();
+        } else {
+            if (sharedPreferences.getBoolean("uniqueInstance", true)) {
+                if (ttsError == 0) {
+                    String userName = sharedPreferences.getString("text_username","");
+                    if (userName.equals(getString(R.string.pref_default_username))) {
+                        communicate("Welcome");
+                    }
+                    else {
+                        communicate("Welcome " + userName);
+                    }
+                }
+                sharedPreferences.edit().putBoolean("uniqueInstance", false).apply();
+            }
         }
     }
 
@@ -1000,11 +1052,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     @Override
     public void onDroidSpeechSupportedLanguages(String currentSpeechLanguage, List<String> supportedSpeechLanguages) {
         if (supportedSpeechLanguages.contains("en-US")) {
-            // Setting the droid speech preferred language as tamil if found
             droidSpeech.setPreferredLanguage("en-US");
-            // Setting the confirm and retry text in tamil
-//            droidSpeech.setOneStepVerifyConfirmText("Confirm");
-//            droidSpeech.setOneStepVerifyRetryText("Try Again");
         }
     }
 
@@ -1024,19 +1072,25 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         String command = finalSpeechResult.toLowerCase();
         if (command.contains("what")) {
             if (command.contains("color")) {
-                sendColor(getWindow().getDecorView().getRootView().findViewById(R.id.button1));
+                if (command.contains("specific") || sharedPreferences.getBoolean("switch_set_cols", Boolean.valueOf(getString(R.string.pref_default_set_cols)))) {
+                    sendColor_stt(true);
+                } else {
+                    sendColor_stt(false);
+                }
             } else if (command.contains("object")) {
-                sendObject(getWindow().getDecorView().getRootView().findViewById(R.id.button2));
+                if (command.contains("specific") || sharedPreferences.getBoolean("switch_set_confstr", Boolean.valueOf(getString(R.string.pref_default_set_confstr)))) {
+                    sendObject_stt(true);
+                } else {
+                    sendObject_stt(false);
+                }
+            } else {
+                communicate("Sorry, I did not understand.");
             }
         } else if (command.equals("exit") || command.equals("quit")) {
-            // TODO: Say goodbye here or something to indicate it's closed
-            sayTTS("good bye");
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    shutDown();
-                }
-            },500);
+            communicate("Good bye");
+            shutDown();
+        } else {
+            communicate("Sorry, I did not understand.");
         }
     }
 
@@ -1100,6 +1154,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         if (stop.getVisibility() == View.VISIBLE) {
             stop.performClick();
         }
+        sharedPreferences.edit().putBoolean("uniqueInstance", true).apply();
+        finishAffinity();
     }
 
     @Override
@@ -1152,6 +1208,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         }
     }
 
+
     /*[POCKET SPHINX]******************************************************************************/
     private void runRecognizerSetup() {
         // Recognizer initialization is a time-consuming and it involves IO,
@@ -1191,10 +1248,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         @Override
         public void onPartialResult(Hypothesis hypothesis) {
-//            Log.e("onPartialResult.DA", "HERE");
-            if (hypothesis == null) {
-                return;
-            } else {
+            if (hypothesis != null) {
                 String text = hypothesis.getHypstr();
                 if (text.equals(KEYPHRASE)) {
                     recognizer.cancel();
@@ -1227,7 +1281,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     }
 
     @Override
-    public void onStop() {;
+    public void onStop() {
         super.onStop();
         if (recognizer != null) {
             recognizer.cancel();
@@ -1242,7 +1296,39 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         }
     }
 
+
     /*[OTHER]**************************************************************************************/
+    @Override
+    public boolean onTouchEvent(MotionEvent me) {
+        switch(me.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                startTouch = System.currentTimeMillis();
+                break;
+            case MotionEvent.ACTION_UP:
+                if (sharedPreferences.getBoolean("switch_bscreen", false)) {
+                    if ((System.currentTimeMillis() - startTouch) >= 3000) {
+                        WindowManager.LayoutParams lp = myWindow.getAttributes();
+                        lp.screenBrightness = 0.0f;
+                        myWindow.setAttributes(lp);
+                    } else {
+                        WindowManager.LayoutParams lp = myWindow.getAttributes();
+                        lp.screenBrightness = -1.0f;
+                        myWindow.setAttributes(lp);
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if ((System.currentTimeMillis() - startTouch) >= 3000 && (System.currentTimeMillis() - startTouch) <= 3050) {
+                    if (sharedPreferences.getBoolean("switch_bscreen", false)) {
+                        ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                        toneG.startTone(ToneGenerator.TONE_CDMA_EMERGENCY_RINGBACK, 100);
+                    }
+                }
+                break;
+        }
+        return super.onTouchEvent(me);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_btn, menu);
@@ -1280,7 +1366,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                     });
             AlertDialog alert = builder.create();
             alert.show();
-
         } else {
             super.onBackPressed();
         }
@@ -1290,26 +1375,38 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         return contextOfApplication;
     }
 
+    public String minDisBetCPs(ArrayList<String>objectNames, ArrayList<RectF>objectBoxes, RectF box1, RectF box2, int wp, int hp) {
+        double minDist = 999999;
+        String objectName = "";
+        RectF[] boxList = {box1, box2};
+        for (int i=0; i<=boxList.length-1; i++) {
+            double dist = (Math.pow((wp - boxList[i].centerX()), 2)-Math.pow((hp - boxList[i].centerY()), 2));
+            if (dist < minDist) {
+                minDist = dist;
+                objectName = objectNames.get(objectBoxes.indexOf(boxList[i]));
+            }
+        }
+        return objectName;
+    }
+
     public void shutDown() {
-        stopService(new Intent(DetectorActivity.this, ttsService.class));
-        droidSpeech.closeDroidSpeechOperations();
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sharedPreferences.edit().putBoolean("uniqueInstance", true).apply();
+                finishAffinity();
+            }
+        },600);
     }
 
     public void sayTTS(String string) {
-        boolean tts_mode = sharedPreferences.getBoolean("switch_set_tts", false);
-        if (tts_mode) {
-            Intent i = new Intent(getApplicationContext(), ttsService.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  // TODO (cleanup): is this necessary?
-            i.putExtra("key", string);
-            startService(i);
-        }
+        Intent i = new Intent(getApplicationContext(), ttsService.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("key", string);
+        startService(i);
     }
 
     public void sendColor(View view) {
-
         rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
         boolean advanced_mode = sharedPreferences.getBoolean("switch_set_cols", false);
         boolean filtering_mode = sharedPreferences.getBoolean("switch_set_filt", false);
@@ -1395,28 +1492,57 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 closest_color = "error";
             }
         }
-        Toast.makeText(getApplicationContext(), closest_color, Toast.LENGTH_LONG).show();
-        sayTTS(closest_color);
+        communicate(closest_color);
     }
 
     public void sendObject(View view) {
         //TODO (list):
-        //1 - Add support for calling the object closest to the center of the screen instead of highest confidence
+        //1 - Improve accuracy of the results when querying the object closest to the centre of the screen
         //2 - Fix trouble getting multiple objects (simplify interface between methods?)
+        //3 - Fix delay for polling objects in detectedObjects
+
+//      detectedObjects = [[0] tv (74.3%) RectF(223.1918, 83.90689, 467.77695, 383.50452), [1] laptop (65.3%) RectF(225.34712, 93.78201, 458.03198, 379.6026)]
+        rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
+        int wp = rgbFrameBitmap.getWidth()/2;
+        int hp = rgbFrameBitmap.getHeight()/2;
 
         boolean advanced_mode = sharedPreferences.getBoolean("switch_set_confstr", false);
         String sentence = "";
         String objectName = "";
         String objectConfidence;
-        String objectList = Arrays.toString(detectedObjects.toArray());
+        ArrayList<String> objectNames = new ArrayList<String>();
+        ArrayList<Float> objectConfs = new ArrayList<Float>();
+        ArrayList<RectF> objectBoxes = new ArrayList<RectF>();
+        ArrayList<RectF> interestedBoxes = new ArrayList<RectF>();
 
-        if (!objectList.equals("[]")) {
-            objectList = objectList.replace("[", "").replace("]", "");
-            String[] objects = objectList.split(",");
-
-            int numObjects = objects.length;
-            objectName = objects[0].split(";")[0];
-            objectConfidence = String.format(java.util.Locale.US, "%.1f", Float.parseFloat(objects[0].split(";")[1]) * 100) + "% ";
+        if (detectedObjects.size() != 0) {
+            for (int i=0; i<=detectedObjects.size()-1; i++) {
+                objectNames.add(detectedObjects.get(i).getTitle());
+                objectConfs.add(detectedObjects.get(i).getConfidence());
+                objectBoxes.add(detectedObjects.get(i).getLocation());
+            }
+            for (int i=0; i<=objectBoxes.size()-1; i++) {
+                if (objectBoxes.get(i).contains(wp, hp)) {
+                    interestedBoxes.add(objectBoxes.get(i));
+                }
+            }
+        }
+        int iBoxesSize = interestedBoxes.size();
+        if (iBoxesSize != 0) {
+            if (iBoxesSize == 1) {
+                objectName = objectNames.get(objectBoxes.indexOf(interestedBoxes.get(0)));
+            } else if (iBoxesSize > 1) {
+                int pos = 0;
+                int numIter = ((iBoxesSize*iBoxesSize) - iBoxesSize) / 2;
+                while (numIter > 0) {
+                    for (int i=pos+1; i<=iBoxesSize-1; i++) {
+                        objectName = minDisBetCPs(objectNames, objectBoxes, interestedBoxes.get(pos), interestedBoxes.get(i), wp, hp);
+                        numIter--;
+                    }
+                    pos++;
+                }
+            }
+            objectConfidence = String.format(java.util.Locale.US, "%.1f", objectConfs.get(objectNames.indexOf(objectName))*100) + "% ";
 
             // TODO (fix [LOW]): find an elegant fix for "bad" labels in 'coco_label_list.txt'
             if (objectName.equals("tv")) {
@@ -1433,8 +1559,160 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             } else {
                 sentence += "a " + objectName;
             }
-            Toast.makeText(getApplicationContext(), sentence, Toast.LENGTH_LONG).show();
         }
-        sayTTS(sentence);
+        communicate(sentence);
+    }
+
+    public void sendColor_stt(Boolean specific) {
+        rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
+        boolean filtering_mode = sharedPreferences.getBoolean("switch_set_filt", false);
+        int size = Integer.parseInt(sharedPreferences.getString("text_ROIsize", "50"));
+        int color_index = 0;
+        int frame_w = rgbFrameBitmap.getWidth();
+        int frame_h = rgbFrameBitmap.getHeight();
+        /*
+        * FRAME (DetectorActivity) -> CANVAS (MultiBoxTracker)
+        * height_p2 = h + size     -> w_centred - offsetSize [left]
+        * height_p1 = h - size     -> w_centred + offsetSize [right]
+        * width_p2  = w + size     -> h_centred + offsetSize [bottom]
+        * width_p1  = w - size     -> h_centred - offsetSize [top]
+        */
+        int height_p1 = (frame_h / 2) - size;
+        int width_p1 = (frame_w / 2) - size;
+        int height_p2 = (frame_h / 2) + size;
+        int width_p2 = (frame_w / 2) + size;
+        double r_avg;
+        double b_avg;
+        double g_avg;
+        double dif_val;
+        String closest_color;
+        double r_sum = 0;
+        double g_sum = 0;
+        double b_sum = 0;
+        double min_dif = 16581375;
+        Mat frame_clone = new Mat();
+
+        Utils.bitmapToMat(rgbFrameBitmap, frame_clone);
+        if (filtering_mode) {
+            Imgproc.GaussianBlur(frame_clone, frame_clone, new org.opencv.core.Size(5, 5), 1, 1);
+        }
+        for (int x = width_p1; x <= width_p2; x++) {
+            for (int y = height_p1; y <= height_p2; y++) {
+                double[] rgb = frame_clone.get(y, x);
+                r_sum += rgb[0];
+                g_sum += rgb[1];
+                b_sum += rgb[2];
+            }
+        }
+        r_avg = r_sum / ((size * 2) * (size * 2));
+        g_avg = g_sum / ((size * 2) * (size * 2));
+        b_avg = b_sum / ((size * 2) * (size * 2));
+        for (int i = 0; i < cols_dict.size(); i++) {
+            String[] par_col = cols_dict.keySet().toArray()[i].toString().split(";");
+            dif_val = ((Integer.parseInt(par_col[0]) - r_avg) * (Integer.parseInt(par_col[0]) - r_avg) +
+                    ((Integer.parseInt(par_col[1]) - g_avg) * (Integer.parseInt(par_col[1]) - g_avg)) +
+                    ((Integer.parseInt(par_col[2]) - b_avg) * (Integer.parseInt(par_col[2]) - b_avg)));
+            if (min_dif > dif_val) {
+                min_dif = dif_val;
+                color_index = i;
+            }
+        }
+        if (specific) {
+            closest_color = cols_dict.get(cols_dict.keySet().toArray()[color_index].toString());
+        } else {
+            if (color_index >= 0 && color_index <= 9) {
+                closest_color = "grey";
+            } else if (color_index >= 10 && color_index <= 51) {
+                closest_color = "black";
+            } else if (color_index >= 52 && color_index <= 83) {
+                closest_color = "grey";
+            } else if (color_index >= 84 && color_index <= 115) {
+                closest_color = "white";
+            } else if (color_index >= 116 && color_index <= 239) {
+                closest_color = "blue";
+            } else if (color_index >= 240 && color_index <= 280) {
+                closest_color = "brown";
+            } else if (color_index >= 281 && color_index <= 350) {
+                closest_color = "green";
+            } else if (color_index >= 351 && color_index <= 401) {
+                closest_color = "orange";
+            } else if (color_index >= 402 && color_index <= 473) {
+                closest_color = "red";
+            } else if (color_index >= 474 && color_index <= 541) {
+                closest_color = "violet";
+            } else if (color_index >= 542 && color_index <= 580) {
+                closest_color = "white";
+            } else if (color_index >= 581 && color_index <= 628) {
+                closest_color = "yellow";
+            } else {  // Should never occur. . .
+                closest_color = "error";
+            }
+        }
+        communicate(closest_color);
+    }
+
+    public void sendObject_stt(Boolean specific) {
+        rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
+        int wp = rgbFrameBitmap.getWidth()/2;
+        int hp = rgbFrameBitmap.getHeight()/2;
+
+        String sentence = "";
+        String objectName = "";
+        String objectConfidence;
+        ArrayList<String> objectNames = new ArrayList<String>();
+        ArrayList<Float> objectConfs = new ArrayList<Float>();
+        ArrayList<RectF> objectBoxes = new ArrayList<RectF>();
+        ArrayList<RectF> interestedBoxes = new ArrayList<RectF>();
+
+        if (detectedObjects.size() != 0) {
+            for (int i=0; i<=detectedObjects.size()-1; i++) {
+                objectNames.add(detectedObjects.get(i).getTitle());
+                objectConfs.add(detectedObjects.get(i).getConfidence());
+                objectBoxes.add(detectedObjects.get(i).getLocation());
+            }
+            for (int i=0; i<=objectBoxes.size()-1; i++) {
+                if (objectBoxes.get(i).contains(wp, hp)) {
+                    interestedBoxes.add(objectBoxes.get(i));
+                }
+            }
+        }
+        int iBoxesSize = interestedBoxes.size();
+        if (iBoxesSize != 0) {
+            if (iBoxesSize == 1) {
+                objectName = objectNames.get(objectBoxes.indexOf(interestedBoxes.get(0)));
+            } else if (iBoxesSize > 1) {
+                int pos = 0;
+                int numIter = ((iBoxesSize*iBoxesSize) - iBoxesSize) / 2;
+                while (numIter > 0) {
+                    for (int i=pos+1; i<=iBoxesSize-1; i++) {
+                        objectName = minDisBetCPs(objectNames, objectBoxes, interestedBoxes.get(pos), interestedBoxes.get(i), wp, hp);
+                        numIter--;
+                    }
+                    pos++;
+                }
+            }
+
+            objectConfidence = String.format(java.util.Locale.US, "%.1f", objectConfs.get(objectNames.indexOf(objectName))*100) + "% ";
+            if (objectName.equals("tv")) {
+                objectName = "t.v.";
+            }
+
+            if (specific) {
+                sentence = "I am " + objectConfidence + "confident that the object is ";
+            } else {
+                sentence = "The object is ";
+            }
+            if ("AEIOUaeiou".indexOf(objectName.charAt(0)) != -1) {
+                sentence += "an " + objectName;
+            } else {
+                sentence += "a " + objectName;
+            }
+        }
+        communicate(sentence);
+    }
+
+    public void communicate(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        sayTTS(message);
     }
 }
